@@ -6,7 +6,7 @@ export default function Home() {
   const [species, setSpecies] = useState("");
   const [race, setRace] = useState("");
   const [birthday, setBirthday] = useState("");
-  const [picture, setPicture] = useState("");
+  const [picture, setPicture] = useState<File | null>(null);
 
   function handleCreate(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -75,8 +75,10 @@ export default function Home() {
           <input
             type="file"
             id="picture"
-            value={picture}
-            onChange={(e) => setPicture(e.target.value)}
+            onChange={(e) => {
+              const file = e.target.files && e.target.files[0];
+              setPicture(file);
+            }}
           />
         </div>
 
@@ -87,6 +89,12 @@ export default function Home() {
           Save
         </button>
       </form>
+
+      {/* NOTE: temporary visualization */}
+      <img
+        src={picture ? URL.createObjectURL(picture) : ""}
+        style={{ width: "100%", marginTop: "20px" }}
+      />
     </main>
   );
 }

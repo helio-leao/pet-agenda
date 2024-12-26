@@ -16,6 +16,10 @@
   gap: 10px;
 }
 
+.fieldContainer {
+  gap: 4px;
+}
+
 .inputElements {
   padding: 16px;
   border-radius: 6px;

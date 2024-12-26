@@ -5,7 +5,10 @@ export default function Home() {
   return (
     <main className={styles.container}>
       <h1 className={styles.pageTitle}>Home</h1>
-      <Link to="/new-pet">Add Pet</Link>
+      <div className={styles.linksContainer}>
+        <Link to="/new-pet">Add Pet</Link>
+        <Link to="/signup">Signup</Link>
+      </div>
     </main>
   );
 }

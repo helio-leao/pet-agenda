@@ -1,74 +1,64 @@
 import { useState } from "react";
 import style from "./style.module.css";
 
-export default function NewPet() {
+export default function Signup() {
   const [name, setName] = useState("");
-  const [species, setSpecies] = useState("");
-  const [race, setRace] = useState("");
-  const [birthday, setBirthday] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [picture, setPicture] = useState<File | null>(null);
 
-  function handleCreate(e: React.FormEvent<HTMLFormElement>) {
+  function handleSave(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const newPet = {
+    const newUser = {
       name,
-      species,
-      race,
-      birthday,
+      username,
+      email,
     };
-    console.log(newPet);
+    console.log(newUser);
   }
 
   return (
     <main className={style.container}>
-      <h1 className={style.pageTitle}>New Pet</h1>
+      <h1 className={style.pageTitle}>New User</h1>
 
-      <form className={style.formContainer} onSubmit={handleCreate}>
+      <form className={style.formContainer} onSubmit={handleSave}>
         <div className={style.fieldContainer}>
           <label htmlFor="name">Name</label>
           <input
             type="text"
             className={style.inputElements}
             id="name"
-            placeholder="Your pet name"
+            placeholder="Your name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
 
         <div className={style.fieldContainer}>
-          <label htmlFor="species">Species</label>
+          <label htmlFor="username">Username</label>
           <input
             type="text"
             className={style.inputElements}
-            id="species"
-            placeholder="Your pet species"
-            value={species}
-            onChange={(e) => setSpecies(e.target.value)}
+            id="username"
+            placeholder="Your username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
+
         <div className={style.fieldContainer}>
-          <label htmlFor="race">Race</label>
+          <label htmlFor="email">Email</label>
           <input
-            type="text"
+            type="email"
             className={style.inputElements}
-            id="race"
-            placeholder="Your pet race"
-            value={race}
-            onChange={(e) => setRace(e.target.value)}
+            id="email"
+            placeholder="Your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div className={style.fieldContainer}>
-          <label htmlFor="birthday">Birthday</label>
-          <input
-            type="date"
-            className={style.inputElements}
-            id="birthday"
-            value={birthday}
-            onChange={(e) => setBirthday(e.target.value)}
-          />
-        </div>
+
         <div className={style.fieldContainer}>
           <label htmlFor="picture">Picture</label>
           <input

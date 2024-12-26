@@ -5,3 +5,8 @@
 .pageTitle {
   margin-bottom: 20px;
 }
+
+.linksContainer {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,20 +1,16 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import NewPet from "./pages/NewPet";
+import Header from "./components/Header";
 
 function App() {
   return (
     <Router>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-        </ul>
-      </nav>
-
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/new-pet" element={<NewPet />} />
       </Routes>
     </Router>
   );

@@ -4,6 +4,7 @@ import style from "./style.module.css";
 export default function Signup() {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [picture, setPicture] = useState<File | null>(null);
 
@@ -44,6 +45,18 @@ export default function Signup() {
             placeholder="Your username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+
+        <div className={style.fieldContainer}>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            className={style.inputElements}
+            id="password"
+            placeholder="Your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 

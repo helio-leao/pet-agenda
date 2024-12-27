@@ -5,7 +5,7 @@ export default function NewPet() {
   const [name, setName] = useState("");
   const [species, setSpecies] = useState("");
   const [race, setRace] = useState("");
-  const [birthday, setBirthday] = useState("");
+  const [birthdate, setBirthdate] = useState("");
   const [picture, setPicture] = useState<File | null>(null);
 
   function handleCreate(e: React.FormEvent<HTMLFormElement>) {
@@ -15,7 +15,7 @@ export default function NewPet() {
       name,
       species,
       race,
-      birthday,
+      birthdate,
     };
     console.log(newPet);
   }
@@ -60,13 +60,13 @@ export default function NewPet() {
           />
         </div>
         <div className={style.fieldContainer}>
-          <label htmlFor="birthday">Birthday</label>
+          <label htmlFor="birthdate">Birthdate</label>
           <input
             type="date"
             className={style.inputElements}
-            id="birthday"
-            value={birthday}
-            onChange={(e) => setBirthday(e.target.value)}
+            id="birthdate"
+            value={birthdate}
+            onChange={(e) => setBirthdate(e.target.value)}
           />
         </div>
         <div className={style.fieldContainer}>

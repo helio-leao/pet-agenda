@@ -43,11 +43,14 @@ export default function Home() {
 
       <div style={{ marginTop: 20 }}>
         {pets.map((pet: any) => (
-          <div key={pet._id}>
-            <p>{pet.name}</p>
-            <p>{pet.type}</p>
-            <p>{pet.breed}</p>
-            <p>{pet.birthdate}</p>
+          <div key={pet._id} style={{ display: "flex", gap: 10 }}>
+            <img src={pet.picture} height="100px" />
+            <div>
+              <p>{pet.name}</p>
+              <p>{pet.type}</p>
+              <p>{pet.breed}</p>
+              <p>{pet.birthdate}</p>
+            </div>
           </div>
         ))}
       </div>

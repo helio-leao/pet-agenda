@@ -6,9 +6,9 @@ import {
 } from "react";
 
 const AuthContext = createContext<{
-  signIn: () => void;
+  signIn: (data: any) => void;
   signOut: () => void;
-  session?: string | null;
+  session?: any;
   isLoading: boolean;
 }>({
   signIn: () => null,
@@ -27,14 +27,13 @@ export function useSession() {
 
 export function SessionProvider({ children }: PropsWithChildren) {
   const [isLoading, setIsLoading] = useState(true);
-  const [session, setSession] = useState<string | null>(null);
+  const [session, setSession] = useState<any>(null);
 
   return (
     <AuthContext.Provider
       value={{
-        signIn: () => {
-          // Perform sign-in logic here
-          setSession("xxx");
+        signIn: (data) => {
+          setSession(data);
         },
         signOut: () => {
           setSession(null);

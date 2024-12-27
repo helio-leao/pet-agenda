@@ -1,18 +1,32 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import style from "./style.module.css";
+import api from "../../api/api";
+import { useSession } from "../../contexts/session";
+import { useNavigate } from "react-router-dom";
 
 export default function NewPet() {
+  const navigate = useNavigate();
+  const { signIn } = useSession();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleLogin(e: React.FormEvent<HTMLFormElement>) {
+  async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const loginData = {
       username,
       password,
     };
-    console.log(loginData);
+
+    try {
+      const { data: user } = await api.post("/users/login", loginData);
+      signIn(user);
+      navigate("/", { replace: true });
+    } catch (error) {
+      console.error(error);
+      alert("Error while logging in");
+    }
   }
 
   return (
@@ -50,6 +64,7 @@ export default function NewPet() {
         >
           Login
         </button>
+        <Link to="/signup">Signup</Link>
       </form>
     </main>
   );

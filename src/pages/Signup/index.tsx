@@ -14,6 +14,7 @@ export default function Signup() {
     const newUser = {
       name,
       username,
+      password,
       email,
     };
     console.log(newUser);

@@ -1,14 +1,17 @@
 import { useState } from "react";
 import style from "./style.module.css";
+import api from "../../api/api";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [picture, setPicture] = useState<File | null>(null);
 
-  function handleSave(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSave(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const newUser = {
@@ -17,7 +20,33 @@ export default function Signup() {
       password,
       email,
     };
-    console.log(newUser);
+
+    try {
+      let { data: user } = await api.post("/users", newUser);
+
+      if (picture) {
+        const formData = new FormData();
+        formData.append("picture", picture);
+
+        const response = await api.post(
+          `/users/${user._id}/picture`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        user = response.data;
+      }
+
+      console.log(user);
+      alert("Successfully saved!");
+      navigate("/", { replace: true });
+    } catch (error) {
+      console.error(error);
+      alert("Error while saving");
+    }
   }
 
   return (

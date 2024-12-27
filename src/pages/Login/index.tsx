@@ -8,11 +8,11 @@ export default function NewPet() {
   function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const newPet = {
+    const loginData = {
       username,
       password,
     };
-    console.log(newPet);
+    console.log(loginData);
   }
 
   return (
@@ -21,7 +21,7 @@ export default function NewPet() {
 
       <form className={style.formContainer} onSubmit={handleLogin}>
         <div className={style.fieldContainer}>
-          <label htmlFor="username">username</label>
+          <label htmlFor="username">Username</label>
           <input
             type="text"
             className={style.inputElement}
@@ -35,10 +35,10 @@ export default function NewPet() {
         <div className={style.fieldContainer}>
           <label htmlFor="password">Password</label>
           <input
-            type="text"
+            type="password"
             className={style.inputElement}
             id="password"
-            placeholder="Your pet password"
+            placeholder="Your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

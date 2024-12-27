@@ -58,7 +58,7 @@ export default function Signup() {
           <label htmlFor="name">Name</label>
           <input
             type="text"
-            className={style.inputElements}
+            className={style.inputElement}
             id="name"
             placeholder="Your name"
             value={name}
@@ -70,7 +70,7 @@ export default function Signup() {
           <label htmlFor="username">Username</label>
           <input
             type="text"
-            className={style.inputElements}
+            className={style.inputElement}
             id="username"
             placeholder="Your username"
             value={username}
@@ -82,7 +82,7 @@ export default function Signup() {
           <label htmlFor="password">Password</label>
           <input
             type="password"
-            className={style.inputElements}
+            className={style.inputElement}
             id="password"
             placeholder="Your password"
             value={password}
@@ -94,7 +94,7 @@ export default function Signup() {
           <label htmlFor="email">Email</label>
           <input
             type="email"
-            className={style.inputElements}
+            className={style.inputElement}
             id="email"
             placeholder="Your email"
             value={email}
@@ -116,7 +116,7 @@ export default function Signup() {
 
         <button
           style={{ alignSelf: "flex-start" }}
-          className={style.inputElements}
+          className={style.inputElement}
         >
           Save
         </button>

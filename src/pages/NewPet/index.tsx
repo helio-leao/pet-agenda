@@ -29,7 +29,7 @@ export default function NewPet() {
           <label htmlFor="name">Name</label>
           <input
             type="text"
-            className={style.inputElements}
+            className={style.inputElement}
             id="name"
             placeholder="Your pet name"
             value={name}
@@ -41,7 +41,7 @@ export default function NewPet() {
           <label htmlFor="species">Species</label>
           <input
             type="text"
-            className={style.inputElements}
+            className={style.inputElement}
             id="species"
             placeholder="Your pet species"
             value={species}
@@ -52,7 +52,7 @@ export default function NewPet() {
           <label htmlFor="race">Race</label>
           <input
             type="text"
-            className={style.inputElements}
+            className={style.inputElement}
             id="race"
             placeholder="Your pet race"
             value={race}
@@ -63,7 +63,7 @@ export default function NewPet() {
           <label htmlFor="birthdate">Birthdate</label>
           <input
             type="date"
-            className={style.inputElements}
+            className={style.inputElement}
             id="birthdate"
             value={birthdate}
             onChange={(e) => setBirthdate(e.target.value)}
@@ -83,7 +83,7 @@ export default function NewPet() {
 
         <button
           style={{ alignSelf: "flex-start" }}
-          className={style.inputElements}
+          className={style.inputElement}
         >
           Save
         </button>

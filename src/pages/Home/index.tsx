@@ -6,7 +6,6 @@ import api from "../../api/api";
 
 export default function Home() {
   const { session, signOut } = useSession();
-
   const [pets, setPets] = useState<any>([]);
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import style from "./style.module.css";
 import api from "../../api/api";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSession } from "../../contexts/session";
 
 export default function NewPet() {
@@ -12,10 +12,6 @@ export default function NewPet() {
   const [breed, setBreed] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [picture, setPicture] = useState<File | null>(null);
-
-  if (!session) {
-    return <Navigate to="/login" />;
-  }
 
   async function handleSave(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

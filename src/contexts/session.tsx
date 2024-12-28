@@ -3,6 +3,7 @@ import {
   createContext,
   type PropsWithChildren,
   useState,
+  useEffect,
 } from "react";
 
 const AuthContext = createContext<{
@@ -29,13 +30,23 @@ export function SessionProvider({ children }: PropsWithChildren) {
   const [isLoading, setIsLoading] = useState(true);
   const [session, setSession] = useState<any>(null);
 
+  useEffect(() => {
+    console.log("context ran...");
+    const data = localStorage.getItem("session");
+    if (data) {
+      setSession(JSON.parse(data));
+    }
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{
         signIn: (data) => {
+          localStorage.setItem("session", JSON.stringify(data));
           setSession(data);
         },
         signOut: () => {
+          localStorage.removeItem("session");
           setSession(null);
         },
         session,

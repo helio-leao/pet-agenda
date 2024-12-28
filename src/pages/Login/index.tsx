@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import style from "./style.module.css";
 import api from "../../api/api";
 import { useSession } from "../../contexts/session";
@@ -7,13 +7,9 @@ import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { signIn, session } = useSession();
+  const { signIn } = useSession();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  if (session) {
-    return <Navigate to="/" />;
-  }
 
   async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -25,7 +21,7 @@ export default function Login() {
 
     try {
       const { data: user } = await api.post("/users/login", loginData);
-      signIn(user);
+      signIn({ user });
       navigate("/", { replace: true });
     } catch (error) {
       console.error(error);

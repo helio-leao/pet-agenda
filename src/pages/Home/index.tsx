@@ -7,16 +7,17 @@ import api from "../../api/api";
 
 export default function Home() {
   const { session, signOut } = useSession();
-  const [pets, setPets] = useState<any>([]);
 
   if (!session) {
     return <Navigate to="/login" />;
   }
 
+  const [pets, setPets] = useState<any>([]);
+
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get(`/users/${session._id}/pets`);
+        const { data } = await api.get(`/users/${session.user._id}/pets`);
         setPets(data);
       } catch (error) {
         console.error(error);
@@ -31,10 +32,10 @@ export default function Home() {
   return (
     <main className={styles.container}>
       <div className={styles.userDataContainer}>
-        <img src={session.picture} height="160px" />
+        <img src={session.user.picture} height="160px" />
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <h2>{session.name}</h2>
-          <p>{`Since ${new Date(session.createdAt).getFullYear()}`}</p>
+          <h2>{session.user.name}</h2>
+          <p>{`Since ${new Date(session.user.createdAt).getFullYear()}`}</p>
           <Link to="/">Edit</Link>
           <button onClick={handleLogout}>Logout</button>
         </div>

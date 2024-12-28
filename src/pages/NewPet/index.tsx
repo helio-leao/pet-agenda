@@ -25,7 +25,7 @@ export default function NewPet() {
       type,
       breed,
       birthdate,
-      user: session._id,
+      user: session.user._id,
     };
 
     try {

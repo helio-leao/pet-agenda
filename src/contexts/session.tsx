@@ -31,11 +31,12 @@ export function SessionProvider({ children }: PropsWithChildren) {
   const [session, setSession] = useState<any>(null);
 
   useEffect(() => {
-    console.log("context ran...");
+    console.log("context useeffect...");
     const data = localStorage.getItem("session");
     if (data) {
       setSession(JSON.parse(data));
     }
+    setIsLoading(false);
   }, []);
 
   return (

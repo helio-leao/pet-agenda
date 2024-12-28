@@ -1,16 +1,11 @@
 import { Link } from "react-router-dom";
 import styles from "./style.module.css";
 import { useSession } from "../../contexts/session";
-import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../../api/api";
 
 export default function Home() {
   const { session, signOut } = useSession();
-
-  if (!session) {
-    return <Navigate to="/login" />;
-  }
 
   const [pets, setPets] = useState<any>([]);
 

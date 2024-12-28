@@ -30,21 +30,44 @@ export default function Home() {
 
   return (
     <main className={styles.container}>
-      <h1 className={styles.pageTitle}>Home</h1>
       <div className={styles.userDataContainer}>
-        <img src={session.picture} height="200px" />
-        <h3>{session.name}</h3>
-        <p>{`Since ${new Date(session.createdAt).getFullYear()}`}</p>
-        <button onClick={handleLogout}>Logout</button>
+        <img src={session.picture} height="160px" />
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <h2>{session.name}</h2>
+          <p>{`Since ${new Date(session.createdAt).getFullYear()}`}</p>
+          <Link to="/">Edit</Link>
+          <button onClick={handleLogout}>Logout</button>
+        </div>
       </div>
       <div className={styles.linksContainer}>
         <Link to="/new-pet">Add Pet</Link>
       </div>
 
-      <div style={{ marginTop: 20 }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          marginTop: 20,
+          gap: 10,
+        }}
+      >
         {pets.map((pet: any) => (
-          <div key={pet._id} style={{ display: "flex", gap: 10 }}>
-            <img src={pet.picture} height="100px" />
+          <div
+            key={pet._id}
+            style={{
+              display: "flex",
+              gap: 10,
+              padding: 10,
+              borderWidth: 1,
+              borderStyle: "solid",
+            }}
+          >
+            <img
+              src={pet.picture}
+              style={{ objectFit: "cover" }}
+              height="80px"
+              width="80px"
+            />
             <div>
               <p>{pet.name}</p>
               <p>{pet.type}</p>

@@ -1,3 +1,9 @@
+.userDataContainer {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 6px;
+}
+
 .linksContainer {
   display: flex;
   justify-content: flex-end;

@@ -40,6 +40,7 @@ export default function Home() {
           <button onClick={handleLogout}>Logout</button>
         </div>
       </div>
+
       <div className={styles.linksContainer}>
         <Link to="/new-pet">Add Pet</Link>
         <Link to="/new-task">Add Task</Link>
@@ -54,7 +55,8 @@ export default function Home() {
         }}
       >
         {pets.map((pet: any) => (
-          <div
+          <Link
+            to={`/pet/${pet._id}`}
             key={pet._id}
             style={{
               display: "flex",
@@ -76,7 +78,7 @@ export default function Home() {
               <p>{pet.breed}</p>
               <p>{pet.birthdate}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </>

@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import styles from "./style.module.css";
 import { useEffect, useState } from "react";
 import api from "../../api/api";
@@ -32,6 +32,15 @@ export default function Pet() {
 
   return (
     <>
+      <div className={styles.userDataContainer}>
+        <img src={pet.picture} height="160px" />
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <h2>{pet.name}</h2>
+          <p>{`Since ${new Date(pet.createdAt).getFullYear()}`}</p>
+          <Link to="/">Edit</Link>
+        </div>
+      </div>
+
       {/* <div className={styles.linksContainer}>
         <Link to="/new-task">Add Task</Link>
       </div> */}

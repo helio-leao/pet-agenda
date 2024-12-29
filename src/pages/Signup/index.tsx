@@ -50,7 +50,7 @@ export default function Signup() {
   }
 
   return (
-    <main className={style.container}>
+    <>
       <h1 className={style.pageTitle}>New User</h1>
 
       <form className={style.formContainer} onSubmit={handleSave}>
@@ -127,6 +127,6 @@ export default function Signup() {
         src={picture ? URL.createObjectURL(picture) : ""}
         style={{ width: "200px", marginTop: "20px" }}
       />
-    </main>
+    </>
   );
 }

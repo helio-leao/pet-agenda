@@ -30,7 +30,7 @@ export default function Home() {
   }
 
   return (
-    <main className={styles.container}>
+    <>
       <div className={styles.userDataContainer}>
         <img src={session.user.picture} height="160px" />
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -79,6 +79,6 @@ export default function Home() {
           </div>
         ))}
       </div>
-    </main>
+    </>
   );
 }

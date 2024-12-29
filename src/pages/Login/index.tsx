@@ -30,7 +30,7 @@ export default function Login() {
   }
 
   return (
-    <main className={style.container}>
+    <>
       <h1 className={style.pageTitle}>Login</h1>
 
       <form className={style.formContainer} onSubmit={handleLogin}>
@@ -66,6 +66,6 @@ export default function Login() {
         </button>
         <Link to="/signup">Signup</Link>
       </form>
-    </main>
+    </>
   );
 }

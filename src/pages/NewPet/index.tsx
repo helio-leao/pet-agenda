@@ -49,7 +49,7 @@ export default function NewPet() {
   }
 
   return (
-    <main className={style.container}>
+    <>
       <h1 className={style.pageTitle}>New Pet</h1>
 
       <form className={style.formContainer} onSubmit={handleSave}>
@@ -116,6 +116,6 @@ export default function NewPet() {
           Save
         </button>
       </form>
-    </main>
+    </>
   );
 }

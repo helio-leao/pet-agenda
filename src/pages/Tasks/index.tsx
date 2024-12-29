@@ -26,7 +26,7 @@ export default function Tasks() {
   }
 
   return (
-    <main className={styles.container}>
+    <>
       <div className={styles.linksContainer}>
         <Link to="/new-task">Add Task</Link>
       </div>
@@ -60,6 +60,6 @@ export default function Tasks() {
           </div>
         ))}
       </div>
-    </main>
+    </>
   );
 }

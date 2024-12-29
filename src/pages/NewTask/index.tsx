@@ -59,7 +59,7 @@ export default function NewTask() {
   }
 
   return (
-    <main className={style.container}>
+    <>
       <h1 className={style.pageTitle}>New Task</h1>
 
       <form className={style.formContainer} onSubmit={handleSave}>
@@ -132,6 +132,6 @@ export default function NewTask() {
           Save
         </button>
       </form>
-    </main>
+    </>
   );
 }

@@ -21,21 +21,23 @@ function App() {
     <SessionProvider>
       <Router>
         <Header />
-        <Routes>
-          <Route element={<GuestLayout />}>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-          </Route>
+        <main style={{ padding: 20 }}>
+          <Routes>
+            <Route element={<GuestLayout />}>
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+            </Route>
 
-          <Route element={<AuthLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/new-pet" element={<NewPet />} />
-            <Route path="/new-task" element={<NewTask />} />
-            <Route path="/tasks" element={<Tasks />} />
-          </Route>
+            <Route element={<AuthLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/new-pet" element={<NewPet />} />
+              <Route path="/new-task" element={<NewTask />} />
+              <Route path="/tasks" element={<Tasks />} />
+            </Route>
 
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </main>
       </Router>
     </SessionProvider>
   );

@@ -1,19 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styles from "./style.module.css";
-import { useSession } from "../../contexts/session";
 import { useEffect, useState } from "react";
 import api from "../../api/api";
 
-export default function Tasks() {
-  const { session } = useSession();
+export default function Pet() {
+  const { id } = useParams();
+  const [pet, setPet] = useState<any>({});
   const [tasks, setTasks] = useState<any>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get(`/users/${session.user._id}/tasks`);
-        setTasks(data);
+        const [petResponse, tasksResponse] = await Promise.all([
+          api.get(`/pets/${id}`),
+          api.get(`/pets/${id}/tasks`),
+        ]);
+
+        setPet(petResponse.data);
+        setTasks(tasksResponse.data);
         setIsLoading(false);
       } catch (error) {
         console.error(error);
@@ -27,9 +32,9 @@ export default function Tasks() {
 
   return (
     <>
-      <div className={styles.linksContainer}>
+      {/* <div className={styles.linksContainer}>
         <Link to="/new-task">Add Task</Link>
-      </div>
+      </div> */}
 
       <div
         style={{
@@ -55,7 +60,6 @@ export default function Tasks() {
               <p>{task.description}</p>
               <p>{Intl.DateTimeFormat("pt-BR").format(new Date(task.date))}</p>
               <p>{task.status}</p>
-              <Link to={`/pet/${task.pet._id}`}>{task.pet.name}</Link>
             </div>
           </div>
         ))}

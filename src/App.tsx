@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import GuestLayout from "./layouts/GuestLayout";
 import AuthLayout from "./layouts/AuthLayout";
 import Home from "./pages/Home";
@@ -26,6 +31,8 @@ function App() {
             <Route path="/new-pet" element={<NewPet />} />
             <Route path="/new-task" element={<NewTask />} />
           </Route>
+
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>
     </SessionProvider>

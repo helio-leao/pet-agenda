@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import NewPet from "./pages/NewPet";
 import NewTask from "./pages/NewTask";
 import Header from "./components/Header";
+import Tasks from "./pages/Tasks";
 import Signup from "./pages/Signup";
 import { SessionProvider } from "./contexts/session";
 
@@ -30,6 +31,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/new-pet" element={<NewPet />} />
             <Route path="/new-task" element={<NewTask />} />
+            <Route path="/tasks" element={<Tasks />} />
           </Route>
 
           <Route path="*" element={<Navigate to="/" />} />

@@ -5,9 +5,12 @@ export default function Header() {
   return (
     <header className={styles.container}>
       <nav>
-        <ul>
+        <ul style={{ display: "flex", gap: 10 }}>
           <li>
             <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/tasks">Tasks</Link>
           </li>
         </ul>
       </nav>

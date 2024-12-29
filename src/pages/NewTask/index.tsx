@@ -47,7 +47,7 @@ export default function NewTask() {
     try {
       await api.post("/tasks", newTask);
       alert("Successfully saved!");
-      navigate("/", { replace: true });
+      navigate("/tasks", { replace: true });
     } catch (error) {
       console.error(error);
       alert("Error while saving");

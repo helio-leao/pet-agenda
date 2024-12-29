@@ -1,5 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import GuestLayout from "./layouts/GuestLayout";
+import AuthLayout from "./layouts/AuthLayout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import NewPet from "./pages/NewPet";
@@ -13,10 +15,15 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/new-pet" element={<NewPet />} />
+          <Route element={<GuestLayout />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Route>
+
+          <Route element={<AuthLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/new-pet" element={<NewPet />} />
+          </Route>
         </Routes>
       </Router>
     </SessionProvider>

@@ -1,16 +1,14 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./style.module.css";
 import { useSession } from "../../contexts/session";
 import { useEffect, useState } from "react";
 import api from "../../api/api";
 
 export default function Home() {
-  const { session, signOut, isLoading } = useSession();
+  const { session, signOut } = useSession();
   const [pets, setPets] = useState<any>([]);
 
   useEffect(() => {
-    if (session?.user == null) return;
-
     (async () => {
       try {
         const { data } = await api.get(`/users/${session.user._id}/pets`);
@@ -19,18 +17,10 @@ export default function Home() {
         console.error(error);
       }
     })();
-  }, [session]);
+  }, []);
 
   function handleLogout() {
     signOut();
-  }
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  if (session == null) {
-    return <Navigate to="/login" />;
   }
 
   return (

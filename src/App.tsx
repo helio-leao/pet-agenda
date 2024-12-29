@@ -5,6 +5,7 @@ import AuthLayout from "./layouts/AuthLayout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import NewPet from "./pages/NewPet";
+import NewTask from "./pages/NewTask";
 import Header from "./components/Header";
 import Signup from "./pages/Signup";
 import { SessionProvider } from "./contexts/session";
@@ -23,6 +24,7 @@ function App() {
           <Route element={<AuthLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/new-pet" element={<NewPet />} />
+            <Route path="/new-task" element={<NewTask />} />
           </Route>
         </Routes>
       </Router>

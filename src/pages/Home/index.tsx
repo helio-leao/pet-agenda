@@ -7,12 +7,14 @@ import api from "../../api/api";
 export default function Home() {
   const { session, signOut } = useSession();
   const [pets, setPets] = useState<any>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       try {
         const { data } = await api.get(`/users/${session.user._id}/pets`);
         setPets(data);
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -21,6 +23,10 @@ export default function Home() {
 
   function handleLogout() {
     signOut();
+  }
+
+  if (isLoading) {
+    return <p>Loading...</p>;
   }
 
   return (
@@ -36,6 +42,7 @@ export default function Home() {
       </div>
       <div className={styles.linksContainer}>
         <Link to="/new-pet">Add Pet</Link>
+        <Link to="/new-task">Add Task</Link>
       </div>
 
       <div

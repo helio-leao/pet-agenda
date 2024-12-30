@@ -42,7 +42,7 @@ export default function Pet() {
         />
         <div style={{ display: "flex", flexDirection: "column" }}>
           <h2>{pet.name}</h2>
-          <p>{`Since ${pet.createdAt}`}</p>
+          <p>{`Since ${new Date(pet.createdAt).getFullYear()}`}</p>
           <Link to={`/edit-pet/${pet._id}`}>Edit</Link>
         </div>
       </div>

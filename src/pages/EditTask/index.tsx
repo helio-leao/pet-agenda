@@ -27,7 +27,7 @@ export default function EditTask() {
         setPets(pets);
         setTitle(task.title);
         setDescription(task.description);
-        setDate(new Date(task.date).toUTCString().split("T")[0]); // issue
+        setDate(new Date(task.date).toISOString().split("T")[0]); // issue
         setStatus(task.status);
         setPet(task.pet);
         setIsLoading(false);

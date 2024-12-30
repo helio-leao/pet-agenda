@@ -1,47 +1,67 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./style.module.css";
 import api from "../../api/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSession } from "../../contexts/session";
 
-export default function Signup() {
+export default function EditUser() {
+  const { id } = useParams();
+  const { session, signIn } = useSession();
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [picture, setPicture] = useState<File | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setName(session.user.name);
+    setUsername(session.user.username);
+    setEmail(session.user.email);
+    setIsLoading(false);
+  }, []);
+
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const { data: user } = await api.get(`/users/${id}`);
+  //       setName(user.name);
+  //       setUsername(user.username);
+  //       setEmail(user.email);
+  //       setIsLoading(false);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   })();
+  // }, []);
 
   async function handleSave(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const newUser = {
+    const editedUser = {
+      // username,
+      // email,
       name,
-      username,
       password,
-      email,
     };
 
     try {
-      let { data: user } = await api.post("/users", newUser);
+      let { data: user } = await api.patch(`/users/${id}`, editedUser);
 
       if (picture) {
         const formData = new FormData();
         formData.append("picture", picture);
 
-        const response = await api.post(
-          `/users/${user._id}/picture`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
+        const response = await api.post(`/users/${id}/picture`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
         user = response.data;
       }
-
-      console.log(user);
       alert("Successfully saved!");
+      signIn({ user });
       navigate("/", { replace: true });
     } catch (error) {
       console.error(error);
@@ -49,9 +69,13 @@ export default function Signup() {
     }
   }
 
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <>
-      <h1 className={style.pageTitle}>New User</h1>
+      <h1 className={style.pageTitle}>Edit User</h1>
 
       <form className={style.formContainer} onSubmit={handleSave}>
         <div className={style.fieldContainer}>
@@ -69,6 +93,7 @@ export default function Signup() {
         <div className={style.fieldContainer}>
           <label htmlFor="username">Username</label>
           <input
+            disabled
             type="text"
             className={style.inputElement}
             id="username"
@@ -93,6 +118,7 @@ export default function Signup() {
         <div className={style.fieldContainer}>
           <label htmlFor="email">Email</label>
           <input
+            disabled
             type="email"
             className={style.inputElement}
             id="email"

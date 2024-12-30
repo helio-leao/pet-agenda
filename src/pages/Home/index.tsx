@@ -10,6 +10,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    console.log("AQUI CACETE", session);
     (async () => {
       try {
         const { data } = await api.get(`/users/${session.user._id}/pets`);
@@ -32,11 +33,16 @@ export default function Home() {
   return (
     <>
       <div className={styles.userDataContainer}>
-        <img src={session.user.picture} height="160px" />
+        <img
+          src={session.user.picture}
+          style={{ objectFit: "cover" }}
+          height="120px"
+          width="120px"
+        />
         <div style={{ display: "flex", flexDirection: "column" }}>
           <h2>{session.user.name}</h2>
           <p>{`Since ${new Date(session.user.createdAt).getFullYear()}`}</p>
-          <Link to="/">Edit</Link>
+          <Link to={`/edit-user/${session.user._id}`}>Edit</Link>
           <button onClick={handleLogout}>Logout</button>
         </div>
       </div>

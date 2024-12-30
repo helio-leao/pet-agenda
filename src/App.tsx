@@ -17,6 +17,7 @@ import Signup from "./pages/Signup";
 import { SessionProvider } from "./contexts/session";
 import Pet from "./pages/Pet";
 import EditPet from "./pages/EditPet";
+import EditUser from "./pages/EditUser";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
               <Route path="/tasks" element={<Tasks />} />
               <Route path="/pet/:id" element={<Pet />} />
               <Route path="/edit-pet/:id" element={<EditPet />} />
+              <Route path="/edit-user/:id" element={<EditUser />} />
             </Route>
 
             <Route path="*" element={<Navigate to="/" />} />

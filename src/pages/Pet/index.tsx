@@ -33,7 +33,12 @@ export default function Pet() {
   return (
     <>
       <div className={styles.userDataContainer}>
-        <img src={pet.picture} height="160px" />
+        <img
+          src={pet.picture}
+          style={{ objectFit: "cover" }}
+          height="120px"
+          width="120px"
+        />
         <div style={{ display: "flex", flexDirection: "column" }}>
           <h2>{pet.name}</h2>
           <p>{`Since ${new Date(pet.createdAt).getFullYear()}`}</p>

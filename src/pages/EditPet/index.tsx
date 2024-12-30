@@ -20,7 +20,7 @@ export default function EditPet() {
         setName(pet.name);
         setType(pet.type);
         setBreed(pet.breed);
-        setBirthdate(pet.birthdate);
+        setBirthdate(new Date(pet.birthdate).toUTCString().split("T")[0]); // issue
         setIsLoading(false);
       } catch (error) {
         console.error(error);

@@ -9,6 +9,7 @@ export default function TaskCard({ task }: { task: any }) {
         padding: 10,
         borderWidth: 1,
         borderStyle: "solid",
+        borderRadius: 4,
       }}
     >
       <div

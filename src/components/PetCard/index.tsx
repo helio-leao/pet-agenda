@@ -10,6 +10,7 @@ export default function PetCard({ pet }: { pet: any }) {
         padding: 10,
         borderWidth: 1,
         borderStyle: "solid",
+        borderRadius: 4,
       }}
     >
       <img

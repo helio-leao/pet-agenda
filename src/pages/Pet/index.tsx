@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import styles from "./style.module.css";
 import { useEffect, useState } from "react";
 import api from "../../api/api";
+import TaskCard from "../../components/TaskCard";
 
 export default function Pet() {
   const { id } = useParams();
@@ -59,23 +60,7 @@ export default function Pet() {
         }}
       >
         {tasks.map((task: any) => (
-          <div
-            key={task._id}
-            style={{
-              display: "flex",
-              gap: 10,
-              padding: 10,
-              borderWidth: 1,
-              borderStyle: "solid",
-            }}
-          >
-            <div>
-              <h3>{task.title}</h3>
-              <p>{task.description}</p>
-              <p>{Intl.DateTimeFormat("pt-BR").format(new Date(task.date))}</p>
-              <p>{task.status}</p>
-            </div>
-          </div>
+          <TaskCard task={task} />
         ))}
       </div>
     </>

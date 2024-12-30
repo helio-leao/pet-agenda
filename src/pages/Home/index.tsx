@@ -3,6 +3,7 @@ import styles from "./style.module.css";
 import { useSession } from "../../contexts/session";
 import { useEffect, useState } from "react";
 import api from "../../api/api";
+import PetCard from "../../components/PetCard";
 
 export default function Home() {
   const { session, signOut } = useSession();
@@ -60,30 +61,7 @@ export default function Home() {
         }}
       >
         {pets.map((pet: any) => (
-          <Link
-            to={`/pet/${pet._id}`}
-            key={pet._id}
-            style={{
-              display: "flex",
-              gap: 10,
-              padding: 10,
-              borderWidth: 1,
-              borderStyle: "solid",
-            }}
-          >
-            <img
-              src={pet.picture}
-              style={{ objectFit: "cover" }}
-              height="80px"
-              width="80px"
-            />
-            <div>
-              <p>{pet.name}</p>
-              <p>{pet.type}</p>
-              <p>{pet.breed}</p>
-              <p>{pet.birthdate}</p>
-            </div>
-          </Link>
+          <PetCard key={pet._id} pet={pet} />
         ))}
       </div>
     </>

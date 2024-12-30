@@ -41,7 +41,7 @@ export default function Tasks() {
         }}
       >
         {tasks.map((task: any) => (
-          <TaskCard task={task} />
+          <TaskCard key={task._id} task={task} />
         ))}
       </div>
     </>

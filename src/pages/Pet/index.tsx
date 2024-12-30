@@ -60,7 +60,7 @@ export default function Pet() {
         }}
       >
         {tasks.map((task: any) => (
-          <TaskCard task={task} />
+          <TaskCard key={task._id} task={task} />
         ))}
       </div>
     </>

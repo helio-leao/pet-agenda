@@ -107,7 +107,7 @@ export default function NewTask() {
           >
             <option value="Scheduled">Scheduled</option>
             <option value="Completed">Completed</option>
-            <option value="Canceled">Canceled</option>
+            <option value="Cancelled">Cancelled</option>
           </select>
         </div>
         <div className={style.fieldContainer}>

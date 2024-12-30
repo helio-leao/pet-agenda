@@ -1,38 +1,52 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./style.module.css";
 import api from "../../api/api";
-import { useNavigate } from "react-router-dom";
-import { useSession } from "../../contexts/session";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function NewPet() {
-  const { session } = useSession();
+export default function EditPet() {
+  const { id } = useParams();
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [breed, setBreed] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [picture, setPicture] = useState<File | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data: pet } = await api.get(`/pets/${id}`);
+        setName(pet.name);
+        setType(pet.type);
+        setBreed(pet.breed);
+        setBirthdate(new Date(pet.birthdate).toISOString().split("T")[0]);
+        setIsLoading(false);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
 
   async function handleSave(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const newPet = {
+    const editedPet = {
       name,
       type,
       breed,
       birthdate,
-      user: session.user._id,
     };
 
     try {
-      const { data: pet } = await api.post("/pets", newPet);
+      await api.patch(`/pets/${id}`, editedPet);
 
       if (picture) {
         const formData = new FormData();
         formData.append("picture", picture);
 
         try {
-          await api.post(`/pets/${pet._id}/picture`, formData, {
+          await api.post(`/pets/${id}/picture`, formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
@@ -42,16 +56,19 @@ export default function NewPet() {
         }
       }
       alert("Successfully saved!");
-      navigate("/", { replace: true });
+      navigate("/", { replace: true }); // todo: send to pets page
     } catch (error) {
       console.error(error);
-      alert("Error while saving");
     }
+  }
+
+  if (isLoading) {
+    return <p>Loading...</p>;
   }
 
   return (
     <>
-      <h1 className={style.pageTitle}>New Pet</h1>
+      <h1 className={style.pageTitle}>Edit Pet</h1>
 
       <form className={style.formContainer} onSubmit={handleSave}>
         <div className={style.fieldContainer}>

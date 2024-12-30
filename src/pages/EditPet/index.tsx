@@ -20,7 +20,7 @@ export default function EditPet() {
         setName(pet.name);
         setType(pet.type);
         setBreed(pet.breed);
-        setBirthdate(new Date(pet.birthdate).toISOString().split("T")[0]);
+        setBirthdate(pet.birthdate);
         setIsLoading(false);
       } catch (error) {
         console.error(error);

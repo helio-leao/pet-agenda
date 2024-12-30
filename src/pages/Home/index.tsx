@@ -41,7 +41,7 @@ export default function Home() {
         />
         <div style={{ display: "flex", flexDirection: "column" }}>
           <h2>{session.user.name}</h2>
-          <p>{`Since ${new Date(session.user.createdAt).getFullYear()}`}</p>
+          <p>{`Since ${session.user.createdAt}`}</p>
           <Link to={`/edit-user/${session.user._id}`}>Edit</Link>
           <button onClick={handleLogout}>Logout</button>
         </div>

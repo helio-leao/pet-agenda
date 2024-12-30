@@ -27,7 +27,7 @@ export default function EditTask() {
         setPets(pets);
         setTitle(task.title);
         setDescription(task.description);
-        setDate(new Date(task.date).toISOString().split("T")[0]); // issue: wrong date
+        setDate(task.date);
         setStatus(task.status);
         setPet(task.pet);
         setIsLoading(false);
@@ -43,7 +43,7 @@ export default function EditTask() {
     const editedTask = {
       title,
       description,
-      date,
+      date, // issue: date being saved as utc, so when showed it is one day before
       status,
       pet,
     };

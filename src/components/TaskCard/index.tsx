@@ -23,7 +23,7 @@ export default function TaskCard({ task }: { task: any }) {
       </div>
 
       <p>{task.description}</p>
-      <p>{Intl.DateTimeFormat("pt-BR").format(new Date(task.date))}</p>
+      <p>{task.date}</p>
       <p>{task.status}</p>
       <Link to={`/pet/${task.pet._id}`}>{task.pet.name}</Link>
     </div>

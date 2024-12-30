@@ -3,6 +3,7 @@ import style from "./style.module.css";
 import api from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "../../contexts/session";
+import { DateTime } from "luxon";
 
 export default function NewPet() {
   const { session } = useSession();
@@ -20,7 +21,7 @@ export default function NewPet() {
       name,
       type,
       breed,
-      birthdate,
+      birthdate: DateTime.fromISO(birthdate, { zone: "local" }).toString(),
       user: session.user._id,
     };
 

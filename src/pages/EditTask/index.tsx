@@ -3,6 +3,7 @@ import style from "./style.module.css";
 import api from "../../api/api";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSession } from "../../contexts/session";
+import { DateTime } from "luxon";
 
 export default function EditTask() {
   const { id } = useParams();
@@ -27,7 +28,7 @@ export default function EditTask() {
         setPets(pets);
         setTitle(task.title);
         setDescription(task.description);
-        setDate(new Date(task.date).toISOString().split("T")[0]); // issue
+        setDate(new Date(task.date).toISOString().split("T")[0]);
         setStatus(task.status);
         setPet(task.pet);
         setIsLoading(false);
@@ -43,7 +44,7 @@ export default function EditTask() {
     const editedTask = {
       title,
       description,
-      date, // issue: date being saved as utc, so when showed it is one day before
+      date: DateTime.fromISO(date, { zone: "local" }).toString(),
       status,
       pet,
     };

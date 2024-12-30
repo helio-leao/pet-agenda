@@ -30,7 +30,7 @@ export default function PetCard({ pet }: { pet: any }) {
 
         <p>{pet.type}</p>
         <p>{pet.breed}</p>
-        <p>{pet.birthdate}</p>
+        <p>{Intl.DateTimeFormat("pt-BR").format(new Date(pet.birthdate))}</p>
       </div>
     </div>
   );

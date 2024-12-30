@@ -3,6 +3,7 @@ import style from "./style.module.css";
 import api from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "../../contexts/session";
+import { DateTime } from "luxon";
 
 export default function NewTask() {
   const { session } = useSession();
@@ -38,7 +39,7 @@ export default function NewTask() {
     const newTask = {
       title,
       description,
-      date,
+      date: DateTime.fromISO(date, { zone: "local" }).toString(),
       status,
       user: session.user._id,
       pet,

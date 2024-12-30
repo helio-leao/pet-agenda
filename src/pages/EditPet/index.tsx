@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import style from "./style.module.css";
 import api from "../../api/api";
 import { useNavigate, useParams } from "react-router-dom";
+import { DateTime } from "luxon";
 
 export default function EditPet() {
   const { id } = useParams();
@@ -20,7 +21,7 @@ export default function EditPet() {
         setName(pet.name);
         setType(pet.type);
         setBreed(pet.breed);
-        setBirthdate(new Date(pet.birthdate).toISOString().split("T")[0]); // issue
+        setBirthdate(new Date(pet.birthdate).toISOString().split("T")[0]);
         setIsLoading(false);
       } catch (error) {
         console.error(error);
@@ -35,7 +36,7 @@ export default function EditPet() {
       name,
       type,
       breed,
-      birthdate,
+      birthdate: DateTime.fromISO(birthdate, { zone: "local" }).toString(),
     };
 
     try {

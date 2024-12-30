@@ -10,7 +10,6 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    console.log("AQUI CACETE", session);
     (async () => {
       try {
         const { data } = await api.get(`/users/${session.user._id}/pets`);

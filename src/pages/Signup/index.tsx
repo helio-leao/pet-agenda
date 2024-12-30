@@ -39,8 +39,6 @@ export default function Signup() {
         );
         user = response.data;
       }
-
-      console.log(user);
       alert("Successfully saved!");
       navigate("/", { replace: true });
     } catch (error) {

@@ -1,0 +1,23 @@
+.pageTitle {
+  margin-bottom: 20px;
+}
+
+.formContainer,
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.formContainer {
+  gap: 10px;
+}
+
+.fieldContainer {
+  gap: 4px;
+}
+
+.inputElement {
+  padding: 16px;
+  border-radius: 6px;
+  border-width: 1px;
+}

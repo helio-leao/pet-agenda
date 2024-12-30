@@ -44,19 +44,27 @@ export default function Tasks() {
             key={task._id}
             style={{
               display: "flex",
-              gap: 10,
+              flexDirection: "column",
               padding: 10,
               borderWidth: 1,
               borderStyle: "solid",
             }}
           >
-            <div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                gap: 10,
+              }}
+            >
               <h3>{task.title}</h3>
-              <p>{task.description}</p>
-              <p>{Intl.DateTimeFormat("pt-BR").format(new Date(task.date))}</p>
-              <p>{task.status}</p>
-              <Link to={`/pet/${task.pet._id}`}>{task.pet.name}</Link>
+              <Link to={`/edit-task/${task._id}`}>Edit</Link>
             </div>
+
+            <p>{task.description}</p>
+            <p>{Intl.DateTimeFormat("pt-BR").format(new Date(task.date))}</p>
+            <p>{task.status}</p>
+            <Link to={`/pet/${task.pet._id}`}>{task.pet.name}</Link>
           </div>
         ))}
       </div>

@@ -36,7 +36,7 @@ export default function Pet() {
       <div className={styles.userDataContainer}>
         <img
           src={pet.picture}
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "cover", borderRadius: 4 }}
           height="120px"
           width="120px"
         />

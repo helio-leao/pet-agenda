@@ -53,48 +53,48 @@ export default function Signup() {
 
       <form className={style.formContainer} onSubmit={handleSave}>
         <div className={style.fieldContainer}>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Name*</label>
           <input
             type="text"
             className={style.inputElement}
             id="name"
-            placeholder="Your name"
+            placeholder="your name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
 
         <div className={style.fieldContainer}>
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">Username*</label>
           <input
             type="text"
             className={style.inputElement}
             id="username"
-            placeholder="Your username"
+            placeholder="your username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
 
         <div className={style.fieldContainer}>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Password*</label>
           <input
             type="password"
             className={style.inputElement}
             id="password"
-            placeholder="Your password"
+            placeholder="your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
         <div className={style.fieldContainer}>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email*</label>
           <input
             type="email"
             className={style.inputElement}
             id="email"
-            placeholder="Your email"
+            placeholder="your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />

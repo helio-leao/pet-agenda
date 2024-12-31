@@ -65,12 +65,12 @@ export default function NewTask() {
 
       <form className={style.formContainer} onSubmit={handleSave}>
         <div className={style.fieldContainer}>
-          <label htmlFor="title">Title</label>
+          <label htmlFor="title">Title*</label>
           <input
             type="text"
             className={style.inputElement}
             id="title"
-            placeholder="Your task title"
+            placeholder="your task title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -82,13 +82,13 @@ export default function NewTask() {
             type="text"
             className={style.inputElement}
             id="description"
-            placeholder="Your task description"
+            placeholder="your task description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
         <div className={style.fieldContainer}>
-          <label htmlFor="date">Date</label>
+          <label htmlFor="date">Date*</label>
           <input
             type="date"
             className={style.inputElement}
@@ -98,7 +98,7 @@ export default function NewTask() {
           />
         </div>
         <div className={style.fieldContainer}>
-          <label htmlFor="status">Status</label>
+          <label htmlFor="status">Status*</label>
           <select
             name="status"
             id="status"
@@ -111,7 +111,7 @@ export default function NewTask() {
           </select>
         </div>
         <div className={style.fieldContainer}>
-          <label htmlFor="pet">Pet</label>
+          <label htmlFor="pet">Pet*</label>
           <select
             name="pet"
             id="pet"

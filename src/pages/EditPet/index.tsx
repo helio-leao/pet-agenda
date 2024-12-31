@@ -73,40 +73,40 @@ export default function EditPet() {
 
       <form className={style.formContainer} onSubmit={handleSave}>
         <div className={style.fieldContainer}>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Name*</label>
           <input
             type="text"
             className={style.inputElement}
             id="name"
-            placeholder="Your pet name"
+            placeholder="your pet name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div className={style.fieldContainer}>
-          <label htmlFor="type">Type</label>
+          <label htmlFor="type">Type*</label>
           <input
             type="text"
             className={style.inputElement}
             id="type"
-            placeholder="Your pet type"
+            placeholder="cat, dog, bird..."
             value={type}
             onChange={(e) => setType(e.target.value)}
           />
         </div>
         <div className={style.fieldContainer}>
-          <label htmlFor="breed">Breed</label>
+          <label htmlFor="breed">Breed*</label>
           <input
             type="text"
             className={style.inputElement}
             id="breed"
-            placeholder="Your pet breed"
+            placeholder="bulldog, persian cat..."
             value={breed}
             onChange={(e) => setBreed(e.target.value)}
           />
         </div>
         <div className={style.fieldContainer}>
-          <label htmlFor="birthdate">Birthdate</label>
+          <label htmlFor="birthdate">Birthdate*</label>
           <input
             type="date"
             className={style.inputElement}

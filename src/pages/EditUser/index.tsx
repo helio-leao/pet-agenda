@@ -79,12 +79,12 @@ export default function EditUser() {
 
       <form className={style.formContainer} onSubmit={handleSave}>
         <div className={style.fieldContainer}>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Name*</label>
           <input
             type="text"
             className={style.inputElement}
             id="name"
-            placeholder="Your name"
+            placeholder="your name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -97,7 +97,7 @@ export default function EditUser() {
             type="text"
             className={style.inputElement}
             id="username"
-            placeholder="Your username"
+            placeholder="your username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -109,7 +109,7 @@ export default function EditUser() {
             type="password"
             className={style.inputElement}
             id="password"
-            placeholder="Your password"
+            placeholder="your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -122,7 +122,7 @@ export default function EditUser() {
             type="email"
             className={style.inputElement}
             id="email"
-            placeholder="Your email"
+            placeholder="your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />

@@ -20,8 +20,8 @@ export default function Login() {
     };
 
     try {
-      const { data: user } = await api.post("/users/login", loginData);
-      signIn({ user });
+      const { data } = await api.post("/users/login", loginData);
+      signIn({ user: { _id: data._id } });
       navigate("/", { replace: true });
     } catch (error) {
       console.error(error);

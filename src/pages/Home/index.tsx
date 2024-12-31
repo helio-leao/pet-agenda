@@ -7,14 +7,20 @@ import PetCard from "../../components/PetCard";
 
 export default function Home() {
   const { session, signOut } = useSession();
+  const [user, setUser] = useState<any>({});
   const [pets, setPets] = useState<any>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get(`/users/${session.user._id}/pets`);
-        setPets(data);
+        const [{ data: user }, { data: pets }] = await Promise.all([
+          api.get(`/users/${session.user._id}`),
+          api.get(`/users/${session.user._id}/pets`),
+        ]);
+
+        setUser(user);
+        setPets(pets);
         setIsLoading(false);
       } catch (error) {
         console.error(error);
@@ -34,7 +40,7 @@ export default function Home() {
     <>
       <div className={styles.userDataContainer}>
         <img
-          src={session.user.picture}
+          src={user.picture}
           style={{
             objectFit: "cover",
             borderRadius: 4,
@@ -45,9 +51,9 @@ export default function Home() {
           }}
         />
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <h2>{session.user.name}</h2>
-          <p>{`Since ${new Date(session.user.createdAt).getFullYear()}`}</p>
-          <Link to={`/edit-user/${session.user._id}`}>Edit</Link>
+          <h2>{user.name}</h2>
+          <p>{`Since ${new Date(user.createdAt).getFullYear()}`}</p>
+          <Link to={`/edit-user/${user._id}`}>Edit</Link>
           <button onClick={handleLogout}>Logout</button>
         </div>
       </div>

@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 import style from "./style.module.css";
 import api from "../../api/api";
 import { useNavigate, useParams } from "react-router-dom";
-import { useSession } from "../../contexts/session";
 
 export default function EditUser() {
   const { id } = useParams();
-  const { session, signIn } = useSession();
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
@@ -16,25 +14,18 @@ export default function EditUser() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setName(session.user.name);
-    setUsername(session.user.username);
-    setEmail(session.user.email);
-    setIsLoading(false);
+    (async () => {
+      try {
+        const { data: user } = await api.get(`/users/${id}`);
+        setName(user.name);
+        setUsername(user.username);
+        setEmail(user.email);
+        setIsLoading(false);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
   }, []);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const { data: user } = await api.get(`/users/${id}`);
-  //       setName(user.name);
-  //       setUsername(user.username);
-  //       setEmail(user.email);
-  //       setIsLoading(false);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   })();
-  // }, []);
 
   async function handleSave(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -61,7 +52,6 @@ export default function EditUser() {
         user = response.data;
       }
       alert("Successfully saved!");
-      signIn({ user });
       navigate("/", { replace: true });
     } catch (error) {
       console.error(error);
@@ -150,7 +140,7 @@ export default function EditUser() {
 
       {/* NOTE: temporary visualization */}
       <img
-        src={picture ? URL.createObjectURL(picture) : session.user.picture}
+        src={picture ? URL.createObjectURL(picture) : ""}
         style={{
           objectFit: "cover",
           marginTop: 20,

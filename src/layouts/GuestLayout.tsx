@@ -14,7 +14,7 @@ export default function AuthLayout() {
 
   return (
     <main style={{ padding: 20 }}>
-      <Outlet />;
+      <Outlet />
     </main>
   );
 }

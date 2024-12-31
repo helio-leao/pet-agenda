@@ -35,9 +35,14 @@ export default function Home() {
       <div className={styles.userDataContainer}>
         <img
           src={session.user.picture}
-          style={{ objectFit: "cover", borderRadius: 4 }}
-          height="120px"
-          width="120px"
+          style={{
+            objectFit: "cover",
+            borderRadius: 4,
+            minHeight: 120,
+            minWidth: 120,
+            height: 120,
+            width: 120,
+          }}
         />
         <div style={{ display: "flex", flexDirection: "column" }}>
           <h2>{session.user.name}</h2>

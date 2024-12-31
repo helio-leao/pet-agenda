@@ -15,9 +15,14 @@ export default function PetCard({ pet }: { pet: any }) {
     >
       <img
         src={pet.picture}
-        style={{ objectFit: "cover", borderRadius: 4 }}
-        height="80px"
-        width="80px"
+        style={{
+          objectFit: "cover",
+          borderRadius: 4,
+          minHeight: 80,
+          minWidth: 80,
+          height: 80,
+          width: 80,
+        }}
       />
       <div style={{ width: "100%" }}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>

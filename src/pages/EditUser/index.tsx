@@ -151,9 +151,14 @@ export default function EditUser() {
       {/* NOTE: temporary visualization */}
       <img
         src={picture ? URL.createObjectURL(picture) : session.user.picture}
-        style={{ objectFit: "cover", marginTop: 20 }}
-        height="80px"
-        width="80px"
+        style={{
+          objectFit: "cover",
+          marginTop: 20,
+          minHeight: 80,
+          minWidth: 80,
+          height: 80,
+          width: 80,
+        }}
       />
     </>
   );

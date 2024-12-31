@@ -1,5 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useSession } from "../contexts/session";
+import Header from "../components/Header";
 
 export default function AuthLayout() {
   const { session, isLoading } = useSession();
@@ -12,5 +13,12 @@ export default function AuthLayout() {
     return <Navigate to="/login" />;
   }
 
-  return <Outlet />;
+  return (
+    <>
+      <Header />
+      <main style={{ padding: 20 }}>
+        <Outlet />
+      </main>
+    </>
+  );
 }

@@ -12,5 +12,9 @@ export default function AuthLayout() {
     return <Navigate to="/" />;
   }
 
-  return <Outlet />;
+  return (
+    <main style={{ padding: 20 }}>
+      <Outlet />;
+    </main>
+  );
 }

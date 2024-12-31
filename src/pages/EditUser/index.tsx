@@ -43,7 +43,7 @@ export default function EditUser() {
       // username,
       // email,
       name,
-      password,
+      password: password || undefined,
     };
 
     try {

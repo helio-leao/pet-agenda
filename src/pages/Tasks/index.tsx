@@ -28,6 +28,8 @@ export default function Tasks() {
 
   return (
     <>
+      <h1 className={styles.pageTitle}>Tasks</h1>
+
       <div className={styles.linksContainer}>
         <Link to="/new-task">Add Task</Link>
       </div>

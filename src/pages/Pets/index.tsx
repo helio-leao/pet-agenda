@@ -28,6 +28,8 @@ export default function Pets() {
 
   return (
     <>
+      <h1 className={styles.pageTitle}>Pets</h1>
+
       <div className={styles.linksContainer}>
         <Link to="/new-pet">Add Pet</Link>
       </div>

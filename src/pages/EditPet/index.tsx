@@ -57,7 +57,7 @@ export default function EditPet() {
         }
       }
       alert("Successfully saved!");
-      navigate("/", { replace: true }); // todo: send to pets page
+      navigate("/pets", { replace: true });
     } catch (error) {
       console.error(error);
     }

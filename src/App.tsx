@@ -18,6 +18,7 @@ import Pet from "./pages/Pet";
 import EditPet from "./pages/EditPet";
 import EditUser from "./pages/EditUser";
 import EditTask from "./pages/EditTask";
+import Pets from "./pages/Pets";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/new-pet" element={<NewPet />} />
             <Route path="/new-task" element={<NewTask />} />
             <Route path="/tasks" element={<Tasks />} />
+            <Route path="/pets" element={<Pets />} />
             <Route path="/pet/:id" element={<Pet />} />
             <Route path="/edit-pet/:id" element={<EditPet />} />
             <Route path="/edit-user/:id" element={<EditUser />} />

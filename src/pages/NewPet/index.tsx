@@ -43,7 +43,7 @@ export default function NewPet() {
         }
       }
       alert("Successfully saved!");
-      navigate("/", { replace: true });
+      navigate("/pets", { replace: true });
     } catch (error) {
       console.error(error);
       alert("Error while saving");

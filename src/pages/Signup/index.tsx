@@ -1,7 +1,7 @@
 import { useState } from "react";
 import style from "./style.module.css";
 import api from "../../api/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -112,12 +112,15 @@ export default function Signup() {
           />
         </div>
 
-        <button
-          style={{ alignSelf: "flex-start" }}
-          className={style.inputElement}
-        >
-          Save
-        </button>
+        <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
+          <button
+            style={{ alignSelf: "flex-start" }}
+            className={style.inputElement}
+          >
+            Save
+          </button>
+          <Link to="/">Cancel</Link>
+        </div>
       </form>
 
       {/* NOTE: temporary visualization */}

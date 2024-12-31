@@ -58,13 +58,10 @@ export default function Login() {
           />
         </div>
 
-        <button
-          style={{ alignSelf: "flex-start" }}
-          className={style.inputElement}
-        >
-          Login
-        </button>
-        <Link to="/signup">Signup</Link>
+        <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
+          <button className={style.inputElement}>Login</button>
+          <Link to="/signup">Signup</Link>
+        </div>
       </form>
     </>
   );

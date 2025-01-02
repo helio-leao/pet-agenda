@@ -14,7 +14,15 @@ export default function TaskCard({ task }: { task: any }) {
       <p>{task.description}</p>
       <p>{Intl.DateTimeFormat("pt-BR").format(new Date(task.date))}</p>
       <p>{task.status}</p>
-      <Link to={`/pet/${task.pet._id}`}>{task.pet.name}</Link>
+
+      {task.pet.name && (
+        <Link
+          to={`/pet/${task.pet._id}`}
+          className="bg-sky-200 rounded-xl px-4 py-2 self-start"
+        >
+          {task.pet.name}
+        </Link>
+      )}
     </div>
   );
 }

@@ -118,11 +118,11 @@ export default function NewPet() {
         <div className="flex gap-2">
           <button
             disabled={isSaving}
-            className="bg-sky-200 rounded-xl px-4 py-2"
+            className="bg-sky-200 rounded-xl px-4 py-2 self-start"
           >
             Save
           </button>
-          <Link to="/" className="bg-sky-200 rounded-xl px-4 py-2">
+          <Link to="/" className="bg-sky-200 rounded-xl px-4 py-2 self-start">
             Cancel
           </Link>
         </div>

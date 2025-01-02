@@ -2,25 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* reset */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 html,
 body {
   height: 100%;
 }
 
-ul {
-  list-style: none;
-}
-
-/* main container 100% height */
 #root {
   height: 100%;
 }

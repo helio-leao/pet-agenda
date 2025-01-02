@@ -16,12 +16,14 @@ export default function TaskCard({ task }: { task: any }) {
       <p>{task.status}</p>
 
       {task.pet.name && (
-        <Link
-          to={`/pet/${task.pet._id}`}
-          className="bg-sky-200 rounded-lg px-4 py-1 self-start"
-        >
-          {task.pet.name}
-        </Link>
+        <div className="mt-4">
+          <Link
+            to={`/pet/${task.pet._id}`}
+            className="bg-sky-200 rounded-lg px-4 py-1 self-start"
+          >
+            {task.pet.name}
+          </Link>
+        </div>
       )}
     </div>
   );

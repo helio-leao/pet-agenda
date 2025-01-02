@@ -57,7 +57,7 @@ export default function Login() {
           />
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-4">
           <button>Login</button>
           <Link to="/signup">Signup</Link>
         </div>

@@ -58,10 +58,8 @@ export default function Login() {
         </div>
 
         <div className="flex gap-2">
-          <button className="border p-4 rounded-lg">Login</button>
-          <Link to="/signup" className="border p-4 rounded-lg">
-            Signup
-          </Link>
+          <button>Login</button>
+          <Link to="/signup">Signup</Link>
         </div>
       </form>
     </>

@@ -112,10 +112,8 @@ export default function Signup() {
         </div>
 
         <div className="flex gap-2">
-          <button className="border p-4 rounded-lg">Save</button>
-          <Link to="/" className="border p-4 rounded-lg">
-            Cancel
-          </Link>
+          <button>Save</button>
+          <Link to="/">Cancel</Link>
         </div>
       </form>
 

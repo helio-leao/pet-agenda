@@ -3,9 +3,10 @@ import { useSession } from "../../contexts/session";
 import { useEffect, useState } from "react";
 import api from "../../api/api";
 import PetCard from "../../components/PetCard";
+import { FaRegEdit } from "react-icons/fa";
 
 export default function Home() {
-  const { session, signOut } = useSession();
+  const { session } = useSession();
   const [user, setUser] = useState<any>({});
   const [pets, setPets] = useState<any>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -27,10 +28,6 @@ export default function Home() {
     })();
   }, []);
 
-  function handleLogout() {
-    signOut();
-  }
-
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -45,10 +42,9 @@ export default function Home() {
         <div className="flex flex-col">
           <h2>{user.name}</h2>
           <p>{`Since ${new Date(user.createdAt).getFullYear()}`}</p>
-          <Link to={`/edit-user/${user._id}`}>Edit</Link>
-          <button className="border p-4 rounded-lg" onClick={handleLogout}>
-            Logout
-          </button>
+          <Link to={`/edit-user/${user._id}`}>
+            <FaRegEdit />
+          </Link>
         </div>
       </div>
 

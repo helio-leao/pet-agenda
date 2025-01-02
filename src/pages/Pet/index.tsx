@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../../api/api";
 import TaskCard from "../../components/TaskCard";
+import { FaRegEdit } from "react-icons/fa";
 
 export default function Pet() {
   const { id } = useParams();
@@ -40,7 +41,9 @@ export default function Pet() {
         <div>
           <h2>{pet.name}</h2>
           <p>{`Since ${new Date(pet.createdAt).getFullYear()}`}</p>
-          <Link to={`/edit-pet/${pet._id}`}>Edit</Link>
+          <Link to={`/edit-pet/${pet._id}`}>
+            <FaRegEdit />
+          </Link>
         </div>
       </div>
 

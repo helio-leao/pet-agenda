@@ -109,7 +109,7 @@ export default function NewPet() {
           />
         </div>
 
-        <button className="border p-4 rounded-lg">Save</button>
+        <button>Save</button>
       </form>
     </>
   );

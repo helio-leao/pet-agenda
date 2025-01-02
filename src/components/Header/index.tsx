@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
+import { useSession } from "../../contexts/session";
 
 export default function Header() {
+  const { signOut } = useSession();
+
+  function handleLogout() {
+    signOut();
+  }
+
   return (
-    <header className="p-4">
+    <header className="flex justify-between p-4">
       <nav>
         <ul className="flex gap-4">
           <li>
@@ -16,6 +23,8 @@ export default function Header() {
           </li>
         </ul>
       </nav>
+
+      <button onClick={handleLogout}>Logout</button>
     </header>
   );
 }

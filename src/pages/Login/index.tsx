@@ -57,9 +57,11 @@ export default function Login() {
           />
         </div>
 
-        <div className="flex gap-4">
-          <button>Login</button>
-          <Link to="/signup">Signup</Link>
+        <div className="flex gap-2">
+          <button className="bg-sky-200 rounded-xl px-4 py-2">Login</button>
+          <Link to="/signup" className="bg-sky-200 rounded-xl px-4 py-2">
+            Signup
+          </Link>
         </div>
       </form>
     </>

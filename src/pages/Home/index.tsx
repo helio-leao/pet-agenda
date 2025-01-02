@@ -50,9 +50,13 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex gap-4 justify-self-end mb-4">
-        <Link to="/new-pet">Add Pet</Link>
-        <Link to="/new-task">Add Task</Link>
+      <div className="flex gap-2 justify-self-end mb-4">
+        <Link to="/new-pet" className="bg-sky-200 rounded-xl px-4 py-2">
+          Add Pet
+        </Link>
+        <Link to="/new-task" className="bg-sky-200 rounded-xl px-4 py-2">
+          Add Task
+        </Link>
       </div>
 
       <div className="flex flex-col gap-4">

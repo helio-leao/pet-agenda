@@ -9,17 +9,23 @@ export default function Header() {
   }
 
   return (
-    <header className="flex justify-between p-4">
+    <header className="flex justify-between p-4 bg-sky-200">
       <nav>
         <ul className="flex gap-4">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/" className="flex py-2">
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/pets">Pets</Link>
+            <Link to="/pets" className="flex py-2">
+              Pets
+            </Link>
           </li>
           <li>
-            <Link to="/tasks">Tasks</Link>
+            <Link to="/tasks" className="flex py-2">
+              Tasks
+            </Link>
           </li>
         </ul>
       </nav>

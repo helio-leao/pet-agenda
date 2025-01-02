@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../api/api";
 import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function EditUser() {
   const { id } = useParams();
@@ -37,18 +38,17 @@ export default function EditUser() {
     };
 
     try {
-      let { data: user } = await api.patch(`/users/${id}`, editedUser);
+      await api.patch(`/users/${id}`, editedUser);
 
       if (picture) {
         const formData = new FormData();
         formData.append("picture", picture);
 
-        const response = await api.post(`/users/${id}/picture`, formData, {
+        await api.post(`/users/${id}/picture`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         });
-        user = response.data;
       }
       alert("Successfully saved!");
       navigate("/", { replace: true });
@@ -129,14 +129,21 @@ export default function EditUser() {
           />
         </div>
 
-        <button>Save</button>
+        <div className="flex gap-2">
+          <button className="bg-sky-200 rounded-xl px-4 py-2">Save</button>
+          <Link to="/signup" className="bg-sky-200 rounded-xl px-4 py-2">
+            Cancel
+          </Link>
+        </div>
       </form>
 
       {/* NOTE: temporary visualization */}
-      <img
-        src={picture ? URL.createObjectURL(picture) : ""}
-        className="rounded-md object-cover min-h-20 min-w-20 h-20 w-20 mt-4"
-      />
+      {picture && (
+        <img
+          src={URL.createObjectURL(picture)}
+          className="rounded-md object-cover min-h-20 min-w-20 h-20 w-20 mt-4"
+        />
+      )}
     </>
   );
 }

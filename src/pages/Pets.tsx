@@ -28,7 +28,7 @@ export default function Pets() {
 
   return (
     <>
-      <h1 className="mb-6">Pets</h1>
+      <h1 className="mb-4">Pets</h1>
 
       <div className="flex justify-end mb-4">
         <Link to="/new-pet">

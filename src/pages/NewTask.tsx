@@ -64,7 +64,7 @@ export default function NewTask() {
 
   return (
     <>
-      <h1 className="mb-6">New Task</h1>
+      <h1 className="mb-4">New Task</h1>
 
       <form className="flex flex-col gap-4" onSubmit={handleSave}>
         <div className="flex flex-col gap-2">

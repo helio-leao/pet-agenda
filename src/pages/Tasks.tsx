@@ -28,7 +28,7 @@ export default function Tasks() {
 
   return (
     <>
-      <h1 className="mb-6">Tasks</h1>
+      <h1 className="mb-4">Tasks</h1>
 
       <div className="flex justify-end mb-4">
         <Link to="/new-task">

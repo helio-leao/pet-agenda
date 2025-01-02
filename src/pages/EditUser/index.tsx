@@ -129,25 +129,13 @@ export default function EditUser() {
           />
         </div>
 
-        <button
-          style={{ alignSelf: "flex-start" }}
-          className="border p-4 rounded-lg"
-        >
-          Save
-        </button>
+        <button className="border p-4 rounded-lg">Save</button>
       </form>
 
       {/* NOTE: temporary visualization */}
       <img
         src={picture ? URL.createObjectURL(picture) : ""}
-        style={{
-          objectFit: "cover",
-          marginTop: 20,
-          minHeight: 80,
-          minWidth: 80,
-          height: 80,
-          width: 80,
-        }}
+        className="rounded-md object-cover min-h-20 min-w-20 h-20 w-20 mt-4"
       />
     </>
   );

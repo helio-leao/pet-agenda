@@ -109,12 +109,7 @@ export default function NewPet() {
           />
         </div>
 
-        <button
-          style={{ alignSelf: "flex-start" }}
-          className="border p-4 rounded-lg"
-        >
-          Save
-        </button>
+        <button className="border p-4 rounded-lg">Save</button>
       </form>
     </>
   );

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import api from "../../api/api";
 import PetCard from "../../components/PetCard";
 import { FaRegEdit } from "react-icons/fa";
+import picturePlaceholder from "../../assets/picture-placeholder.svg";
 
 export default function Home() {
   const { session } = useSession();
@@ -36,7 +37,7 @@ export default function Home() {
     <>
       <div className="flex gap-4 mb-4">
         <img
-          src={user.picture}
+          src={user.picture || picturePlaceholder}
           className="object-cover rounded-lg min-h-32 min-w-32 h-32 w-32"
         />
         <div className="flex flex-col">

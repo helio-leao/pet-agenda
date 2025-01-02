@@ -10,6 +10,8 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const [isLoading, setIsLoading] = useState(false);
+
   async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -19,12 +21,16 @@ export default function Login() {
     };
 
     try {
+      setIsLoading(true);
+
       const { data } = await api.post("/users/login", loginData);
       signIn({ user: { _id: data._id } });
       navigate("/", { replace: true });
     } catch (error) {
       console.error(error);
       alert("Error while logging in");
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -58,7 +64,12 @@ export default function Login() {
         </div>
 
         <div className="flex gap-2">
-          <button className="bg-sky-200 rounded-xl px-4 py-2">Login</button>
+          <button
+            disabled={isLoading}
+            className="bg-sky-200 rounded-xl px-4 py-2"
+          >
+            Login
+          </button>
           <Link to="/signup" className="bg-sky-200 rounded-xl px-4 py-2">
             Signup
           </Link>

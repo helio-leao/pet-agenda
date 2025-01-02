@@ -12,6 +12,7 @@ export default function EditUser() {
   const [email, setEmail] = useState("");
   const [picture, setPicture] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -38,6 +39,8 @@ export default function EditUser() {
     };
 
     try {
+      setIsSaving(true);
+
       await api.patch(`/users/${id}`, editedUser);
 
       if (picture) {
@@ -55,6 +58,8 @@ export default function EditUser() {
     } catch (error) {
       console.error(error);
       alert("Error while saving");
+    } finally {
+      setIsSaving(false);
     }
   }
 
@@ -130,7 +135,12 @@ export default function EditUser() {
         </div>
 
         <div className="flex gap-2">
-          <button className="bg-sky-200 rounded-xl px-4 py-2">Save</button>
+          <button
+            disabled={isSaving}
+            className="bg-sky-200 rounded-xl px-4 py-2"
+          >
+            Save
+          </button>
           <Link to="/signup" className="bg-sky-200 rounded-xl px-4 py-2">
             Cancel
           </Link>

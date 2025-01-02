@@ -16,6 +16,7 @@ export default function NewTask() {
 
   const [pets, setPets] = useState<any>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -46,12 +47,15 @@ export default function NewTask() {
     };
 
     try {
+      setIsSaving(true);
       await api.post("/tasks", newTask);
       alert("Successfully saved!");
       navigate("/tasks", { replace: true });
     } catch (error) {
       console.error(error);
       alert("Error while saving");
+    } finally {
+      setIsSaving(false);
     }
   }
 
@@ -127,7 +131,12 @@ export default function NewTask() {
         </div>
 
         <div className="flex gap-2">
-          <button className="bg-sky-200 rounded-xl px-4 py-2">Save</button>
+          <button
+            disabled={isSaving}
+            className="bg-sky-200 rounded-xl px-4 py-2"
+          >
+            Save
+          </button>
           <Link to="/" className="bg-sky-200 rounded-xl px-4 py-2">
             Cancel
           </Link>

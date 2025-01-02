@@ -39,11 +39,13 @@ export default function Pet() {
           className="object-cover rounded-lg min-h-32 min-w-32 h-32 w-32"
         />
         <div>
-          <h2>{pet.name}</h2>
+          <div className="flex gap-4">
+            <h2>{pet.name}</h2>
+            <Link to={`/edit-pet/${pet._id}`}>
+              <FaRegEdit />
+            </Link>
+          </div>
           <p>{`Since ${new Date(pet.createdAt).getFullYear()}`}</p>
-          <Link to={`/edit-pet/${pet._id}`}>
-            <FaRegEdit />
-          </Link>
         </div>
       </div>
 

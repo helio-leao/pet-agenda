@@ -3,6 +3,7 @@ import { useSession } from "../../contexts/session";
 import { useEffect, useState } from "react";
 import api from "../../api/api";
 import TaskCard from "../../components/TaskCard";
+import { FaPlus } from "react-icons/fa";
 
 export default function Tasks() {
   const { session } = useSession();
@@ -30,7 +31,9 @@ export default function Tasks() {
       <h1 className="mb-6">Tasks</h1>
 
       <div className="flex justify-end mb-4">
-        <Link to="/new-task">Add Task</Link>
+        <Link to="/new-task">
+          <FaPlus />
+        </Link>
       </div>
 
       <div className="flex flex-col gap-4">

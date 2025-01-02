@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { IoIosInformationCircleOutline } from "react-icons/io";
-import { FaRegEdit } from "react-icons/fa";
+import { FaRegEdit, FaArrowRight } from "react-icons/fa";
 
 export default function PetCard({ pet }: { pet: any }) {
   return (
@@ -14,11 +13,11 @@ export default function PetCard({ pet }: { pet: any }) {
           <p>{pet.name}</p>
 
           <div className="flex gap-4">
-            <Link to={`/pet/${pet._id}`}>
-              <IoIosInformationCircleOutline />
-            </Link>
             <Link to={`/edit-pet/${pet._id}`}>
               <FaRegEdit />
+            </Link>
+            <Link to={`/pet/${pet._id}`}>
+              <FaArrowRight />
             </Link>
           </div>
         </div>

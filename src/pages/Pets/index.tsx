@@ -3,6 +3,7 @@ import { useSession } from "../../contexts/session";
 import { useEffect, useState } from "react";
 import api from "../../api/api";
 import PetCard from "../../components/PetCard";
+import { FaPlus } from "react-icons/fa";
 
 export default function Pets() {
   const { session } = useSession();
@@ -30,7 +31,9 @@ export default function Pets() {
       <h1 className="mb-6">Pets</h1>
 
       <div className="flex justify-end mb-4">
-        <Link to="/new-pet">Add Pet</Link>
+        <Link to="/new-pet">
+          <FaPlus />
+        </Link>
       </div>
 
       <div className="flex flex-col gap-4">

@@ -40,11 +40,13 @@ export default function Home() {
           className="object-cover rounded-lg min-h-32 min-w-32 h-32 w-32"
         />
         <div className="flex flex-col">
-          <h2>{user.name}</h2>
+          <div className="flex gap-4">
+            <h2>{user.name}</h2>
+            <Link to={`/edit-user/${user._id}`}>
+              <FaRegEdit />
+            </Link>
+          </div>
           <p>{`Since ${new Date(user.createdAt).getFullYear()}`}</p>
-          <Link to={`/edit-user/${user._id}`}>
-            <FaRegEdit />
-          </Link>
         </div>
       </div>
 

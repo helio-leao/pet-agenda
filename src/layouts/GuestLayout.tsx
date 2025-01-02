@@ -13,7 +13,7 @@ export default function AuthLayout() {
   }
 
   return (
-    <main style={{ padding: 20 }}>
+    <main className="p-4">
       <Outlet />
     </main>
   );

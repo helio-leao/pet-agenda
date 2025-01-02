@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import style from "./style.module.css";
 import api from "../../api/api";
 import { useNavigate, useParams } from "react-router-dom";
 import { DateTime } from "luxon";
@@ -69,53 +68,53 @@ export default function EditPet() {
 
   return (
     <>
-      <h1 className={style.pageTitle}>Edit Pet</h1>
+      <h1 className="mb-6">Edit Pet</h1>
 
-      <form className={style.formContainer} onSubmit={handleSave}>
-        <div className={style.fieldContainer}>
+      <form className="flex flex-col gap-4" onSubmit={handleSave}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="name">Name*</label>
           <input
             type="text"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             id="name"
             placeholder="your pet name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div className={style.fieldContainer}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="type">Type*</label>
           <input
             type="text"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             id="type"
             placeholder="cat, dog, bird..."
             value={type}
             onChange={(e) => setType(e.target.value)}
           />
         </div>
-        <div className={style.fieldContainer}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="breed">Breed*</label>
           <input
             type="text"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             id="breed"
             placeholder="bulldog, persian cat..."
             value={breed}
             onChange={(e) => setBreed(e.target.value)}
           />
         </div>
-        <div className={style.fieldContainer}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="birthdate">Birthdate*</label>
           <input
             type="date"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             id="birthdate"
             value={birthdate}
             onChange={(e) => setBirthdate(e.target.value)}
           />
         </div>
-        <div className={style.fieldContainer}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="picture">Picture</label>
           <input
             type="file"
@@ -129,7 +128,7 @@ export default function EditPet() {
 
         <button
           style={{ alignSelf: "flex-start" }}
-          className={style.inputElement}
+          className="border p-4 rounded-lg"
         >
           Save
         </button>

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import styles from "./style.module.css";
 import { useSession } from "../../contexts/session";
 import { useEffect, useState } from "react";
 import api from "../../api/api";
@@ -28,20 +27,13 @@ export default function Tasks() {
 
   return (
     <>
-      <h1 className={styles.pageTitle}>Tasks</h1>
+      <h1 className="mb-6">Tasks</h1>
 
-      <div className={styles.linksContainer}>
+      <div className="flex justify-end mb-4">
         <Link to="/new-task">Add Task</Link>
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          marginTop: 20,
-          gap: 10,
-        }}
-      >
+      <div className="flex flex-col gap-4">
         {tasks.map((task: any) => (
           <TaskCard key={task._id} task={task} />
         ))}

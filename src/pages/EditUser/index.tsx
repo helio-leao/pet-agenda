@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import style from "./style.module.css";
 import api from "../../api/api";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -65,14 +64,14 @@ export default function EditUser() {
 
   return (
     <>
-      <h1 className={style.pageTitle}>Edit User</h1>
+      <h1 className="mb-6">Edit User</h1>
 
-      <form className={style.formContainer} onSubmit={handleSave}>
-        <div className={style.fieldContainer}>
+      <form className="flex flex-col gap-4" onSubmit={handleSave}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="name">Name*</label>
           <input
             type="text"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             id="name"
             placeholder="your name"
             value={name}
@@ -80,12 +79,12 @@ export default function EditUser() {
           />
         </div>
 
-        <div className={style.fieldContainer}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="username">Username</label>
           <input
             disabled
             type="text"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             id="username"
             placeholder="your username"
             value={username}
@@ -93,11 +92,11 @@ export default function EditUser() {
           />
         </div>
 
-        <div className={style.fieldContainer}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="password">Password</label>
           <input
             type="password"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             id="password"
             placeholder="your password"
             value={password}
@@ -105,12 +104,12 @@ export default function EditUser() {
           />
         </div>
 
-        <div className={style.fieldContainer}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="email">Email</label>
           <input
             disabled
             type="email"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             id="email"
             placeholder="your email"
             value={email}
@@ -118,7 +117,7 @@ export default function EditUser() {
           />
         </div>
 
-        <div className={style.fieldContainer}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="picture">Picture</label>
           <input
             type="file"
@@ -132,7 +131,7 @@ export default function EditUser() {
 
         <button
           style={{ alignSelf: "flex-start" }}
-          className={style.inputElement}
+          className="border p-4 rounded-lg"
         >
           Save
         </button>

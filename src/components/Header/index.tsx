@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import styles from "./style.module.css";
 
 export default function Header() {
   return (
-    <header className={styles.container}>
+    <header className="p-4">
       <nav>
-        <ul style={{ display: "flex", gap: 10 }}>
+        <ul className="flex gap-4">
           <li>
             <Link to="/">Home</Link>
           </li>

@@ -2,23 +2,8 @@ import { Link } from "react-router-dom";
 
 export default function TaskCard({ task }: { task: any }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        padding: 10,
-        borderWidth: 1,
-        borderStyle: "solid",
-        borderRadius: 4,
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          gap: 10,
-        }}
-      >
+    <div className="flex flex-col p-4 border rounded-md">
+      <div className="flex justify-between gap-4">
         <h3>{task.title}</h3>
         <Link to={`/edit-task/${task._id}`}>Edit</Link>
       </div>

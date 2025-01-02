@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import style from "./style.module.css";
 import api from "../../api/api";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSession } from "../../contexts/session";
@@ -65,14 +64,14 @@ export default function EditTask() {
 
   return (
     <>
-      <h1 className={style.pageTitle}>Edit Task</h1>
+      <h1 className="mb-6">Edit Task</h1>
 
-      <form className={style.formContainer} onSubmit={handleSave}>
-        <div className={style.fieldContainer}>
+      <form className="flex flex-col gap-4" onSubmit={handleSave}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="title">Title*</label>
           <input
             type="text"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             id="title"
             placeholder="your task title"
             value={title}
@@ -80,33 +79,33 @@ export default function EditTask() {
           />
         </div>
 
-        <div className={style.fieldContainer}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="description">Description</label>
           <input
             type="text"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             id="description"
             placeholder="your task description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        <div className={style.fieldContainer}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="date">Date*</label>
           <input
             type="date"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             id="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
         </div>
-        <div className={style.fieldContainer}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="status">Status*</label>
           <select
             name="status"
             id="status"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             onChange={(e) => setStatus(e.target.value)}
           >
             <option value="Scheduled">Scheduled</option>
@@ -114,12 +113,12 @@ export default function EditTask() {
             <option value="Cancelled">Cancelled</option>
           </select>
         </div>
-        <div className={style.fieldContainer}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="pet">Pet*</label>
           <select
             name="pet"
             id="pet"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             value={pet}
             onChange={(e) => setPet(e.target.value)}
           >
@@ -133,7 +132,7 @@ export default function EditTask() {
 
         <button
           style={{ alignSelf: "flex-start" }}
-          className={style.inputElement}
+          className="border p-4 rounded-lg"
         >
           Save
         </button>

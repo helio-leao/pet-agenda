@@ -37,7 +37,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex gap-4">
+      <div className="flex gap-4 mb-4">
         <img
           src={user.picture}
           className="object-cover rounded-lg min-h-32 min-w-32 h-32 w-32"
@@ -52,12 +52,12 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex gap-4 justify-self-end">
+      <div className="flex gap-4 justify-self-end mb-4">
         <Link to="/new-pet">Add Pet</Link>
         <Link to="/new-task">Add Task</Link>
       </div>
 
-      <div className="flex flex-col mt-8 gap-4">
+      <div className="flex flex-col gap-4">
         {pets.map((pet: any) => (
           <PetCard key={pet._id} pet={pet} />
         ))}

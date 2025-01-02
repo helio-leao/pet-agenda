@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import styles from "./style.module.css";
 import { useSession } from "../../contexts/session";
 import { useEffect, useState } from "react";
 import api from "../../api/api";
@@ -28,20 +27,13 @@ export default function Pets() {
 
   return (
     <>
-      <h1 className={styles.pageTitle}>Pets</h1>
+      <h1 className="mb-6">Pets</h1>
 
-      <div className={styles.linksContainer}>
+      <div className="flex justify-end mb-4">
         <Link to="/new-pet">Add Pet</Link>
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          marginTop: 20,
-          gap: 10,
-        }}
-      >
+      <div className="flex flex-col gap-4">
         {pets.map((pet: any) => (
           <PetCard key={pet._id} pet={pet} />
         ))}

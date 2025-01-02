@@ -40,7 +40,6 @@ export default function Signup() {
         );
         user = response.data;
       }
-      alert("Successfully saved!");
       navigate("/", { replace: true });
     } catch (error) {
       console.error(error);

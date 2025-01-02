@@ -53,7 +53,6 @@ export default function EditUser() {
           },
         });
       }
-      alert("Successfully saved!");
       navigate("/", { replace: true });
     } catch (error) {
       console.error(error);

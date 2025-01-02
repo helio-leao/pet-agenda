@@ -53,7 +53,6 @@ export default function EditTask() {
     try {
       setIsSaving(true);
       await api.patch(`/tasks/${id}`, editedTask);
-      alert("Successfully saved!");
       navigate("/tasks", { replace: true });
     } catch (error) {
       console.error(error);

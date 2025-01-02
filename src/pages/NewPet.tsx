@@ -45,7 +45,6 @@ export default function NewPet() {
           console.error(error);
         }
       }
-      alert("Successfully saved!");
       navigate("/pets", { replace: true });
     } catch (error) {
       console.error(error);

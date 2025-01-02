@@ -86,9 +86,9 @@ export default function EditTask() {
 
         <div className="flex flex-col gap-2">
           <label htmlFor="description">Description</label>
-          <input
-            type="text"
-            className="border p-4 rounded-lg"
+          <textarea
+            className="border p-4 rounded-lg resize-none"
+            rows={3}
             id="description"
             placeholder="your task description"
             value={description}

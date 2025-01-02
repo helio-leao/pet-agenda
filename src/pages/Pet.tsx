@@ -1,9 +1,9 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import api from "../../api/api";
-import TaskCard from "../../components/TaskCard";
+import api from "../api/api";
+import TaskCard from "../components/TaskCard";
 import { FaRegEdit } from "react-icons/fa";
-import picturePlaceholder from "../../assets/picture-placeholder.svg";
+import picturePlaceholder from "../assets/picture-placeholder.svg";
 
 export default function Pet() {
   const { id } = useParams();

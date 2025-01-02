@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useSession } from "../../contexts/session";
+import { useSession } from "../contexts/session";
 
 export default function Header() {
   const { signOut } = useSession();

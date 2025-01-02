@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaRegEdit, FaArrowRight } from "react-icons/fa";
-import picturePlaceholder from "../../assets/picture-placeholder.svg";
+import picturePlaceholder from "../assets/picture-placeholder.svg";
 
 export default function PetCard({ pet }: { pet: any }) {
   return (

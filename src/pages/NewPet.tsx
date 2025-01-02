@@ -1,7 +1,7 @@
 import { useState } from "react";
-import api from "../../api/api";
+import api from "../api/api";
 import { useNavigate } from "react-router-dom";
-import { useSession } from "../../contexts/session";
+import { useSession } from "../contexts/session";
 import { DateTime } from "luxon";
 import { Link } from "react-router-dom";
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import api from "../../api/api";
-import { useSession } from "../../contexts/session";
+import api from "../api/api";
+import { useSession } from "../contexts/session";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {

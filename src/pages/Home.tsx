@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { useSession } from "../../contexts/session";
+import { useSession } from "../contexts/session";
 import { useEffect, useState } from "react";
-import api from "../../api/api";
-import PetCard from "../../components/PetCard";
+import api from "../api/api";
+import PetCard from "../components/PetCard";
 import { FaRegEdit } from "react-icons/fa";
-import picturePlaceholder from "../../assets/picture-placeholder.svg";
+import picturePlaceholder from "../assets/picture-placeholder.svg";
 
 export default function Home() {
   const { session } = useSession();

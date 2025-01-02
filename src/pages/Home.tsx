@@ -54,13 +54,13 @@ export default function Home() {
       <div className="flex gap-2 justify-self-end mb-4">
         <Link
           to="/new-pet"
-          className="bg-sky-200 rounded-xl px-4 py-2 self-start"
+          className="bg-sky-200 rounded-lg px-4 py-1 self-start"
         >
           Add Pet
         </Link>
         <Link
           to="/new-task"
-          className="bg-sky-200 rounded-xl px-4 py-2 self-start"
+          className="bg-sky-200 rounded-lg px-4 py-1 self-start"
         >
           Add Task
         </Link>

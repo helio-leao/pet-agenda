@@ -3,6 +3,7 @@ import api from "../../api/api";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "../../contexts/session";
 import { DateTime } from "luxon";
+import { Link } from "react-router-dom";
 
 export default function NewPet() {
   const { session } = useSession();
@@ -109,7 +110,12 @@ export default function NewPet() {
           />
         </div>
 
-        <button>Save</button>
+        <div className="flex gap-2">
+          <button className="bg-sky-200 rounded-xl px-4 py-2">Save</button>
+          <Link to="/" className="bg-sky-200 rounded-xl px-4 py-2">
+            Cancel
+          </Link>
+        </div>
       </form>
     </>
   );

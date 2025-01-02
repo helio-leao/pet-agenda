@@ -2,33 +2,16 @@ import { Link } from "react-router-dom";
 
 export default function PetCard({ pet }: { pet: any }) {
   return (
-    <div
-      key={pet._id}
-      style={{
-        display: "flex",
-        gap: 10,
-        padding: 10,
-        borderWidth: 1,
-        borderStyle: "solid",
-        borderRadius: 4,
-      }}
-    >
+    <div key={pet._id} className="flex gap-4 p-4 border rounded-md">
       <img
         src={pet.picture}
-        style={{
-          objectFit: "cover",
-          borderRadius: 4,
-          minHeight: 80,
-          minWidth: 80,
-          height: 80,
-          width: 80,
-        }}
+        className="rounded-md object-cover min-h-20 min-w-20 h-20 w-20"
       />
-      <div style={{ width: "100%" }}>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <div className="flex-1">
+        <div className="flex justify-between">
           <p>{pet.name}</p>
 
-          <div style={{ display: "flex", gap: 10 }}>
+          <div className="flex gap-4">
             <Link to={`/pet/${pet._id}`}>Details</Link>
             <Link to={`/edit-pet/${pet._id}`}>Edit</Link>
           </div>

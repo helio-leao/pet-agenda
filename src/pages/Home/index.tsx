@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import styles from "./style.module.css";
 import { useSession } from "../../contexts/session";
 import { useEffect, useState } from "react";
 import api from "../../api/api";
@@ -38,39 +37,27 @@ export default function Home() {
 
   return (
     <>
-      <div className={styles.userDataContainer}>
+      <div className="flex gap-4">
         <img
           src={user.picture}
-          style={{
-            objectFit: "cover",
-            borderRadius: 4,
-            minHeight: 120,
-            minWidth: 120,
-            height: 120,
-            width: 120,
-          }}
+          className="object-cover rounded-lg min-h-32 min-w-32 h-32 w-32"
         />
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div className="flex flex-col">
           <h2>{user.name}</h2>
           <p>{`Since ${new Date(user.createdAt).getFullYear()}`}</p>
           <Link to={`/edit-user/${user._id}`}>Edit</Link>
-          <button onClick={handleLogout}>Logout</button>
+          <button className="border p-4 rounded-lg" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
       </div>
 
-      <div className={styles.linksContainer}>
+      <div className="flex gap-4 justify-self-end">
         <Link to="/new-pet">Add Pet</Link>
         <Link to="/new-task">Add Task</Link>
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          marginTop: 20,
-          gap: 10,
-        }}
-      >
+      <div className="flex flex-col mt-8 gap-4">
         {pets.map((pet: any) => (
           <PetCard key={pet._id} pet={pet} />
         ))}

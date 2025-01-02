@@ -1,5 +1,4 @@
 import { useState } from "react";
-import style from "./style.module.css";
 import api from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -49,14 +48,14 @@ export default function Signup() {
 
   return (
     <>
-      <h1 className={style.pageTitle}>New User</h1>
+      <h1 className="mb-6">New User</h1>
 
-      <form className={style.formContainer} onSubmit={handleSave}>
-        <div className={style.fieldContainer}>
+      <form className="flex flex-col gap-4" onSubmit={handleSave}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="name">Name*</label>
           <input
             type="text"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             id="name"
             placeholder="your name"
             value={name}
@@ -64,11 +63,11 @@ export default function Signup() {
           />
         </div>
 
-        <div className={style.fieldContainer}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="username">Username*</label>
           <input
             type="text"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             id="username"
             placeholder="your username"
             value={username}
@@ -76,11 +75,11 @@ export default function Signup() {
           />
         </div>
 
-        <div className={style.fieldContainer}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="password">Password*</label>
           <input
             type="password"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             id="password"
             placeholder="your password"
             value={password}
@@ -88,11 +87,11 @@ export default function Signup() {
           />
         </div>
 
-        <div className={style.fieldContainer}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="email">Email*</label>
           <input
             type="email"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             id="email"
             placeholder="your email"
             value={email}
@@ -100,7 +99,7 @@ export default function Signup() {
           />
         </div>
 
-        <div className={style.fieldContainer}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="picture">Picture</label>
           <input
             type="file"
@@ -112,28 +111,18 @@ export default function Signup() {
           />
         </div>
 
-        <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
-          <button
-            style={{ alignSelf: "flex-start" }}
-            className={style.inputElement}
-          >
-            Save
-          </button>
-          <Link to="/">Cancel</Link>
+        <div className="flex gap-2">
+          <button className="border p-4 rounded-lg">Save</button>
+          <Link to="/" className="border p-4 rounded-lg">
+            Cancel
+          </Link>
         </div>
       </form>
 
       {/* NOTE: temporary visualization */}
       <img
         src={picture ? URL.createObjectURL(picture) : ""}
-        style={{
-          objectFit: "cover",
-          marginTop: 20,
-          minHeight: 80,
-          minWidth: 80,
-          height: 80,
-          width: 80,
-        }}
+        className="mt-4 object-cover min-h-10 min-w-10 h-10 w-10"
       />
     </>
   );

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import style from "./style.module.css";
 import api from "../../api/api";
 import { useSession } from "../../contexts/session";
 import { useNavigate } from "react-router-dom";
@@ -31,14 +30,14 @@ export default function Login() {
 
   return (
     <>
-      <h1 className={style.pageTitle}>Login</h1>
+      <h1 className="mb-6">Login</h1>
 
-      <form className={style.formContainer} onSubmit={handleLogin}>
-        <div className={style.fieldContainer}>
+      <form className="flex flex-col gap-4" onSubmit={handleLogin}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="username">Username</label>
           <input
             type="text"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             id="username"
             placeholder="Your username"
             value={username}
@@ -46,11 +45,11 @@ export default function Login() {
           />
         </div>
 
-        <div className={style.fieldContainer}>
+        <div className="flex flex-col gap-2">
           <label htmlFor="password">Password</label>
           <input
             type="password"
-            className={style.inputElement}
+            className="border p-4 rounded-lg"
             id="password"
             placeholder="Your password"
             value={password}
@@ -58,9 +57,11 @@ export default function Login() {
           />
         </div>
 
-        <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
-          <button className={style.inputElement}>Login</button>
-          <Link to="/signup">Signup</Link>
+        <div className="flex gap-2">
+          <button className="border p-4 rounded-lg">Login</button>
+          <Link to="/signup" className="border p-4 rounded-lg">
+            Signup
+          </Link>
         </div>
       </form>
     </>

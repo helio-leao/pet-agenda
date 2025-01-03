@@ -17,12 +17,7 @@ const AuthContext = createContext<{
   signOut: () => Promise<void>;
   session?: any;
   isLoading: boolean;
-}>({
-  signIn: () => null,
-  signOut: async () => Promise.resolve(),
-  session: null,
-  isLoading: false,
-});
+} | null>(null);
 
 export function useSession() {
   const value = useContext(AuthContext);

@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   useContext,
   createContext,
@@ -6,6 +5,7 @@ import {
   useState,
   useEffect,
 } from "react";
+import api from "../api/api";
 
 const AuthContext = createContext<{
   signIn: (data: any) => void;
@@ -53,7 +53,7 @@ export function SessionProvider({ children }: PropsWithChildren) {
     const session = JSON.parse(sessionData);
 
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/auth/logout`, {
+      await api.delete(`/auth/logout`, {
         data: { refreshToken: session.refreshToken },
       });
       localStorage.removeItem("session");

@@ -1,9 +1,7 @@
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL;
-
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: import.meta.env.VITE_API_URL,
 });
 
 api.interceptors.request.use(
@@ -27,6 +25,11 @@ api.interceptors.response.use(
   async (error) => {
     const config = error.config;
 
+    // Avoid multiple refresh attempts for the same request
+    if (config._retry) {
+      return Promise.reject(error);
+    }
+
     // get session from local storage
     const sessionData = localStorage.getItem("session");
     if (!sessionData) {
@@ -36,7 +39,7 @@ api.interceptors.response.use(
 
     // get a new access token
     try {
-      const { data } = await axios.post(`${API_URL}/auth/token`, {
+      const { data } = await api.post(`/auth/token`, {
         refreshToken: session.refreshToken,
       });
       session.accessToken = data.accessToken;
@@ -44,6 +47,7 @@ api.interceptors.response.use(
 
       // retry the original request with the new token
       config.headers.Authorization = `Bearer ${data.accessToken}`;
+      config._retry = true;
       return api(config);
     } catch (refreshError) {
       // localStorage.removeItem("session");  // should logout from api before removing this

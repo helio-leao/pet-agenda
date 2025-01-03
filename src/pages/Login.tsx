@@ -23,7 +23,7 @@ export default function Login() {
     try {
       setIsLoading(true);
 
-      const { data } = await api.post("/users/login", loginData);
+      const { data } = await api.post("/auth/login", loginData);
       signIn(data);
       navigate("/", { replace: true });
     } catch (error) {

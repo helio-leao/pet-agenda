@@ -23,7 +23,7 @@ export default function Signup() {
 
     try {
       setIsSaving(true);
-      let { data: user } = await api.post("/users/signup", newUser);
+      let { data: user } = await api.post("/auth/signup", newUser);
 
       if (picture) {
         const formData = new FormData();

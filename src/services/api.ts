@@ -10,9 +10,9 @@ const api = axios.create({
 
 api.interceptors.request.use(
   async (config) => {
-    const { accessToken } = getLocalStorageSession();
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
+    const session = getLocalStorageSession();
+    if (session) {
+      config.headers.Authorization = `Bearer ${session.accessToken}`;
     }
     return config;
   },

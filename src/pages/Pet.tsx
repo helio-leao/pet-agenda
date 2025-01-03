@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import api from "../api/api";
+import api from "../services/api";
 import TaskCard from "../components/TaskCard";
 import { FaRegEdit } from "react-icons/fa";
 import picturePlaceholder from "../assets/picture-placeholder.svg";

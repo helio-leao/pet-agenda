@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../api/api";
+import api from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 

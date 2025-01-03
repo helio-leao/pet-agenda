@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useSession } from "../contexts/session";
 import { useEffect, useState } from "react";
-import api from "../api/api";
+import api from "../services/api";
 import PetCard from "../components/PetCard";
 import { FaPlus } from "react-icons/fa";
 

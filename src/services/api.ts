@@ -23,10 +23,10 @@ api.interceptors.response.use(
   (response) => response,
 
   async (error) => {
-    const config = error.config;
+    const { config, response } = error;
 
     // Avoid multiple refresh attempts for the same request
-    if (config._retry) {
+    if (response?.status !== 401 || config._retry) {
       return Promise.reject(error);
     }
 

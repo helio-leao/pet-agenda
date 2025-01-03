@@ -7,12 +7,12 @@ const api = axios.create({
 api.interceptors.request.use(
   async (config) => {
     const session = localStorage.getItem("session");
-    if (!session) {
-      return config;
-    }
-    const { accessToken } = JSON.parse(session);
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
+
+    if (session) {
+      const { accessToken } = JSON.parse(session);
+      if (accessToken) {
+        config.headers.Authorization = `Bearer ${accessToken}`;
+      }
     }
     return config;
   },
@@ -50,7 +50,6 @@ api.interceptors.response.use(
       config._retry = true;
       return api(config);
     } catch (refreshError) {
-      // localStorage.removeItem("session");  // should logout from api before removing this
       return Promise.reject(refreshError);
     }
   }

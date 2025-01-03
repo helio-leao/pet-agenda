@@ -4,8 +4,8 @@ import { useSession } from "../contexts/session";
 export default function Header() {
   const { signOut } = useSession();
 
-  function handleLogout() {
-    signOut();
+  async function handleLogout() {
+    await signOut();
   }
 
   return (

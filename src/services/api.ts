@@ -1,4 +1,8 @@
 import axios from "axios";
+import {
+  getLocalStorageSession,
+  setLocalStorageSession,
+} from "../utils/localStorageSession";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -6,13 +10,9 @@ const api = axios.create({
 
 api.interceptors.request.use(
   async (config) => {
-    const session = localStorage.getItem("session");
-
-    if (session) {
-      const { accessToken } = JSON.parse(session);
-      if (accessToken) {
-        config.headers.Authorization = `Bearer ${accessToken}`;
-      }
+    const { accessToken } = getLocalStorageSession();
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
     }
     return config;
   },
@@ -31,22 +31,23 @@ api.interceptors.response.use(
     }
 
     // get session from local storage
-    const sessionData = localStorage.getItem("session");
-    if (!sessionData) {
+    const session = getLocalStorageSession();
+    if (!session) {
       return Promise.reject(error);
     }
-    const session = JSON.parse(sessionData);
 
     // get a new access token
     try {
-      const { data } = await api.post(`/auth/token`, {
+      const {
+        data: { accessToken },
+      } = await api.post(`/auth/token`, {
         refreshToken: session.refreshToken,
       });
-      session.accessToken = data.accessToken;
-      localStorage.setItem("session", JSON.stringify(session));
+      session.accessToken = accessToken;
+      setLocalStorageSession(session);
 
       // retry the original request with the new token
-      config.headers.Authorization = `Bearer ${data.accessToken}`;
+      config.headers.Authorization = `Bearer ${accessToken}`;
       config._retry = true;
       return api(config);
     } catch (refreshError) {

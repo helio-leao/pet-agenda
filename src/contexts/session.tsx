@@ -6,6 +6,11 @@ import {
   useEffect,
 } from "react";
 import api from "../services/api";
+import {
+  getLocalStorageSession,
+  removeLocalStorageSession,
+  setLocalStorageSession,
+} from "../utils/localStorageSession";
 
 const AuthContext = createContext<{
   signIn: (data: any) => void;
@@ -32,31 +37,30 @@ export function SessionProvider({ children }: PropsWithChildren) {
   const [session, setSession] = useState<any>(null);
 
   useEffect(() => {
-    const data = localStorage.getItem("session");
+    const data = getLocalStorageSession();
     if (data) {
-      setSession(JSON.parse(data));
+      setSession(data);
     }
     setIsLoading(false);
   }, []);
 
   function signIn(data: any) {
-    localStorage.setItem("session", JSON.stringify(data));
+    setLocalStorageSession(data);
     setSession(data);
   }
 
   async function signOut() {
-    const sessionData = localStorage.getItem("session");
+    const session = getLocalStorageSession();
 
-    if (!sessionData) {
+    if (!session) {
       return;
     }
-    const session = JSON.parse(sessionData);
 
     try {
       await api.delete(`/auth/logout`, {
         data: { refreshToken: session.refreshToken },
       });
-      localStorage.removeItem("session");
+      removeLocalStorageSession();
       setSession(null);
     } catch (error) {
       console.error(error);

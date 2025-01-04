@@ -7,13 +7,14 @@ import {
 } from "react";
 import {
   getLocalStorageSession,
+  removeLocalStorageSession,
   setLocalStorageSession,
 } from "../utils/localStorageSession";
 import Session from "../types/Session";
 
 const AuthContext = createContext<{
   signIn: (data: Session) => void;
-  signOut: () => Promise<void>;
+  signOut: () => void;
   session: Session | null;
   isLoading: boolean;
 } | null>(null);
@@ -44,6 +45,7 @@ export function SessionProvider({ children }: PropsWithChildren) {
   }
 
   async function signOut() {
+    removeLocalStorageSession();
     setSession(null);
   }
 

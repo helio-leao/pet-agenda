@@ -2,7 +2,7 @@ import { Session } from "react-router-dom";
 
 const KEY = "session";
 
-export function getLocalStorageSession(): Session | null {
+export function getLocalStorageSession() {
   const data = localStorage.getItem(KEY);
   return data ? JSON.parse(data) : null;
 }

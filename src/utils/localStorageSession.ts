@@ -1,8 +1,8 @@
-import { Session } from "react-router-dom";
+import Session from "../types/Session";
 
 const KEY = "session";
 
-export function getLocalStorageSession() {
+export function getLocalStorageSession(): Session | null {
   const data = localStorage.getItem(KEY);
   return data ? JSON.parse(data) : null;
 }

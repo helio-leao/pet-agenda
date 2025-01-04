@@ -40,7 +40,7 @@ export function SessionProvider({ children }: PropsWithChildren) {
     setIsLoading(false);
   }, []);
 
-  function signIn(data: any) {
+  function signIn(data: Session) {
     setLocalStorageSession(data);
     setSession(data);
   }

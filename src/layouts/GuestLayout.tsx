@@ -12,9 +12,5 @@ export default function AuthLayout() {
     return <Navigate to="/" />;
   }
 
-  return (
-    <main className="p-4">
-      <Outlet />
-    </main>
-  );
+  return <Outlet />;
 }

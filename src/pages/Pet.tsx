@@ -33,7 +33,7 @@ export default function Pet() {
   }
 
   return (
-    <>
+    <main className="p-4">
       <div className="flex gap-4 mb-4">
         <img
           src={pet.picture || picturePlaceholder}
@@ -55,6 +55,6 @@ export default function Pet() {
           <TaskCard key={task._id} task={task} />
         ))}
       </div>
-    </>
+    </main>
   );
 }

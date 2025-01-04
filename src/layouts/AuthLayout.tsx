@@ -16,9 +16,7 @@ export default function AuthLayout() {
   return (
     <>
       <Header />
-      <main className="p-4">
-        <Outlet />
-      </main>
+      <Outlet />
     </>
   );
 }

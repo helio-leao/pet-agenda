@@ -67,7 +67,7 @@ export default function EditUser() {
   }
 
   return (
-    <>
+    <main className="p-4">
       <h1 className="mb-4">Edit User</h1>
 
       <form className="flex flex-col gap-4" onSubmit={handleSave}>
@@ -156,6 +156,6 @@ export default function EditUser() {
           className="rounded-md object-cover min-h-20 min-w-20 h-20 w-20 mt-4"
         />
       )}
-    </>
+    </main>
   );
 }

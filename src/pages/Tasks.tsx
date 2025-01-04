@@ -27,7 +27,7 @@ export default function Tasks() {
   }
 
   return (
-    <>
+    <main className="p-4">
       <h1 className="mb-4">Tasks</h1>
 
       <div className="flex justify-end mb-4">
@@ -41,6 +41,6 @@ export default function Tasks() {
           <TaskCard key={task._id} task={task} />
         ))}
       </div>
-    </>
+    </main>
   );
 }

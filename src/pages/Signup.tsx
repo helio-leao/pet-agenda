@@ -61,7 +61,7 @@ export default function Signup() {
   }
 
   return (
-    <>
+    <main className="p-4">
       <h1 className="mb-4">Signup</h1>
 
       <form className="flex flex-col gap-4" onSubmit={handleSave}>
@@ -157,6 +157,6 @@ export default function Signup() {
           className="mt-4 object-cover min-h-10 min-w-10 h-10 w-10"
         />
       )}
-    </>
+    </main>
   );
 }

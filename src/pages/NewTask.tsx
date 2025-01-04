@@ -63,7 +63,7 @@ export default function NewTask() {
   }
 
   return (
-    <>
+    <main className="p-4">
       <h1 className="mb-4">New Task</h1>
 
       <form className="flex flex-col gap-4" onSubmit={handleSave}>
@@ -141,6 +141,6 @@ export default function NewTask() {
           </Link>
         </div>
       </form>
-    </>
+    </main>
   );
 }

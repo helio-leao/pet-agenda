@@ -27,7 +27,7 @@ export default function Pets() {
   }
 
   return (
-    <>
+    <main className="p-4">
       <h1 className="mb-4">Pets</h1>
 
       <div className="flex justify-end mb-4">
@@ -41,6 +41,6 @@ export default function Pets() {
           <PetCard key={pet._id} pet={pet} />
         ))}
       </div>
-    </>
+    </main>
   );
 }

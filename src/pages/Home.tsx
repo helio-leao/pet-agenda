@@ -34,7 +34,7 @@ export default function Home() {
   }
 
   return (
-    <>
+    <main className="p-4">
       <div className="flex gap-4 mb-4">
         <img
           src={user.picture || picturePlaceholder}
@@ -71,6 +71,6 @@ export default function Home() {
           <PetCard key={pet._id} pet={pet} />
         ))}
       </div>
-    </>
+    </main>
   );
 }

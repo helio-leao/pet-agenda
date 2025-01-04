@@ -40,7 +40,13 @@ export default function Signup() {
         );
         user = response.data;
       }
-      navigate("/", { replace: true });
+
+      await api.post("/auth/send-verification-email", { id: user._id });
+      alert(
+        "User created successfully. Check your email to verify your account"
+      );
+
+      navigate("/login", { replace: true });
     } catch (error) {
       console.error(error);
       alert("Error while saving");

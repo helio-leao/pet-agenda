@@ -24,7 +24,9 @@ export default function Login() {
       setIsLoading(true);
 
       const { data } = await api.post("/auth/login", loginData);
-      signIn(data);
+      const sessionUser = { _id: data.user._id };
+
+      signIn({ ...data, user: sessionUser });
       navigate("/", { replace: true });
     } catch (error) {
       console.error(error);

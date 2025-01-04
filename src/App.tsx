@@ -18,6 +18,7 @@ import EditPet from "./pages/EditPet";
 import EditUser from "./pages/EditUser";
 import EditTask from "./pages/EditTask";
 import Pets from "./pages/Pets";
+import VerifyAccount from "./pages/VerifyAccount";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route element={<GuestLayout />}>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/verify-account/:token" element={<VerifyAccount />} />
           </Route>
 
           <Route element={<AuthLayout />}>

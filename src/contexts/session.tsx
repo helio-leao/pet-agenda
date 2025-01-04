@@ -11,11 +11,12 @@ import {
   removeLocalStorageSession,
   setLocalStorageSession,
 } from "../utils/localStorageSession";
+import Session from "../types/Session";
 
 const AuthContext = createContext<{
-  signIn: (data: any) => void;
+  signIn: (data: Session) => void;
   signOut: () => Promise<void>;
-  session?: any;
+  session: Session | null;
   isLoading: boolean;
 } | null>(null);
 
@@ -29,7 +30,7 @@ export function useSession() {
 
 export function SessionProvider({ children }: PropsWithChildren) {
   const [isLoading, setIsLoading] = useState(true);
-  const [session, setSession] = useState<any>(null);
+  const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
     const data = getLocalStorageSession();

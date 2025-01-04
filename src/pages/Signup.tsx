@@ -7,12 +7,17 @@ export default function Signup() {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
   const [picture, setPicture] = useState<File | null>(null);
   const [isSaving, setIsSaving] = useState(false);
 
   async function handleSave(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (password !== confirmPassword) {
+      return alert("Passwords don't match");
+    }
 
     const newUser = {
       name,
@@ -93,6 +98,18 @@ export default function Signup() {
             placeholder="your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label htmlFor="password">Confirm Password*</label>
+          <input
+            type="password"
+            className="border p-4 rounded-lg"
+            id="password"
+            placeholder="confirm your password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
 

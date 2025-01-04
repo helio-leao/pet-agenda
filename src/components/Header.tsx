@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useSession } from "../contexts/session";
+import { useSession } from "../contexts/SessionContext";
 import { removeLocalStorageSession } from "../utils/localStorageSession";
 import api from "../services/api";
 

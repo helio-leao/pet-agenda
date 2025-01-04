@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useSession } from "../contexts/session";
+import { useSession } from "../contexts/SessionContext";
 import Header from "../components/Header";
 
 export default function AuthLayout() {

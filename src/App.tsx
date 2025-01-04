@@ -7,7 +7,7 @@ import NewPetPage from "./pages/NewPetPage";
 import NewTaskPage from "./pages/NewTaskPage";
 import TasksPage from "./pages/TasksPage";
 import SignupPage from "./pages/SignupPage";
-import { SessionProvider } from "./contexts/session";
+import { SessionProvider } from "./contexts/SessionContext";
 import PetPage from "./pages/PetPage";
 import EditPetPage from "./pages/EditPetPage";
 import EditUserPage from "./pages/EditUserPage";

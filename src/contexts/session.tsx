@@ -5,10 +5,8 @@ import {
   useState,
   useEffect,
 } from "react";
-import api from "../services/api";
 import {
   getLocalStorageSession,
-  removeLocalStorageSession,
   setLocalStorageSession,
 } from "../utils/localStorageSession";
 import Session from "../types/Session";
@@ -46,21 +44,7 @@ export function SessionProvider({ children }: PropsWithChildren) {
   }
 
   async function signOut() {
-    const session = getLocalStorageSession();
-
-    if (!session) {
-      return;
-    }
-
-    try {
-      await api.delete(`/auth/logout`, {
-        data: { refreshToken: session.refreshToken },
-      });
-      removeLocalStorageSession();
-      setSession(null);
-    } catch (error) {
-      console.error(error);
-    }
+    setSession(null);
   }
 
   return (

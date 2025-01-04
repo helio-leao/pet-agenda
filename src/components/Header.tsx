@@ -1,10 +1,24 @@
 import { Link } from "react-router-dom";
 import { useSession } from "../contexts/session";
+import { removeLocalStorageSession } from "../utils/localStorageSession";
+import api from "../services/api";
 
 export default function Header() {
-  const { signOut } = useSession();
+  const { session, signOut } = useSession();
 
   async function handleLogout() {
+    if (!session) {
+      return;
+    }
+    try {
+      await api.delete(`/auth/logout`, {
+        data: { refreshToken: session.refreshToken },
+      });
+      removeLocalStorageSession();
+      signOut();
+    } catch (error) {
+      console.error(error);
+    }
     await signOut();
   }
 

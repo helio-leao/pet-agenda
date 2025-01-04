@@ -4,7 +4,7 @@ import api from "../services/api";
 import { useSession } from "../contexts/session";
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function LoginPage() {
   const navigate = useNavigate();
   const { signIn } = useSession();
   const [username, setUsername] = useState("");

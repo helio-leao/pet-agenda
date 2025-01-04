@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import { FaRegEdit } from "react-icons/fa";
+import Task from "../types/Task";
 
-export default function TaskCard({ task }: { task: any }) {
+type TaskCardProps = {
+  task: Task;
+};
+
+export default function TaskCard({ task }: TaskCardProps) {
   return (
     <div className="flex flex-col p-4 border rounded-md">
       <div className="flex justify-between gap-4">

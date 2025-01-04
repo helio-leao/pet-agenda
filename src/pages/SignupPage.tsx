@@ -2,7 +2,7 @@ import { useState } from "react";
 import api from "../services/api";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function Signup() {
+export default function SignupPage() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");

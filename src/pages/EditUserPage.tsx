@@ -3,7 +3,7 @@ import api from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-export default function EditUser() {
+export default function EditUserPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [name, setName] = useState("");

@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { useSession } from "../contexts/session";
 import { DateTime } from "luxon";
 import { Link } from "react-router-dom";
+import Pet from "../types/Pet";
 
-export default function NewTask() {
+export default function NewTaskPage() {
   const { session } = useSession();
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
@@ -14,7 +15,7 @@ export default function NewTask() {
   const [status, setStatus] = useState("Scheduled");
   const [pet, setPet] = useState("");
 
-  const [pets, setPets] = useState<any>([]);
+  const [pets, setPets] = useState<Pet[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -121,7 +122,7 @@ export default function NewTask() {
             className="border p-4 rounded-lg"
             onChange={(e) => setPet(e.target.value)}
           >
-            {pets.map((pet: any) => (
+            {pets.map((pet) => (
               <option key={pet._id} value={pet._id}>
                 {pet.name}
               </option>

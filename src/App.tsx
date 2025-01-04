@@ -1,24 +1,19 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import GuestLayout from "./layouts/GuestLayout";
 import AuthLayout from "./layouts/AuthLayout";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import NewPet from "./pages/NewPet";
-import NewTask from "./pages/NewTask";
-import Tasks from "./pages/Tasks";
-import Signup from "./pages/Signup";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import NewPetPage from "./pages/NewPetPage";
+import NewTaskPage from "./pages/NewTaskPage";
+import TasksPage from "./pages/TasksPage";
+import SignupPage from "./pages/SignupPage";
 import { SessionProvider } from "./contexts/session";
-import Pet from "./pages/Pet";
-import EditPet from "./pages/EditPet";
-import EditUser from "./pages/EditUser";
-import EditTask from "./pages/EditTask";
-import Pets from "./pages/Pets";
-import VerifyAccount from "./pages/VerifyAccount";
+import PetPage from "./pages/PetPage";
+import EditPetPage from "./pages/EditPetPage";
+import EditUserPage from "./pages/EditUserPage";
+import EditTaskPage from "./pages/EditTaskPage";
+import PetsPage from "./pages/PetsPage";
+import VerifyAccountPage from "./pages/VerifyAccountPage";
 
 function App() {
   return (
@@ -26,24 +21,25 @@ function App() {
       <Router>
         <Routes>
           <Route element={<GuestLayout />}>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/verify-account/:token" element={<VerifyAccount />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route
+              path="/verify-account/:token"
+              element={<VerifyAccountPage />}
+            />
           </Route>
 
           <Route element={<AuthLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/new-pet" element={<NewPet />} />
-            <Route path="/new-task" element={<NewTask />} />
-            <Route path="/tasks" element={<Tasks />} />
-            <Route path="/pets" element={<Pets />} />
-            <Route path="/pet/:id" element={<Pet />} />
-            <Route path="/edit-pet/:id" element={<EditPet />} />
-            <Route path="/edit-user/:id" element={<EditUser />} />
-            <Route path="/edit-task/:id" element={<EditTask />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/new-pet" element={<NewPetPage />} />
+            <Route path="/new-task" element={<NewTaskPage />} />
+            <Route path="/tasks" element={<TasksPage />} />
+            <Route path="/pets" element={<PetsPage />} />
+            <Route path="/pet/:id" element={<PetPage />} />
+            <Route path="/edit-pet/:id" element={<EditPetPage />} />
+            <Route path="/edit-user/:id" element={<EditUserPage />} />
+            <Route path="/edit-task/:id" element={<EditTaskPage />} />
           </Route>
-
-          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>
     </SessionProvider>

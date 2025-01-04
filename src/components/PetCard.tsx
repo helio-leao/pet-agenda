@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import { FaRegEdit, FaArrowRight } from "react-icons/fa";
 import picturePlaceholder from "../assets/picture-placeholder.svg";
+import Pet from "../types/Pet";
 
-export default function PetCard({ pet }: { pet: any }) {
+type PetCardProps = {
+  pet: Pet;
+};
+
+export default function PetCard({ pet }: PetCardProps) {
   return (
     <div key={pet._id} className="flex gap-4 p-4 border rounded-md">
       <img

@@ -5,11 +5,13 @@ import api from "../services/api";
 import PetCard from "../components/PetCard";
 import { FaRegEdit } from "react-icons/fa";
 import picturePlaceholder from "../assets/picture-placeholder.svg";
+import User from "../types/User";
+import Pet from "../types/Pet";
 
-export default function Home() {
+export default function HomePage() {
   const { session } = useSession();
-  const [user, setUser] = useState<any>({});
-  const [pets, setPets] = useState<any>([]);
+  const [user, setUser] = useState<User>();
+  const [pets, setPets] = useState<Pet[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -37,17 +39,19 @@ export default function Home() {
     <main className="p-4">
       <div className="flex gap-4 mb-4">
         <img
-          src={user.picture || picturePlaceholder}
+          src={user?.picture || picturePlaceholder}
           className="object-cover rounded-lg min-h-32 min-w-32 h-32 w-32"
         />
         <div className="flex flex-col">
           <div className="flex gap-4">
-            <h2>{user.name}</h2>
-            <Link to={`/edit-user/${user._id}`}>
+            <h2>{user?.name}</h2>
+            <Link to={`/edit-user/${user?._id}`}>
               <FaRegEdit />
             </Link>
           </div>
-          <p>{`Since ${new Date(user.createdAt).getFullYear()}`}</p>
+          {user?.createdAt && (
+            <p>{`Since ${new Date(user.createdAt).getFullYear()}`}</p>
+          )}
         </div>
       </div>
 
@@ -67,7 +71,7 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col gap-4">
-        {pets.map((pet: any) => (
+        {pets.map((pet) => (
           <PetCard key={pet._id} pet={pet} />
         ))}
       </div>

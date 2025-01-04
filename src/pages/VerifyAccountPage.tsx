@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import api from "../services/api";
+import User from "../types/User";
 
-export default function VerifyAccount() {
+export default function VerifyAccountPage() {
   const { token } = useParams();
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User>();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function VerifyAccount() {
 
   async function handleNewVerificationEmail() {
     try {
-      await api.post("/auth/send-verification-email", { id: user._id });
+      await api.post("/auth/send-verification-email", { id: user?._id });
     } catch (error) {
       console.error(error);
       alert("Error while sending verification email");

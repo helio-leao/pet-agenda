@@ -5,7 +5,11 @@ export default interface Task {
   title: string;
   description: string;
   date: Date;
-  status: String;
+  interval: {
+    unit: "DAYS" | "MONTHS" | "YEARS";
+    value: number;
+  } | null;
+  status: "SCHEDULED" | "COMPLETED" | "CANCELLED";
   user: string;
   pet: Pet;
 }

@@ -68,13 +68,13 @@ export default function LoginPage() {
         <div className="flex gap-2 mt-4">
           <button
             disabled={isLoading}
-            className="bg-sky-200 rounded-lg px-4 py-1 self-start"
+            className="bg-sky-600 rounded-lg px-4 py-1 self-start"
           >
             Login
           </button>
           <Link
             to="/signup"
-            className="bg-sky-200 rounded-lg px-4 py-1 self-start"
+            className="bg-sky-600 rounded-lg px-4 py-1 self-start"
           >
             Signup
           </Link>

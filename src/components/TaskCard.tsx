@@ -2,6 +2,12 @@ import { Link } from "react-router-dom";
 import { FaRegEdit } from "react-icons/fa";
 import Task from "../types/Task";
 
+const STATUS_TEXT_COLOR = {
+  SCHEDULED: "text-sky-600",
+  COMPLETED: "text-green-600",
+  CANCELLED: "text-red-600",
+};
+
 type TaskCardProps = {
   task: Task;
 };
@@ -18,13 +24,18 @@ export default function TaskCard({ task }: TaskCardProps) {
 
       <p>{task.description}</p>
       <p>{Intl.DateTimeFormat("pt-BR").format(new Date(task.date))}</p>
-      <p>{task.status}</p>
+      {task.interval && (
+        <p>{`Once every ${
+          task.interval.value
+        } ${task.interval.unit.toLowerCase()}`}</p>
+      )}
+      <p className={STATUS_TEXT_COLOR[task.status]}>{task.status}</p>
 
       {task.pet.name && (
         <div className="mt-4">
           <Link
             to={`/pet/${task.pet._id}`}
-            className="bg-sky-200 rounded-lg px-4 py-1 self-start"
+            className="bg-sky-600 rounded-lg px-4 py-1 self-start"
           >
             {task.pet.name}
           </Link>

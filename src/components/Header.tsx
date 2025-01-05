@@ -20,7 +20,7 @@ export default function Header() {
   }
 
   return (
-    <header className="flex justify-between p-4 bg-sky-200">
+    <header className="flex justify-between p-4 bg-sky-600">
       <nav>
         <ul className="flex gap-4">
           <li>

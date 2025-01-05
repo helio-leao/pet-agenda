@@ -15,14 +15,21 @@ export default function NewTaskPage() {
   const [status, setStatus] = useState("Scheduled");
   const [pet, setPet] = useState("");
 
+  const [intervalUnit, setIntervalUnit] = useState("None");
+  const [intervalValue, setIntervalValue] = useState("");
+
   const [pets, setPets] = useState<Pet[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
 
+  const isIntervalNone = intervalUnit === "None";
+
   useEffect(() => {
     (async () => {
       try {
-        const { data: pets } = await api.get(`/users/${session.user._id}/pets`);
+        const { data: pets } = await api.get(
+          `/users/${session!.user._id}/pets`
+        );
         setPets(pets);
 
         if (pets.length > 0) {
@@ -42,8 +49,11 @@ export default function NewTaskPage() {
       title,
       description,
       date: DateTime.fromISO(date, { zone: "local" }).toString(),
+      interval: isIntervalNone
+        ? undefined
+        : { unit: intervalUnit, value: intervalValue },
       status,
-      user: session.user._id,
+      user: session!.user._id,
       pet,
     };
 
@@ -91,6 +101,7 @@ export default function NewTaskPage() {
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
+
         <div className="flex flex-col gap-2">
           <label htmlFor="date">Date*</label>
           <input
@@ -101,12 +112,45 @@ export default function NewTaskPage() {
             onChange={(e) => setDate(e.target.value)}
           />
         </div>
+
+        <div className="flex flex-col gap-2">
+          <label htmlFor="interval">Interval</label>
+          <div className="flex gap-2 ">
+            <select
+              name="interval"
+              id="interval"
+              className="border p-4 rounded-lg flex-1"
+              value={intervalUnit}
+              onChange={(e) => setIntervalUnit(e.target.value)}
+            >
+              <option value="None">None</option>
+              <option value="Days">Days</option>
+              <option value="Months">Months</option>
+              <option value="Years">Years</option>
+            </select>
+            <input
+              type="number"
+              className="border p-4 rounded-lg flex-1"
+              disabled={isIntervalNone}
+              id="interval-value"
+              placeholder={
+                isIntervalNone
+                  ? "no interval"
+                  : "enter interval time (e.g., 10)"
+              }
+              value={intervalValue}
+              onChange={(e) => setIntervalValue(e.target.value)}
+            />
+          </div>
+        </div>
+
         <div className="flex flex-col gap-2">
           <label htmlFor="status">Status*</label>
           <select
             name="status"
             id="status"
             className="border p-4 rounded-lg"
+            value={status}
             onChange={(e) => setStatus(e.target.value)}
           >
             <option value="Scheduled">Scheduled</option>
@@ -114,12 +158,14 @@ export default function NewTaskPage() {
             <option value="Cancelled">Cancelled</option>
           </select>
         </div>
+
         <div className="flex flex-col gap-2">
           <label htmlFor="pet">Pet*</label>
           <select
             name="pet"
             id="pet"
             className="border p-4 rounded-lg"
+            value={pet}
             onChange={(e) => setPet(e.target.value)}
           >
             {pets.map((pet) => (

@@ -35,7 +35,7 @@ export default function TaskCard({ task }: TaskCardProps) {
         <div className="mt-4">
           <Link
             to={`/pet/${task.pet._id}`}
-            className="bg-sky-600 rounded-lg px-4 py-1 self-start"
+            className="bg-sky-600 rounded-lg px-4 py-1 self-start text-white"
           >
             {task.pet.name}
           </Link>

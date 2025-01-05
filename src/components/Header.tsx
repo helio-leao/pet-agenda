@@ -24,24 +24,26 @@ export default function Header() {
       <nav>
         <ul className="flex gap-4">
           <li>
-            <Link to="/" className="flex py-2">
+            <Link to="/" className="flex py-2 text-white">
               Home
             </Link>
           </li>
           <li>
-            <Link to="/pets" className="flex py-2">
+            <Link to="/pets" className="flex py-2 text-white">
               Pets
             </Link>
           </li>
           <li>
-            <Link to="/tasks" className="flex py-2">
+            <Link to="/tasks" className="flex py-2 text-white">
               Tasks
             </Link>
           </li>
         </ul>
       </nav>
 
-      <button onClick={handleLogout}>Logout</button>
+      <button onClick={handleLogout} className="text-white">
+        Logout
+      </button>
     </header>
   );
 }

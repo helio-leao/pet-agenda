@@ -31,10 +31,6 @@ export default function NewTaskPage() {
           `/users/${session!.user._id}/pets`
         );
         setPets(pets);
-
-        if (pets.length > 0) {
-          setPet(pets[0]._id);
-        }
         setIsLoading(false);
       } catch (error) {
         console.error(error);
@@ -44,6 +40,11 @@ export default function NewTaskPage() {
 
   async function handleSave(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (!pet) {
+      alert("Choose the pet for the task");
+      return;
+    }
 
     const newTask = {
       title,
@@ -132,6 +133,7 @@ export default function NewTaskPage() {
               type="number"
               className="border p-4 rounded-lg flex-1"
               disabled={isIntervalNone}
+              min={1}
               id="interval-value"
               placeholder={
                 isIntervalNone
@@ -168,6 +170,9 @@ export default function NewTaskPage() {
             value={pet}
             onChange={(e) => setPet(e.target.value)}
           >
+            <option value="" disabled>
+              select an option
+            </option>
             {pets.map((pet) => (
               <option key={pet._id} value={pet._id}>
                 {pet.name}

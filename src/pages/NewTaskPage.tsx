@@ -12,17 +12,17 @@ export default function NewTaskPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
-  const [status, setStatus] = useState("Scheduled");
+  const [status, setStatus] = useState("SCHEDULED");
   const [pet, setPet] = useState("");
 
-  const [intervalUnit, setIntervalUnit] = useState("None");
+  const [intervalUnit, setIntervalUnit] = useState("");
   const [intervalValue, setIntervalValue] = useState("");
 
   const [pets, setPets] = useState<Pet[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
 
-  const isIntervalUnitNone = intervalUnit === "None";
+  const isIntervalUnitNone = intervalUnit === "";
 
   useEffect(() => {
     (async () => {
@@ -124,10 +124,10 @@ export default function NewTaskPage() {
               value={intervalUnit}
               onChange={(e) => setIntervalUnit(e.target.value)}
             >
-              <option value="None">None</option>
-              <option value="Days">Days</option>
-              <option value="Months">Months</option>
-              <option value="Years">Years</option>
+              <option value="">None</option>
+              <option value="DAYS">Days</option>
+              <option value="MONTHS">Months</option>
+              <option value="YEARS">Years</option>
             </select>
             <input
               type="number"
@@ -155,9 +155,9 @@ export default function NewTaskPage() {
             value={status}
             onChange={(e) => setStatus(e.target.value)}
           >
-            <option value="Scheduled">Scheduled</option>
-            <option value="Completed">Completed</option>
-            <option value="Cancelled">Cancelled</option>
+            <option value="SCHEDULED">Scheduled</option>
+            <option value="COMPLETED">Completed</option>
+            <option value="CANCELLED">Cancelled</option>
           </select>
         </div>
 

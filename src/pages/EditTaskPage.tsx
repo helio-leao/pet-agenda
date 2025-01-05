@@ -13,24 +13,33 @@ export default function EditTaskPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
-  const [status, setStatus] = useState("Scheduled");
+  const [status, setStatus] = useState("");
   const [pet, setPet] = useState("");
+
+  const [intervalUnit, setIntervalUnit] = useState("");
+  const [intervalValue, setIntervalValue] = useState("");
 
   const [pets, setPets] = useState<Pet[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
+
+  const isIntervalUnitNone = intervalUnit === "None";
 
   useEffect(() => {
     (async () => {
       try {
         const [{ data: task }, { data: pets }] = await Promise.all([
           api.get(`/tasks/${id}`),
-          api.get(`/users/${session.user._id}/pets`),
+          api.get(`/users/${session!.user._id}/pets`),
         ]);
         setPets(pets);
         setTitle(task.title);
         setDescription(task.description);
         setDate(new Date(task.date).toISOString().split("T")[0]);
+        if (task.interval) {
+          setIntervalUnit(task.interval.unit);
+          setIntervalValue(task.interval.value.toString());
+        }
         setStatus(task.status);
         setPet(task.pet);
         setIsLoading(false);
@@ -47,6 +56,9 @@ export default function EditTaskPage() {
       title,
       description,
       date: DateTime.fromISO(date, { zone: "local" }).toString(),
+      interval: isIntervalUnitNone
+        ? null
+        : { unit: intervalUnit, value: parseInt(intervalValue, 10) },
       status,
       pet,
     };
@@ -95,6 +107,7 @@ export default function EditTaskPage() {
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
+
         <div className="flex flex-col gap-2">
           <label htmlFor="date">Date*</label>
           <input
@@ -105,12 +118,46 @@ export default function EditTaskPage() {
             onChange={(e) => setDate(e.target.value)}
           />
         </div>
+
+        <div className="flex flex-col gap-2">
+          <label htmlFor="interval">Interval</label>
+          <div className="flex gap-2 ">
+            <select
+              name="interval"
+              id="interval"
+              className="border p-4 rounded-lg flex-1"
+              value={intervalUnit}
+              onChange={(e) => setIntervalUnit(e.target.value)}
+            >
+              <option value="None">None</option>
+              <option value="Days">Days</option>
+              <option value="Months">Months</option>
+              <option value="Years">Years</option>
+            </select>
+            <input
+              type="number"
+              className="border p-4 rounded-lg flex-1"
+              disabled={isIntervalUnitNone}
+              min={1}
+              id="interval-value"
+              placeholder={
+                isIntervalUnitNone
+                  ? "no interval"
+                  : "enter interval time (e.g., 10)"
+              }
+              value={intervalValue}
+              onChange={(e) => setIntervalValue(e.target.value)}
+            />
+          </div>
+        </div>
+
         <div className="flex flex-col gap-2">
           <label htmlFor="status">Status*</label>
           <select
             name="status"
             id="status"
             className="border p-4 rounded-lg"
+            value={status}
             onChange={(e) => setStatus(e.target.value)}
           >
             <option value="Scheduled">Scheduled</option>
@@ -118,6 +165,7 @@ export default function EditTaskPage() {
             <option value="Cancelled">Cancelled</option>
           </select>
         </div>
+
         <div className="flex flex-col gap-2">
           <label htmlFor="pet">Pet*</label>
           <select
@@ -127,6 +175,9 @@ export default function EditTaskPage() {
             value={pet}
             onChange={(e) => setPet(e.target.value)}
           >
+            <option value="" disabled>
+              select an option
+            </option>
             {pets.map((pet) => (
               <option key={pet._id} value={pet._id}>
                 {pet.name}

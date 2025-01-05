@@ -22,7 +22,7 @@ export default function NewTaskPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
 
-  const isIntervalNone = intervalUnit === "None";
+  const isIntervalUnitNone = intervalUnit === "None";
 
   useEffect(() => {
     (async () => {
@@ -50,9 +50,9 @@ export default function NewTaskPage() {
       title,
       description,
       date: DateTime.fromISO(date, { zone: "local" }).toString(),
-      interval: isIntervalNone
-        ? undefined
-        : { unit: intervalUnit, value: intervalValue },
+      interval: isIntervalUnitNone
+        ? null
+        : { unit: intervalUnit, value: parseInt(intervalValue, 10) },
       status,
       user: session!.user._id,
       pet,
@@ -132,11 +132,11 @@ export default function NewTaskPage() {
             <input
               type="number"
               className="border p-4 rounded-lg flex-1"
-              disabled={isIntervalNone}
+              disabled={isIntervalUnitNone}
               min={1}
               id="interval-value"
               placeholder={
-                isIntervalNone
+                isIntervalUnitNone
                   ? "no interval"
                   : "enter interval time (e.g., 10)"
               }

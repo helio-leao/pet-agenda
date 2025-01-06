@@ -18,10 +18,9 @@ export default function HomePage() {
     (async () => {
       try {
         const [{ data: user }, { data: pets }] = await Promise.all([
-          api.get(`/users/${session.user._id}`),
-          api.get(`/users/${session.user._id}/pets`),
+          api.get(`/users/${session!.user._id}`),
+          api.get(`/users/${session!.user._id}/pets`),
         ]);
-
         setUser(user);
         setPets(pets);
         setIsLoading(false);

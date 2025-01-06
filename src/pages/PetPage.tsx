@@ -48,6 +48,7 @@ export default function PetPage() {
               <FaRegEdit />
             </Link>
           </div>
+          <Link to={`/pet-weight-records/${pet?._id}`}>Weight History</Link>
           {pet?.createdAt && (
             <p>{`Since ${new Date(pet.createdAt).getFullYear()}`}</p>
           )}

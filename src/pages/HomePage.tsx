@@ -38,19 +38,17 @@ export default function HomePage() {
     <main className="p-4">
       <div className="flex gap-4 mb-4">
         <img
-          src={user?.picture || picturePlaceholder}
+          src={user!.picture || picturePlaceholder}
           className="object-cover rounded-lg min-h-32 min-w-32 h-32 w-32"
         />
         <div className="flex flex-col">
           <div className="flex gap-4">
-            <h2>{user?.name}</h2>
-            <Link to={`/edit-user/${user?._id}`}>
+            <h2>{user!.name}</h2>
+            <Link to={`/edit-user/${user!._id}`}>
               <FaRegEdit />
             </Link>
           </div>
-          {user?.createdAt && (
-            <p>{`Since ${new Date(user.createdAt).getFullYear()}`}</p>
-          )}
+          <p>{`Since ${new Date(user!.createdAt).getFullYear()}`}</p>
         </div>
       </div>
 

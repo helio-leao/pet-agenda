@@ -23,7 +23,7 @@ export default function NewPetPage() {
       type,
       breed,
       birthdate: DateTime.fromISO(birthdate, { zone: "local" }).toString(),
-      user: session.user._id,
+      user: session!.user._id,
     };
 
     try {

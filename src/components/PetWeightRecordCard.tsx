@@ -1,5 +1,7 @@
+import PetWeightRecord from "../types/PetWeightRecord";
+
 type PetWeightRecordCardProps = {
-  petWeightRecord: any;
+  petWeightRecord: PetWeightRecord;
 };
 
 export default function PetWeightRecordCard({
@@ -7,9 +9,11 @@ export default function PetWeightRecordCard({
 }: PetWeightRecordCardProps) {
   return (
     <div className="flex gap-4 p-4 border rounded-md">
-      <p>{"pet.type"}</p>
-      <p>{"pet.breed"}</p>
-      {/* <p>{Intl.DateTimeFormat("pt-BR").format(new Date(pet.birthdate))}</p> */}
+      <p>
+        {`${Intl.DateTimeFormat("pt-BR").format(
+          new Date(petWeightRecord.date)
+        )} - ${petWeightRecord.value} kg`}
+      </p>
     </div>
   );
 }

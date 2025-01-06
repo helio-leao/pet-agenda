@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
-import { useSession } from "../contexts/SessionContext";
 import { DateTime } from "luxon";
 import { Link } from "react-router-dom";
-import Pet from "../types/Pet";
 
 export default function EditTaskPage() {
   const { id } = useParams();
-  const { session } = useSession();
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -19,7 +16,6 @@ export default function EditTaskPage() {
   const [intervalUnit, setIntervalUnit] = useState("");
   const [intervalValue, setIntervalValue] = useState("");
 
-  const [pets, setPets] = useState<Pet[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -28,11 +24,7 @@ export default function EditTaskPage() {
   useEffect(() => {
     (async () => {
       try {
-        const [{ data: task }, { data: pets }] = await Promise.all([
-          api.get(`/tasks/${id}`),
-          api.get(`/users/${session!.user._id}/pets`),
-        ]);
-        setPets(pets);
+        const { data: task } = await api.get(`/tasks/${id}`);
         setTitle(task.title);
         setDescription(task.description);
         setDate(new Date(task.date).toISOString().split("T")[0]);
@@ -163,26 +155,6 @@ export default function EditTaskPage() {
             <option value="SCHEDULED">Scheduled</option>
             <option value="COMPLETED">Completed</option>
             <option value="CANCELLED">Cancelled</option>
-          </select>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <label htmlFor="pet">Pet*</label>
-          <select
-            name="pet"
-            id="pet"
-            className="border p-4 rounded-lg"
-            value={pet}
-            onChange={(e) => setPet(e.target.value)}
-          >
-            <option value="" disabled>
-              select an option
-            </option>
-            {pets.map((pet) => (
-              <option key={pet._id} value={pet._id}>
-                {pet.name}
-              </option>
-            ))}
           </select>
         </div>
 

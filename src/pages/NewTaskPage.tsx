@@ -171,7 +171,7 @@ export default function NewTaskPage() {
             onChange={(e) => setPet(e.target.value)}
           >
             <option value="" disabled>
-              select an option
+              select a pet
             </option>
             {pets.map((pet) => (
               <option key={pet._id} value={pet._id}>

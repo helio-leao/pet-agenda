@@ -31,7 +31,7 @@ export default function TasksPage() {
     <main className="p-4">
       <h1 className="mb-4">Tasks</h1>
 
-      <div className="flex justify-end mb-4">
+      <div className="flex justify-end gap-4 mb-4">
         <Link to="/new-task">
           <FaPlus />
         </Link>

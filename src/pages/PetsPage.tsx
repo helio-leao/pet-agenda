@@ -33,7 +33,7 @@ export default function PetsPage() {
     <main className="p-4">
       <h1 className="mb-4">Pets</h1>
 
-      <div className="flex justify-end mb-4">
+      <div className="flex justify-end gap-4 mb-4">
         <Link to="/new-pet">
           <FaPlus />
         </Link>

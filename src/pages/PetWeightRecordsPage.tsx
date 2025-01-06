@@ -7,7 +7,7 @@ import Pet from "../types/Pet";
 import { FaPlus } from "react-icons/fa";
 
 export default function PetWeightRecordsPage() {
-  const { id } = useParams();
+  const { id: petId } = useParams();
   const [pet, setPet] = useState<Pet>();
   const [petWeightRecords, setPetWeightRecords] = useState<PetWeightRecord[]>(
     []
@@ -19,8 +19,8 @@ export default function PetWeightRecordsPage() {
     (async () => {
       try {
         const [{ data: pet }, { data: petWeightRecords }] = await Promise.all([
-          api.get(`/pets/${id}`),
-          api.get(`/pets/${id}/petWeightRecords`),
+          api.get(`/pets/${petId}`),
+          api.get(`/pets/${petId}/petWeightRecords`),
         ]);
         setPet(pet);
         setPetWeightRecords(petWeightRecords);
@@ -31,6 +31,28 @@ export default function PetWeightRecordsPage() {
     })();
   }, []);
 
+  async function loadWeightRecords() {
+    try {
+      const { data: petWeightRecords } = await api.get(
+        `/pets/${petId}/petWeightRecords`
+      );
+      setPetWeightRecords(petWeightRecords);
+    } catch (error) {
+      console.error(error);
+      alert("Error while fetching pet weight records");
+    }
+  }
+
+  async function handleDelete(weightRecordId: string) {
+    try {
+      await api.delete(`/petWeightRecords/${weightRecordId}`);
+      await loadWeightRecords();
+    } catch (error) {
+      console.error(error);
+      alert("Error while deleting weight record");
+    }
+  }
+
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -39,8 +61,8 @@ export default function PetWeightRecordsPage() {
     <main className="p-4">
       <h1 className="mb-4">{`${pet!.name}'s Weight Records`}</h1>
 
-      <div className="flex justify-end mb-4">
-        <Link to={`/new-pet-weight-record/${id}`}>
+      <div className="flex justify-end gap-4 mb-4">
+        <Link to={`/new-pet-weight-record/${petId}`}>
           <FaPlus />
         </Link>
       </div>
@@ -50,6 +72,7 @@ export default function PetWeightRecordsPage() {
           <PetWeightRecordCard
             key={petWeightRecord._id}
             petWeightRecord={petWeightRecord}
+            onDeleteClick={() => handleDelete(petWeightRecord._id)}
           />
         ))}
       </div>

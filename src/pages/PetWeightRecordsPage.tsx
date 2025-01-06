@@ -33,6 +33,7 @@ export default function PetWeightRecordsPage() {
 
   async function loadWeightRecords() {
     try {
+      setIsLoading(true);
       const { data: petWeightRecords } = await api.get(
         `/pets/${petId}/petWeightRecords`
       );
@@ -40,6 +41,8 @@ export default function PetWeightRecordsPage() {
     } catch (error) {
       console.error(error);
       alert("Error while fetching pet weight records");
+    } finally {
+      setIsLoading(false);
     }
   }
 

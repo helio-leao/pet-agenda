@@ -11,7 +11,7 @@ export default function EditTaskPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
-  const [status, setStatus] = useState("");
+  // const [status, setStatus] = useState("");
   const [pet, setPet] = useState("");
 
   const [intervalUnit, setIntervalUnit] = useState("");
@@ -33,7 +33,7 @@ export default function EditTaskPage() {
           setIntervalUnit(task.interval.unit);
           setIntervalValue(task.interval.value.toString());
         }
-        setStatus(task.status);
+        // setStatus(task.status);
         setPet(task.pet);
         setIsLoading(false);
       } catch (error) {
@@ -52,7 +52,7 @@ export default function EditTaskPage() {
       interval: isIntervalUnitNone
         ? null
         : { unit: intervalUnit, value: parseInt(intervalValue, 10) },
-      status,
+      // status,
       pet,
     };
 
@@ -123,6 +123,7 @@ export default function EditTaskPage() {
               onChange={(e) => setIntervalUnit(e.target.value)}
             >
               <option value="">None</option>
+              <option value="HOURS">Hours</option>
               <option value="DAYS">Days</option>
               <option value="MONTHS">Months</option>
               <option value="YEARS">Years</option>
@@ -144,7 +145,7 @@ export default function EditTaskPage() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2">
+        {/* <div className="flex flex-col gap-2">
           <label htmlFor="status">Status*</label>
           <select
             name="status"
@@ -157,7 +158,7 @@ export default function EditTaskPage() {
             <option value="COMPLETED">Completed</option>
             <option value="CANCELLED">Cancelled</option>
           </select>
-        </div>
+        </div> */}
 
         <div className="flex gap-2 mt-4">
           <button

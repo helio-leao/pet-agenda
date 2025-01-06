@@ -16,13 +16,12 @@ export default function PetPage() {
   useEffect(() => {
     (async () => {
       try {
-        const [petResponse, tasksResponse] = await Promise.all([
+        const [{ data: pet }, { data: tasks }] = await Promise.all([
           api.get(`/pets/${id}`),
           api.get(`/pets/${id}/tasks`),
         ]);
-
-        setPet(petResponse.data);
-        setTasks(tasksResponse.data);
+        setPet(pet);
+        setTasks(tasks);
         setIsLoading(false);
       } catch (error) {
         console.error(error);

@@ -53,18 +53,18 @@ export default function PetPage() {
               <FaRegEdit />
             </Link>
           </div>
-          <div className="flex gap-4">
-            <p>{`${latestWeightRecord!.value} kg (${Intl.DateTimeFormat(
-              "pt-BR"
-            ).format(new Date(latestWeightRecord!.date))})`}</p>
+          <p>{`${latestWeightRecord!.value} kg (${Intl.DateTimeFormat(
+            "pt-BR"
+          ).format(new Date(latestWeightRecord!.date))})`}</p>
+          <p>{`Since ${new Date(pet!.createdAt).getFullYear()}`}</p>
+          <div className="mt-2">
             <Link
               to={`/pet-weight-records/${pet!._id}`}
-              className="text-sky-600"
+              className="bg-sky-600 rounded-lg px-4 py-1 self-start text-white"
             >
               weight records
             </Link>
           </div>
-          <p>{`Since ${new Date(pet!.createdAt).getFullYear()}`}</p>
         </div>
       </div>
 

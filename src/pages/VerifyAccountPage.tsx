@@ -14,7 +14,7 @@ export default function VerifyAccountPage() {
         const { data } = await api.post("/auth/verify-account", { token });
         setUser(data);
       } catch (error) {
-        console.log(error);
+        console.error(error);
         alert("Error while verifying account");
       } finally {
         setIsLoading(false);

@@ -2,13 +2,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import { DateTime } from "luxon";
-import Pet from "../types/Pet";
+import PetWeightRecord from "../types/PetWeightRecord";
 
-export default function NewPetWeightRecordPage() {
+export default function EditPetWeightRecordPage() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [pet, setPet] = useState<Pet>();
+  const [petWeightRecord, setPetWeightRecord] = useState<PetWeightRecord>();
 
   const [weight, setWeight] = useState("");
   const [date, setDate] = useState("");
@@ -19,8 +19,10 @@ export default function NewPetWeightRecordPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get(`/pets/${id}`);
-        setPet(data);
+        const { data } = await api.get(`/petWeightRecords/${id}`);
+        setPetWeightRecord(data);
+        setWeight(data.value.toString());
+        setDate(new Date(data.date).toISOString().split("T")[0]);
         setIsLoading(false);
       } catch (error) {
         console.error(error);
@@ -43,12 +45,15 @@ export default function NewPetWeightRecordPage() {
       return;
     }
 
-    const newWeightRecord = { date: formattedDate, value, pet: id };
+    const updates = { date: formattedDate, value };
+    const petId = petWeightRecord!.pet._id;
 
     try {
       setIsSaving(true);
-      await api.post(`/pets/${id}/petWeightRecords`, newWeightRecord);
-      navigate(`/pet-weight-records/${id}`, { replace: true });
+      await api.patch(`/pets/${petId}/petWeightRecords/${id}`, updates);
+      navigate(`/pet-weight-records/${petId}`, {
+        replace: true,
+      });
     } catch (error) {
       console.error(error);
       alert("It was not possible to save");
@@ -63,7 +68,9 @@ export default function NewPetWeightRecordPage() {
 
   return (
     <main className="p-4">
-      <h1 className="mb-4">{`${pet!.name}'s New Weight Record`}</h1>
+      <h1 className="mb-4">{`${
+        petWeightRecord!.pet.name
+      }'s Edit Weight Record`}</h1>
 
       <form className="flex flex-col gap-4" onSubmit={handleSave}>
         <div className="flex flex-col gap-2">

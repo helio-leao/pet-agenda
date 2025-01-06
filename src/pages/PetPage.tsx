@@ -60,7 +60,7 @@ export default function PetPage() {
           <div className="mt-2">
             <Link
               to={`/pet-weight-records/${pet!._id}`}
-              className="bg-sky-600 rounded-lg px-4 py-1 self-start text-white"
+              className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
             >
               weight records
             </Link>

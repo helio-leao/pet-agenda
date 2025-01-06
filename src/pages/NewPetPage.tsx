@@ -117,13 +117,13 @@ export default function NewPetPage() {
         <div className="flex gap-2 mt-4">
           <button
             disabled={isSaving}
-            className="bg-sky-600 rounded-lg px-4 py-1 self-start text-white"
+            className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
           >
             Save
           </button>
           <Link
             to="/"
-            className="bg-sky-600 rounded-lg px-4 py-1 self-start text-white"
+            className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
           >
             Cancel
           </Link>

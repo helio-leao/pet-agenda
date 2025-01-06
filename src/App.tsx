@@ -16,6 +16,7 @@ import PetsPage from "./pages/PetsPage";
 import VerifyAccountPage from "./pages/VerifyAccountPage";
 import PetWeightRecordsPage from "./pages/PetWeightRecordsPage";
 import NewPetWeightRecordPage from "./pages/NewPetWeightRecordPage";
+import EditPetWeightRecordPage from "./pages/EditPetWeightRecordPage";
 
 function App() {
   return (
@@ -44,6 +45,10 @@ function App() {
             <Route
               path="/new-pet-weight-record/:id"
               element={<NewPetWeightRecordPage />}
+            />
+            <Route
+              path="/edit-pet-weight-record/:id"
+              element={<EditPetWeightRecordPage />}
             />
             <Route
               path="/pet-weight-records/:id"

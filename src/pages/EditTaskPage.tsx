@@ -3,6 +3,7 @@ import api from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 import { DateTime } from "luxon";
 import { Link } from "react-router-dom";
+import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function EditTaskPage() {
   const { id } = useParams();
@@ -68,7 +69,7 @@ export default function EditTaskPage() {
   }
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingIndicator />;
   }
 
   return (

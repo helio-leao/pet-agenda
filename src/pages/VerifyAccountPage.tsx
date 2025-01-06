@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import api from "../services/api";
 import User from "../types/User";
+import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function VerifyAccountPage() {
   const { token } = useParams();
@@ -32,7 +33,7 @@ export default function VerifyAccountPage() {
   }
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingIndicator />;
   }
 
   if (user && user.verified) {

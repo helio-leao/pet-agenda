@@ -7,6 +7,7 @@ import { FaRegEdit } from "react-icons/fa";
 import picturePlaceholder from "../assets/picture-placeholder.svg";
 import User from "../types/User";
 import Pet from "../types/Pet";
+import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function HomePage() {
   const { session } = useSession();
@@ -31,7 +32,7 @@ export default function HomePage() {
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingIndicator />;
   }
 
   return (

@@ -7,6 +7,7 @@ import picturePlaceholder from "../assets/picture-placeholder.svg";
 import Pet from "../types/Pet";
 import Task from "../types/Task";
 import PetWeightRecord from "../types/PetWeightRecord";
+import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function PetPage() {
   const { id } = useParams();
@@ -36,7 +37,7 @@ export default function PetPage() {
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingIndicator />;
   }
 
   return (

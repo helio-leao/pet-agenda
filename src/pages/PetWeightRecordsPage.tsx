@@ -5,6 +5,7 @@ import PetWeightRecordCard from "../components/PetWeightRecordCard";
 import PetWeightRecord from "../types/PetWeightRecord";
 import Pet from "../types/Pet";
 import { FaPlus } from "react-icons/fa";
+import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function PetWeightRecordsPage() {
   const { id: petId } = useParams();
@@ -57,7 +58,7 @@ export default function PetWeightRecordsPage() {
   }
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingIndicator />;
   }
 
   return (

@@ -5,6 +5,7 @@ import api from "../services/api";
 import TaskCard from "../components/TaskCard";
 import { FaPlus } from "react-icons/fa";
 import Task from "../types/Task";
+import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function TasksPage() {
   const { session } = useSession();
@@ -24,7 +25,7 @@ export default function TasksPage() {
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingIndicator />;
   }
 
   return (

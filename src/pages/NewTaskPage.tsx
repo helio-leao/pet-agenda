@@ -5,6 +5,7 @@ import { useSession } from "../contexts/SessionContext";
 import { DateTime } from "luxon";
 import { Link } from "react-router-dom";
 import Pet from "../types/Pet";
+import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function NewTaskPage() {
   const { session } = useSession();
@@ -71,7 +72,7 @@ export default function NewTaskPage() {
   }
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingIndicator />;
   }
 
   return (

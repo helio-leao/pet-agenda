@@ -5,6 +5,7 @@ import api from "../services/api";
 import PetCard from "../components/PetCard";
 import { FaPlus } from "react-icons/fa";
 import Pet from "../types/Pet";
+import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function PetsPage() {
   const { session } = useSession();
@@ -26,7 +27,7 @@ export default function PetsPage() {
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingIndicator />;
   }
 
   return (

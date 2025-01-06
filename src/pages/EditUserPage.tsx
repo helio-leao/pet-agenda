@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function EditUserPage() {
   const { id } = useParams();
@@ -63,7 +64,7 @@ export default function EditUserPage() {
   }
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingIndicator />;
   }
 
   return (

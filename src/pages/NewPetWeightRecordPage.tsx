@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import api from "../services/api";
 import { DateTime } from "luxon";
 import Pet from "../types/Pet";
+import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function NewPetWeightRecordPage() {
   const { id } = useParams();
@@ -58,7 +59,7 @@ export default function NewPetWeightRecordPage() {
   }
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingIndicator />;
   }
 
   return (

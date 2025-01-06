@@ -48,7 +48,7 @@ export default function NewPetWeightRecordPage() {
     try {
       setIsSaving(true);
       await api.post(`/pets/${id}/petWeightRecords`, newWeightRecord);
-      navigate(`/pet/${id}`, { replace: true });
+      navigate(`/pet-weight-records/${id}`, { replace: true });
     } catch (error) {
       console.error(error);
       alert("It was not possible to save");
@@ -63,7 +63,7 @@ export default function NewPetWeightRecordPage() {
 
   return (
     <main className="p-4">
-      <h1 className="mb-4">{`${pet!.name}'s new weight record`}</h1>
+      <h1 className="mb-4">{`${pet!.name}'s New Weight Record`}</h1>
 
       <form className="flex flex-col gap-4" onSubmit={handleSave}>
         <div className="flex flex-col gap-2">

@@ -11,7 +11,6 @@ export default function EditTaskPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
-  // const [status, setStatus] = useState("");
   const [pet, setPet] = useState("");
 
   const [intervalUnit, setIntervalUnit] = useState("");
@@ -33,7 +32,6 @@ export default function EditTaskPage() {
           setIntervalUnit(task.interval.unit);
           setIntervalValue(task.interval.value.toString());
         }
-        // setStatus(task.status);
         setPet(task.pet);
         setIsLoading(false);
       } catch (error) {
@@ -52,7 +50,6 @@ export default function EditTaskPage() {
       interval: isIntervalUnitNone
         ? null
         : { unit: intervalUnit, value: parseInt(intervalValue, 10) },
-      // status,
       pet,
     };
 
@@ -144,21 +141,6 @@ export default function EditTaskPage() {
             />
           </div>
         </div>
-
-        {/* <div className="flex flex-col gap-2">
-          <label htmlFor="status">Status*</label>
-          <select
-            name="status"
-            id="status"
-            className="border p-4 rounded-lg"
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
-          >
-            <option value="SCHEDULED">Scheduled</option>
-            <option value="COMPLETED">Completed</option>
-            <option value="CANCELLED">Cancelled</option>
-          </select>
-        </div> */}
 
         <div className="flex gap-2 mt-4">
           <button

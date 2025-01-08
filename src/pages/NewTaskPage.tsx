@@ -13,7 +13,6 @@ export default function NewTaskPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
-  // const [status, setStatus] = useState("SCHEDULED");
   const [pet, setPet] = useState("");
 
   const [intervalUnit, setIntervalUnit] = useState("");
@@ -54,7 +53,6 @@ export default function NewTaskPage() {
       interval: isIntervalUnitNone
         ? null
         : { unit: intervalUnit, value: parseInt(intervalValue, 10) },
-      // status,
       user: session!.user._id,
       pet,
     };
@@ -149,21 +147,6 @@ export default function NewTaskPage() {
             onChange={(e) => setIntervalValue(e.target.value)}
           />
         </div>
-
-        {/* <div className="flex flex-col gap-2">
-          <label htmlFor="status">Status*</label>
-          <select
-            name="status"
-            id="status"
-            className="border p-4 rounded-lg"
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
-          >
-            <option value="SCHEDULED">Scheduled</option>
-            <option value="COMPLETED">Completed</option>
-            <option value="CANCELLED">Cancelled</option>
-          </select>
-        </div> */}
 
         <div className="flex flex-col gap-2">
           <label htmlFor="pet">Pet*</label>

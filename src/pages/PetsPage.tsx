@@ -39,11 +39,15 @@ export default function PetsPage() {
         </Link>
       </div>
 
-      <div className="flex flex-col gap-4">
-        {pets.map((pet) => (
-          <PetCard key={pet._id} pet={pet} />
-        ))}
-      </div>
+      {pets.length === 0 ? (
+        <p>No pets to call your own</p>
+      ) : (
+        <div className="flex flex-col gap-4">
+          {pets.map((pet) => (
+            <PetCard key={pet._id} pet={pet} />
+          ))}
+        </div>
+      )}
     </main>
   );
 }

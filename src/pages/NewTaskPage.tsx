@@ -22,8 +22,6 @@ export default function NewTaskPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
 
-  const isIntervalUnitNone = intervalUnit === "";
-
   useEffect(() => {
     (async () => {
       try {
@@ -41,18 +39,12 @@ export default function NewTaskPage() {
   async function handleSave(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (!pet) {
-      alert("Choose the pet for the task");
-      return;
-    }
-
     const newTask = {
       title,
       description,
       date: DateTime.fromISO(date, { zone: "local" }).toString(),
-      interval: isIntervalUnitNone
-        ? null
-        : { unit: intervalUnit, value: parseInt(intervalValue, 10) },
+      interval: parseInt(intervalValue, 10),
+      intervalUnit,
       user: session!.user._id,
       pet,
     };
@@ -135,14 +127,10 @@ export default function NewTaskPage() {
           <input
             type="number"
             className="border p-4 rounded-lg flex-1"
-            disabled={isIntervalUnitNone}
+            disabled={intervalUnit === ""}
             min={1}
             id="interval-value"
-            placeholder={
-              isIntervalUnitNone
-                ? "no interval"
-                : "enter interval time (e.g., 10)"
-            }
+            placeholder="enter interval time (e.g., 10)"
             value={intervalValue}
             onChange={(e) => setIntervalValue(e.target.value)}
           />

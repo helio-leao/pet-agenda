@@ -19,8 +19,6 @@ export default function EditTaskPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
 
-  const isIntervalUnitNone = intervalUnit === "";
-
   useEffect(() => {
     (async () => {
       try {
@@ -28,10 +26,8 @@ export default function EditTaskPage() {
         setTitle(task.title);
         setDescription(task.description);
         setDate(new Date(task.date).toISOString().split("T")[0]);
-        if (task.interval) {
-          setIntervalUnit(task.interval.unit);
-          setIntervalValue(task.interval.value.toString());
-        }
+        setIntervalValue(task.interval.toString());
+        setIntervalUnit(task.intervalUnit);
         setPet(task.pet);
         setIsLoading(false);
       } catch (error) {
@@ -47,9 +43,7 @@ export default function EditTaskPage() {
       title,
       description,
       date: DateTime.fromISO(date, { zone: "local" }).toString(),
-      interval: isIntervalUnitNone
-        ? null
-        : { unit: intervalUnit, value: parseInt(intervalValue, 10) },
+      interval: parseInt(intervalValue, 10),
       pet,
     };
 
@@ -110,8 +104,8 @@ export default function EditTaskPage() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="interval">Interval</label>
-          <div className="flex gap-2 ">
+          <div className="flex flex-col gap-2">
+            <label htmlFor="interval">Interval*</label>
             <select
               name="interval"
               id="interval"
@@ -119,27 +113,25 @@ export default function EditTaskPage() {
               value={intervalUnit}
               onChange={(e) => setIntervalUnit(e.target.value)}
             >
-              <option value="">None</option>
+              <option value="" disabled>
+                select an interval
+              </option>
               <option value="HOURS">Hours</option>
               <option value="DAYS">Days</option>
               <option value="MONTHS">Months</option>
               <option value="YEARS">Years</option>
             </select>
-            <input
-              type="number"
-              className="border p-4 rounded-lg flex-1"
-              disabled={isIntervalUnitNone}
-              min={1}
-              id="interval-value"
-              placeholder={
-                isIntervalUnitNone
-                  ? "no interval"
-                  : "enter interval time (e.g., 10)"
-              }
-              value={intervalValue}
-              onChange={(e) => setIntervalValue(e.target.value)}
-            />
           </div>
+          <input
+            type="number"
+            className="border p-4 rounded-lg flex-1"
+            disabled={intervalUnit === ""}
+            min={1}
+            id="interval-value"
+            placeholder="enter interval time (e.g., 10)"
+            value={intervalValue}
+            onChange={(e) => setIntervalValue(e.target.value)}
+          />
         </div>
 
         <div className="flex gap-2 mt-4">

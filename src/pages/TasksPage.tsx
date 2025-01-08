@@ -38,7 +38,7 @@ export default function TasksPage() {
       </div>
 
       {tasks.length === 0 ? (
-        <p>You have no tasks</p>
+        <p>You have no tasks yet</p>
       ) : (
         <div className="flex flex-col gap-4">
           {tasks.map((task) => (

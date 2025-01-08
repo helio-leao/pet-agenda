@@ -70,15 +70,19 @@ export default function PetWeightRecordsPage() {
         </Link>
       </div>
 
-      <div className="flex flex-col gap-4">
-        {petWeightRecords.map((petWeightRecord) => (
-          <PetWeightRecordCard
-            key={petWeightRecord._id}
-            petWeightRecord={petWeightRecord}
-            onDeleteClick={() => handleDelete(petWeightRecord._id)}
-          />
-        ))}
-      </div>
+      {petWeightRecords.length === 0 ? (
+        <p>No weight records yet</p>
+      ) : (
+        <div className="flex flex-col gap-4">
+          {petWeightRecords.map((petWeightRecord) => (
+            <PetWeightRecordCard
+              key={petWeightRecord._id}
+              petWeightRecord={petWeightRecord}
+              onDeleteClick={() => handleDelete(petWeightRecord._id)}
+            />
+          ))}
+        </div>
+      )}
     </main>
   );
 }

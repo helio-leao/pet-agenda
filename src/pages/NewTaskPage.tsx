@@ -116,8 +116,8 @@ export default function NewTaskPage() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="interval">Interval</label>
-          <div className="flex gap-2 ">
+          <div className="flex flex-col gap-2">
+            <label htmlFor="interval">Interval*</label>
             <select
               name="interval"
               id="interval"
@@ -125,27 +125,29 @@ export default function NewTaskPage() {
               value={intervalUnit}
               onChange={(e) => setIntervalUnit(e.target.value)}
             >
-              <option value="">None</option>
+              <option value="" disabled>
+                select an interval
+              </option>
               <option value="HOURS">Hours</option>
               <option value="DAYS">Days</option>
               <option value="MONTHS">Months</option>
               <option value="YEARS">Years</option>
             </select>
-            <input
-              type="number"
-              className="border p-4 rounded-lg flex-1"
-              disabled={isIntervalUnitNone}
-              min={1}
-              id="interval-value"
-              placeholder={
-                isIntervalUnitNone
-                  ? "no interval"
-                  : "enter interval time (e.g., 10)"
-              }
-              value={intervalValue}
-              onChange={(e) => setIntervalValue(e.target.value)}
-            />
           </div>
+          <input
+            type="number"
+            className="border p-4 rounded-lg flex-1"
+            disabled={isIntervalUnitNone}
+            min={1}
+            id="interval-value"
+            placeholder={
+              isIntervalUnitNone
+                ? "no interval"
+                : "enter interval time (e.g., 10)"
+            }
+            value={intervalValue}
+            onChange={(e) => setIntervalValue(e.target.value)}
+          />
         </div>
 
         {/* <div className="flex flex-col gap-2">

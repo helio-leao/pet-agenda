@@ -40,7 +40,12 @@ export default function VerifyAccountPage() {
     return (
       <>
         <p>Account verified successfully</p>
-        <Link to="/login">Login</Link>
+        <Link
+          to="/login"
+          className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
+        >
+          Login
+        </Link>
       </>
     );
   } else if (user && !user.verified) {

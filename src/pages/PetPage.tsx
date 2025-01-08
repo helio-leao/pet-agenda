@@ -71,11 +71,15 @@ export default function PetPage() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4">
-        {tasks.map((task) => (
-          <TaskCard key={task._id} task={task} />
-        ))}
-      </div>
+      {tasks.length === 0 ? (
+        <p>No tasks for this pet yet</p>
+      ) : (
+        <div className="flex flex-col gap-4">
+          {tasks.map((task) => (
+            <TaskCard key={task._id} task={task} />
+          ))}
+        </div>
+      )}
     </main>
   );
 }

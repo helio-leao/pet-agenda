@@ -18,6 +18,7 @@ import PetWeightRecordsPage from "./pages/PetWeightRecordsPage";
 import NewPetWeightRecordPage from "./pages/NewPetWeightRecordPage";
 import EditPetWeightRecordPage from "./pages/EditPetWeightRecordPage";
 import NewTaskDonePage from "./pages/NewTaskDonePage";
+import TaskPage from "./pages/TaskPage";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route path="/new-task" element={<NewTaskPage />} />
             <Route path="/tasks" element={<TasksPage />} />
             <Route path="/pets" element={<PetsPage />} />
+            <Route path="/task/:id" element={<TaskPage />} />
             <Route path="/pet/:id" element={<PetPage />} />
             <Route path="/edit-pet/:id" element={<EditPetPage />} />
             <Route path="/edit-user/:id" element={<EditUserPage />} />

@@ -116,8 +116,9 @@ export default function EditTaskPage() {
               <option value="" disabled>
                 select an interval
               </option>
-              <option value="HOURS">Hours</option>
+              {/* <option value="HOURS">Hours</option> */}
               <option value="DAYS">Days</option>
+              <option value="WEEKS">Weeks</option>
               <option value="MONTHS">Months</option>
               <option value="YEARS">Years</option>
             </select>

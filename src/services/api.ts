@@ -53,9 +53,6 @@ api.interceptors.response.use(
       return api(config);
     } catch (refreshError) {
       // todo: session clear logout
-      removeLocalStorageSession();
-      alert("Token not found. Please refresh the page and login again");
-
       return Promise.reject(refreshError);
     }
   }

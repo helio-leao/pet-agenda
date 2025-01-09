@@ -38,7 +38,7 @@ export default function TaskDonePage() {
 
     try {
       setIsSaving(true);
-      await api.post(`/tasks/${id}/pushDoneDate`, data);
+      await api.post(`/tasks/${id}/add-done-date`, data);
       navigate("/tasks", { replace: true });
     } catch (error) {
       console.error(error);

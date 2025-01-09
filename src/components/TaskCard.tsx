@@ -8,8 +8,14 @@ type TaskCardProps = {
 };
 
 export default function TaskCard({ task }: TaskCardProps) {
+  const daysTo = calculateDaysTo(task.date);
+
   return (
-    <div className="flex flex-col p-4 border rounded-md">
+    <div
+      className={`flex flex-col p-4 border rounded-md ${
+        daysTo === 1 ? "bg-yellow-50" : ""
+      }`}
+    >
       <div className="flex justify-between gap-4">
         <h3>{task.title}</h3>
         <div className="flex gap-4">
@@ -24,8 +30,8 @@ export default function TaskCard({ task }: TaskCardProps) {
 
       <p>{task.description}</p>
       <p>
-        {Intl.DateTimeFormat("pt-BR").format(new Date(task.date))} (
-        {calculateDaysTo(task.date)} days)
+        {Intl.DateTimeFormat("pt-BR").format(new Date(task.date))} ({daysTo}{" "}
+        days)
       </p>
       {task.interval && (
         <p>{`Once every ${

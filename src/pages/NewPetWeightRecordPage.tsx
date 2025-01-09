@@ -48,7 +48,7 @@ export default function NewPetWeightRecordPage() {
 
     try {
       setIsSaving(true);
-      await api.post(`/pets/${id}/petWeightRecords`, newWeightRecord);
+      await api.post(`/pets/${id}/pet-weight-records`, newWeightRecord);
       navigate(`/pets/${id}/weight-records`, { replace: true });
     } catch (error) {
       console.error(error);

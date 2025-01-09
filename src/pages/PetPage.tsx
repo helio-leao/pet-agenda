@@ -24,7 +24,7 @@ export default function PetPage() {
           await Promise.all([
             api.get(`/pets/${id}`),
             api.get(`/pets/${id}/tasks`),
-            api.get(`/pets/${id}/petWeightRecords/latest`),
+            api.get(`/pets/${id}/pet-weight-records/latest`),
           ]);
         setPet(pet);
         setTasks(tasks);

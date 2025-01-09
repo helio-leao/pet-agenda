@@ -20,7 +20,7 @@ export default function EditPetWeightRecordPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get(`/petWeightRecords/${recordId}`);
+        const { data } = await api.get(`/pet-weight-records/${recordId}`);
         setPetWeightRecord(data);
         setWeight(data.value.toString());
         setDate(new Date(data.date).toISOString().split("T")[0]);
@@ -50,7 +50,7 @@ export default function EditPetWeightRecordPage() {
 
     try {
       setIsSaving(true);
-      await api.patch(`/pets/${petId}/petWeightRecords/${recordId}`, updates);
+      await api.patch(`/pets/${petId}/pet-weight-records/${recordId}`, updates);
       navigate(`/pets/${petId}/weight-records`, {
         replace: true,
       });

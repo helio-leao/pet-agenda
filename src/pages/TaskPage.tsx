@@ -18,7 +18,6 @@ export default function TaskPage() {
       try {
         const { data } = await api.get(`/tasks/${id}`);
         setTask(data);
-        console.log(data);
         setIsLoading(false);
       } catch (error) {
         console.error(error);

@@ -62,7 +62,7 @@ export default function PetPage() {
           <p>{`Since ${new Date(pet!.createdAt).getFullYear()}`}</p>
           <div className="mt-2">
             <Link
-              to={`/pet-weight-records/${pet!._id}`}
+              to={`/pets/${pet!._id}/weight-records`}
               className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
             >
               weight records

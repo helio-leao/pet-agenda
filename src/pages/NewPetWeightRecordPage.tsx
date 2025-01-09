@@ -49,7 +49,7 @@ export default function NewPetWeightRecordPage() {
     try {
       setIsSaving(true);
       await api.post(`/pets/${id}/petWeightRecords`, newWeightRecord);
-      navigate(`/pet-weight-records/${id}`, { replace: true });
+      navigate(`/pets/${id}/weight-records`, { replace: true });
     } catch (error) {
       console.error(error);
       alert("It was not possible to save");

@@ -50,7 +50,7 @@ function App() {
               element={<EditPetWeightRecordPage />}
             />
             <Route
-              path="/pets/:petId/weight-records/:recordId"
+              path="/pets/:petId/weight-records"
               element={<PetWeightRecordsPage />}
             />
             <Route path="/tasks" element={<TasksPage />} />

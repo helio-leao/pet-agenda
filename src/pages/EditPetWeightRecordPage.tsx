@@ -51,7 +51,7 @@ export default function EditPetWeightRecordPage() {
     try {
       setIsSaving(true);
       await api.patch(`/pets/${petId}/petWeightRecords/${recordId}`, updates);
-      navigate(`/pet-weight-records/${petId}`, {
+      navigate(`/pets/${petId}/weight-records`, {
         replace: true,
       });
     } catch (error) {

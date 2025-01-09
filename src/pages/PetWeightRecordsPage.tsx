@@ -47,9 +47,9 @@ export default function PetWeightRecordsPage() {
     }
   }
 
-  async function handleDelete(weightRecordId: string) {
+  async function handleDelete() {
     try {
-      await api.delete(`/petWeightRecords/${weightRecordId}`);
+      await api.delete(`/petWeightRecords/${recordId}`);
       await loadWeightRecords();
     } catch (error) {
       console.error(error);
@@ -78,7 +78,7 @@ export default function PetWeightRecordsPage() {
             <PetWeightRecordCard
               key={petWeightRecord._id}
               petWeightRecord={petWeightRecord}
-              onDeleteClick={() => handleDelete(petWeightRecord._id)}
+              onDeleteClick={handleDelete}
             />
           ))}
         </div>

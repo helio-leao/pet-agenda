@@ -38,8 +38,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/users/:id/edit" element={<EditUserPage />} />
             <Route path="/pets" element={<PetsPage />} />
-            <Route path="/pets/:id" element={<PetPage />} />
             <Route path="/pets/new" element={<NewPetPage />} />
+            <Route path="/pets/:id" element={<PetPage />} />
             <Route path="/pets/:id/edit" element={<EditPetPage />} />
             <Route
               path="/pets/:id/weight-records/new"
@@ -54,8 +54,8 @@ function App() {
               element={<PetWeightRecordsPage />}
             />
             <Route path="/tasks" element={<TasksPage />} />
-            <Route path="/tasks/:id" element={<TaskPage />} />
             <Route path="/tasks/new" element={<NewTaskPage />} />
+            <Route path="/tasks/:id" element={<TaskPage />} />
             <Route path="/tasks/:id/edit" element={<EditTaskPage />} />.
             <Route path="/tasks/:id/complete" element={<NewTaskDonePage />} />
           </Route>

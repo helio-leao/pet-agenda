@@ -1,6 +1,7 @@
 import axios from "axios";
 import {
   getLocalStorageSession,
+  removeLocalStorageSession,
   setLocalStorageSession,
 } from "../utils/localStorageSession";
 
@@ -51,7 +52,10 @@ api.interceptors.response.use(
       config._retry = true;
       return api(config);
     } catch (refreshError) {
-      // todo: logout???
+      // todo: session clear logout
+      removeLocalStorageSession();
+      alert("Token not found. Please refresh the page and login again");
+
       return Promise.reject(refreshError);
     }
   }

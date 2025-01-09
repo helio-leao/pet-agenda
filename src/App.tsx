@@ -36,28 +36,28 @@ function App() {
 
           <Route element={<AuthLayout />}>
             <Route path="/" element={<HomePage />} />
-            <Route path="/new-pet" element={<NewPetPage />} />
-            <Route path="/new-task" element={<NewTaskPage />} />
-            <Route path="/tasks" element={<TasksPage />} />
+            <Route path="/users/:id/edit" element={<EditUserPage />} />
             <Route path="/pets" element={<PetsPage />} />
-            <Route path="/task/:id" element={<TaskPage />} />
-            <Route path="/pet/:id" element={<PetPage />} />
-            <Route path="/edit-pet/:id" element={<EditPetPage />} />
-            <Route path="/edit-user/:id" element={<EditUserPage />} />
-            <Route path="/edit-task/:id" element={<EditTaskPage />} />.
-            <Route path="/new-task-done/:id" element={<NewTaskDonePage />} />
+            <Route path="/pets/:id" element={<PetPage />} />
+            <Route path="/pets/new" element={<NewPetPage />} />
+            <Route path="/pets/:id/edit" element={<EditPetPage />} />
             <Route
-              path="/new-pet-weight-record/:id"
+              path="/pets/:id/weight-records/new"
               element={<NewPetWeightRecordPage />}
             />
             <Route
-              path="/edit-pet-weight-record/:id"
+              path="/pets/:petId/weight-records/:recordId/edit"
               element={<EditPetWeightRecordPage />}
             />
             <Route
-              path="/pet-weight-records/:id"
+              path="/pets/:petId/weight-records/:recordId"
               element={<PetWeightRecordsPage />}
             />
+            <Route path="/tasks" element={<TasksPage />} />
+            <Route path="/tasks/:id" element={<TaskPage />} />
+            <Route path="/tasks/new" element={<NewTaskPage />} />
+            <Route path="/tasks/:id/edit" element={<EditTaskPage />} />.
+            <Route path="/tasks/:id/complete" element={<NewTaskDonePage />} />
           </Route>
         </Routes>
       </Router>

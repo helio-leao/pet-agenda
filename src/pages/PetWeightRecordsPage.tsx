@@ -8,7 +8,7 @@ import { FaPlus } from "react-icons/fa";
 import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function PetWeightRecordsPage() {
-  const { id: petId } = useParams();
+  const { petId, recordId } = useParams();
   const [pet, setPet] = useState<Pet>();
   const [petWeightRecords, setPetWeightRecords] = useState<PetWeightRecord[]>(
     []
@@ -65,7 +65,7 @@ export default function PetWeightRecordsPage() {
     <main className="p-4">
       <div className="flex justify-between items-center mb-4">
         <h1>{`${pet!.name}'s Weight Records`}</h1>
-        <Link to={`/new-pet-weight-record/${petId}`}>
+        <Link to={`/pets/${petId}/weight-records/new`}>
           <FaPlus />
         </Link>
       </div>

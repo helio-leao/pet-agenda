@@ -45,7 +45,7 @@ export default function HomePage() {
         <div className="flex flex-col">
           <div className="flex gap-4">
             <h2>{user!.name}</h2>
-            <Link to={`/edit-user/${user!._id}`}>
+            <Link to={`/users/${user!._id}/edit`}>
               <FaRegEdit />
             </Link>
           </div>
@@ -55,13 +55,13 @@ export default function HomePage() {
 
       <div className="flex gap-2 justify-self-end mb-4">
         <Link
-          to="/new-pet"
+          to="/pets/new"
           className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
         >
           Add Pet
         </Link>
         <Link
-          to="/new-task"
+          to="/tasks/new"
           className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
         >
           Add Task

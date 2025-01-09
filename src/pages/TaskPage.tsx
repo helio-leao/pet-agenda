@@ -38,7 +38,7 @@ export default function TaskPage() {
         <div className="flex gap-4">
           <h3>{task!.title}</h3>
           <div className="flex gap-4">
-            <Link to={`/edit-task/${task!._id}`}>
+            <Link to={`/tasks/${task!._id}/edit`}>
               <FaRegEdit />
             </Link>
           </div>
@@ -50,7 +50,7 @@ export default function TaskPage() {
         <p>{Intl.DateTimeFormat("pt-BR").format(new Date(task!.date))}</p>
         <div className="mt-4">
           <Link
-            to={`/new-task-done/${task!._id}`}
+            to={`/tasks/${task!._id}/complete`}
             className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
           >
             add done date

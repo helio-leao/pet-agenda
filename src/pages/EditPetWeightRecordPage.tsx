@@ -6,7 +6,7 @@ import PetWeightRecord from "../types/PetWeightRecord";
 import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function EditPetWeightRecordPage() {
-  const { id } = useParams();
+  const { petId, recordId } = useParams();
   const navigate = useNavigate();
 
   const [petWeightRecord, setPetWeightRecord] = useState<PetWeightRecord>();
@@ -20,7 +20,7 @@ export default function EditPetWeightRecordPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get(`/petWeightRecords/${id}`);
+        const { data } = await api.get(`/petWeightRecords/${recordId}`);
         setPetWeightRecord(data);
         setWeight(data.value.toString());
         setDate(new Date(data.date).toISOString().split("T")[0]);
@@ -47,11 +47,10 @@ export default function EditPetWeightRecordPage() {
     }
 
     const updates = { date: formattedDate, value };
-    const petId = petWeightRecord!.pet._id;
 
     try {
       setIsSaving(true);
-      await api.patch(`/pets/${petId}/petWeightRecords/${id}`, updates);
+      await api.patch(`/pets/${petId}/petWeightRecords/${recordId}`, updates);
       navigate(`/pet-weight-records/${petId}`, {
         replace: true,
       });

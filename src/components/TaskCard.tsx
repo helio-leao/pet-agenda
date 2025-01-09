@@ -12,10 +12,10 @@ export default function TaskCard({ task }: TaskCardProps) {
       <div className="flex justify-between gap-4">
         <h3>{task.title}</h3>
         <div className="flex gap-4">
-          <Link to={`/edit-task/${task._id}`}>
+          <Link to={`/tasks/${task._id}/edit`}>
             <FaRegEdit />
           </Link>
-          <Link to={`/task/${task._id}`}>
+          <Link to={`/tasks/${task._id}`}>
             <FaArrowRight />
           </Link>
         </div>
@@ -32,7 +32,7 @@ export default function TaskCard({ task }: TaskCardProps) {
       {task.pet.name && (
         <div className="mt-4">
           <Link
-            to={`/pet/${task.pet._id}`}
+            to={`/pets/${task.pet._id}`}
             className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
           >
             {task.pet.name}

@@ -19,10 +19,10 @@ export default function PetCard({ pet }: PetCardProps) {
           <p>{pet.name}</p>
 
           <div className="flex gap-4">
-            <Link to={`/edit-pet/${pet._id}`}>
+            <Link to={`/pets/${pet._id}/edit`}>
               <FaRegEdit />
             </Link>
-            <Link to={`/pet/${pet._id}`}>
+            <Link to={`/pets/${pet._id}`}>
               <FaArrowRight />
             </Link>
           </div>

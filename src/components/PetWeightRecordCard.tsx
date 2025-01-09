@@ -19,7 +19,9 @@ export default function PetWeightRecordCard({
         )} - ${petWeightRecord.value} kg`}
       </p>
       <div className="flex justify-end gap-4 mb-4">
-        <Link to={`/edit-pet-weight-record/${petWeightRecord._id}`}>
+        <Link
+          to={`/pets/${petWeightRecord.pet}/weight-records/${petWeightRecord._id}/edit`}
+        >
           <FaRegEdit />
         </Link>
         <button onClick={onDeleteClick}>

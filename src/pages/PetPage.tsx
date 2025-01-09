@@ -50,7 +50,7 @@ export default function PetPage() {
         <div>
           <div className="flex gap-4">
             <h2>{pet!.name}</h2>
-            <Link to={`/edit-pet/${pet!._id}`}>
+            <Link to={`/pets/${pet!._id}/edit`}>
               <FaRegEdit />
             </Link>
           </div>

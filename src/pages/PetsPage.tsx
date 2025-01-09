@@ -34,7 +34,7 @@ export default function PetsPage() {
     <main className="p-4">
       <div className="flex justify-between items-center mb-4">
         <h1>Pets</h1>
-        <Link to="/new-pet">
+        <Link to="/pets/new">
           <FaPlus />
         </Link>
       </div>

@@ -26,8 +26,8 @@ export default function EditTaskPage() {
         setTitle(task.title);
         setDescription(task.description);
         setDate(new Date(task.date).toISOString().split("T")[0]);
-        setIntervalValue(task.interval.toString());
-        setIntervalUnit(task.intervalUnit);
+        setIntervalValue(task.interval.value.toString());
+        setIntervalUnit(task.interval.unit);
         setPet(task.pet);
         setIsLoading(false);
       } catch (error) {
@@ -43,7 +43,10 @@ export default function EditTaskPage() {
       title,
       description,
       date: DateTime.fromISO(date, { zone: "local" }).toString(),
-      interval: parseInt(intervalValue, 10),
+      interval: {
+        value: parseInt(intervalValue, 10),
+        unit: intervalUnit,
+      },
       pet,
     };
 

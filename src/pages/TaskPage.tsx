@@ -49,8 +49,8 @@ export default function TaskPage() {
           {formatDaysString(calculateDaysTo(task!.date))})
         </p>
         <p>{`Once every ${
-          task!.interval
-        } ${task!.intervalUnit.toLowerCase()}`}</p>
+          task!.interval.value
+        } ${task!.interval.unit.toLowerCase()}`}</p>
 
         <div className="mt-4">
           <Link

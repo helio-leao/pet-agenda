@@ -43,8 +43,10 @@ export default function NewTaskPage() {
       title,
       description,
       date: DateTime.fromISO(date, { zone: "local" }).toString(),
-      interval: parseInt(intervalValue, 10),
-      intervalUnit,
+      interval: {
+        value: parseInt(intervalValue, 10),
+        unit: intervalUnit,
+      },
       user: session!.user._id,
       pet,
     };

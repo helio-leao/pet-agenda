@@ -29,7 +29,9 @@ export default function TaskCard({ task }: TaskCardProps) {
         {Intl.DateTimeFormat("pt-BR").format(new Date(task.date))} (
         {formatDaysString(daysTo)})
       </p>
-      <p>{`Once every ${task.interval} ${task.intervalUnit.toLowerCase()}`}</p>
+      <p>{`Once every ${
+        task.interval.value
+      } ${task.interval.unit.toLowerCase()}`}</p>
 
       {task.pet.name && (
         <div className="mt-4">

@@ -7,7 +7,9 @@ export default interface Task {
   title: string;
   description: string;
   date: Date;
-  interval: number;
-  intervalUnit: "HOURS" | "DAYS" | "WEEKS" | "MONTHS" | "YEARS";
+  interval: {
+    unit: "HOURS" | "DAYS" | "WEEKS" | "MONTHS" | "YEARS";
+    value: number;
+  };
   history: Date[];
 }

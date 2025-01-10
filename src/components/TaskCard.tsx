@@ -3,16 +3,6 @@ import { FaRegEdit, FaArrowRight } from "react-icons/fa";
 import Task from "../types/Task";
 import { calculateDaysTo, formatDaysString } from "../utils/timeCalculations";
 
-function getColor(daysTo: number) {
-  if (daysTo >= 0 && daysTo <= 1) {
-    return "bg-yellow-100";
-  } else if (daysTo < 0) {
-    return "bg-red-100";
-  } else {
-    return "";
-  }
-}
-
 type TaskCardProps = {
   task: Task;
 };
@@ -39,11 +29,7 @@ export default function TaskCard({ task }: TaskCardProps) {
         {Intl.DateTimeFormat("pt-BR").format(new Date(task.date))} (
         {formatDaysString(daysTo)})
       </p>
-      {task.interval && (
-        <p>{`Once every ${
-          task.interval
-        } ${task.intervalUnit.toLowerCase()}`}</p>
-      )}
+      <p>{`Once every ${task.interval} ${task.intervalUnit.toLowerCase()}`}</p>
 
       {task.pet.name && (
         <div className="mt-4">
@@ -57,4 +43,10 @@ export default function TaskCard({ task }: TaskCardProps) {
       )}
     </div>
   );
+}
+
+function getColor(daysTo: number): string {
+  if (daysTo < 0) return "bg-red-200";
+  if (daysTo <= 1) return "bg-yellow-200";
+  return "";
 }

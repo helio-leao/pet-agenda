@@ -44,13 +44,13 @@ export default function TaskPage() {
           </div>
         </div>
         <p>{task!.description}</p>
-        <p>{`Once every ${
-          task!.interval
-        } ${task!.intervalUnit.toLowerCase()}`}</p>
         <p>
           {Intl.DateTimeFormat("pt-BR").format(new Date(task!.date))} (
           {formatDaysString(calculateDaysTo(task!.date))})
         </p>
+        <p>{`Once every ${
+          task!.interval
+        } ${task!.intervalUnit.toLowerCase()}`}</p>
 
         <div className="mt-4">
           <Link

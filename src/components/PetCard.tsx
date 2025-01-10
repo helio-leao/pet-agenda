@@ -29,10 +29,8 @@ export default function PetCard({ pet }: PetCardProps) {
           </div>
         </div>
 
-        <p>
-          {ageString(pet.birthdate)} (
-          {Intl.DateTimeFormat("pt-BR").format(new Date(pet.birthdate))})
-        </p>
+        <p>{Intl.DateTimeFormat("pt-BR").format(new Date(pet.birthdate))}</p>
+        <p>{ageString(pet.birthdate)}</p>
       </div>
     </div>
   );

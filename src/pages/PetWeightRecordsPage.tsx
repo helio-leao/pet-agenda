@@ -49,7 +49,7 @@ export default function PetWeightRecordsPage() {
 
   async function handleDelete(recordId: string) {
     try {
-      await api.delete(`/weight-records/${recordId}`);
+      await api.delete(`pets/${id}/weight-records/${recordId}`);
       await loadWeightRecords();
     } catch (error) {
       console.error(error);

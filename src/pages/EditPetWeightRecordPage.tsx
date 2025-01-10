@@ -20,7 +20,9 @@ export default function EditPetWeightRecordPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get(`/weight-records/${recordId}`);
+        const { data } = await api.get(
+          `pets/${petId}/weight-records/${recordId}`
+        );
         setPetWeightRecord(data);
         setWeight(data.value.toString());
         setDate(new Date(data.date).toISOString().split("T")[0]);

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useSession } from "../contexts/SessionContext";
 import api from "../services/api";
+import { FaSignOutAlt } from "react-icons/fa";
 
 export default function Header() {
   const { session, signOut } = useSession();
@@ -42,7 +43,7 @@ export default function Header() {
       </nav>
 
       <button onClick={handleLogout} className="text-white">
-        Logout
+        <FaSignOutAlt />
       </button>
     </header>
   );

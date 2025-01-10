@@ -65,4 +65,24 @@ function ageString(birthdate: Date | string | number) {
   return ageString;
 }
 
-export { calculateDaysTo, calculateAge, calculateAgeDetailed, ageString };
+function formatDaysString(days: number) {
+  let daysString = "";
+
+  daysString += days;
+
+  if (days > 1) {
+    daysString += " days";
+  } else {
+    daysString += " day";
+  }
+
+  return daysString;
+}
+
+export {
+  calculateDaysTo,
+  calculateAge,
+  calculateAgeDetailed,
+  ageString,
+  formatDaysString,
+};

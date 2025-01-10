@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import LoadingIndicator from "../components/LoadingIndicator";
 import Task from "../types/Task";
 import { FaRegEdit } from "react-icons/fa";
-import { calculateDaysTo } from "../utils/timeCalculations";
+import { calculateDaysTo, formatDaysString } from "../utils/timeCalculations";
 
 export default function TaskPage() {
   const { id } = useParams();
@@ -49,7 +49,7 @@ export default function TaskPage() {
         } ${task!.intervalUnit.toLowerCase()}`}</p>
         <p>
           {Intl.DateTimeFormat("pt-BR").format(new Date(task!.date))} (
-          {calculateDaysTo(task!.date)} days)
+          {formatDaysString(calculateDaysTo(task!.date))})
         </p>
 
         <div className="mt-4">

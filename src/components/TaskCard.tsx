@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaRegEdit, FaArrowRight } from "react-icons/fa";
 import Task from "../types/Task";
-import { calculateDaysTo } from "../utils/timeCalculations";
+import { calculateDaysTo, formatDaysString } from "../utils/timeCalculations";
 
 type TaskCardProps = {
   task: Task;
@@ -30,8 +30,8 @@ export default function TaskCard({ task }: TaskCardProps) {
 
       <p>{task.description}</p>
       <p>
-        {Intl.DateTimeFormat("pt-BR").format(new Date(task.date))} ({daysTo}{" "}
-        days)
+        {Intl.DateTimeFormat("pt-BR").format(new Date(task.date))} (
+        {formatDaysString(daysTo)})
       </p>
       {task.interval && (
         <p>{`Once every ${

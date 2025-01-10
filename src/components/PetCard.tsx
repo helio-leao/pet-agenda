@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FaRegEdit, FaArrowRight } from "react-icons/fa";
 import picturePlaceholder from "../assets/picture-placeholder.svg";
 import Pet from "../types/Pet";
-import { calculateAge } from "../utils/timeCalculations";
+import { ageString } from "../utils/timeCalculations";
 
 type PetCardProps = {
   pet: Pet;
@@ -29,11 +29,9 @@ export default function PetCard({ pet }: PetCardProps) {
           </div>
         </div>
 
-        <p>{pet.type}</p>
-        <p>{pet.breed}</p>
         <p>
-          {Intl.DateTimeFormat("pt-BR").format(new Date(pet.birthdate))} (
-          {calculateAge(pet.birthdate)} years)
+          {ageString(pet.birthdate)} (
+          {Intl.DateTimeFormat("pt-BR").format(new Date(pet.birthdate))})
         </p>
       </div>
     </div>

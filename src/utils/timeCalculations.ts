@@ -24,4 +24,45 @@ function calculateAge(dateOfBirth: string | Date | number): number {
   return now.diff(dob, "years").years | 0;
 }
 
-export { calculateDaysTo, calculateAge };
+function calculateAgeDetailed(dateOfBirth: Date | string | number): {
+  years: number;
+  months: number;
+} {
+  const dob = DateTime.fromJSDate(
+    typeof dateOfBirth === "string" || typeof dateOfBirth === "number"
+      ? new Date(dateOfBirth)
+      : dateOfBirth
+  );
+
+  if (!dob.isValid) {
+    throw new Error("Invalid date input");
+  }
+
+  const now = DateTime.now();
+  const diff = now.diff(dob, ["years", "months"]);
+
+  return {
+    years: Math.floor(diff.years),
+    months: Math.floor(diff.months % 12),
+  };
+}
+
+function ageString(birthdate: Date | string | number) {
+  const { months, years } = calculateAgeDetailed(birthdate);
+
+  let ageString = "";
+
+  if (years > 0) {
+    ageString += `${years} ${years > 1 ? "years" : "year"}`;
+  }
+  if (years > 0 && months > 0) {
+    ageString += " and ";
+  }
+  if (months > 0) {
+    ageString += `${months} ${months > 1 ? "months" : "month"}`;
+  }
+
+  return ageString;
+}
+
+export { calculateDaysTo, calculateAge, calculateAgeDetailed, ageString };

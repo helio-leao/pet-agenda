@@ -8,6 +8,7 @@ import Pet from "../types/Pet";
 import Task from "../types/Task";
 import PetWeightRecord from "../types/PetWeightRecord";
 import LoadingIndicator from "../components/LoadingIndicator";
+import { ageString } from "../utils/timeCalculations";
 
 export default function PetPage() {
   const { id } = useParams();
@@ -59,8 +60,8 @@ export default function PetPage() {
               "pt-BR"
             ).format(new Date(latestWeightRecord.date))})`}</p>
           )}
-          <p>{`Since ${new Date(pet!.createdAt).getFullYear()}`}</p>
-          <div className="mt-2">
+          <p>{ageString(pet!.birthdate)}</p>
+          <div className="mt-4">
             <Link
               to={`/pets/${pet!._id}/weight-records`}
               className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"

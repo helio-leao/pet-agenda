@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useSession } from "../contexts/SessionContext";
 import api from "../services/api";
-import { FaSignOutAlt } from "react-icons/fa";
+import { FaSignOutAlt, FaPaw } from "react-icons/fa";
 
 export default function Header() {
   const { session, signOut } = useSession();
@@ -23,10 +23,10 @@ export default function Header() {
   return (
     <header className="flex justify-between p-4 bg-sky-600">
       <nav>
-        <ul className="flex gap-4">
+        <ul className="flex items-center gap-4">
           <li>
             <Link to="/" className="flex py-2 text-white">
-              Home
+              <FaPaw />
             </Link>
           </li>
           <li>

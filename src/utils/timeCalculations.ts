@@ -47,36 +47,28 @@ function calculateAgeDetailed(dateOfBirth: Date | string | number): {
   };
 }
 
-function ageString(birthdate: Date | string | number) {
+function ageString(birthdate: Date | string | number): string {
   const { months, years } = calculateAgeDetailed(birthdate);
 
-  let ageString = "";
+  const yearPart = years > 0 ? `${years} ${years > 1 ? "years" : "year"}` : "";
+  const monthPart =
+    months > 0 ? `${months} ${months > 1 ? "months" : "month"}` : "";
 
-  if (years > 0) {
-    ageString += `${years} ${years > 1 ? "years" : "year"}`;
+  if (yearPart && monthPart) {
+    return `${yearPart} and ${monthPart}`;
   }
-  if (years > 0 && months > 0) {
-    ageString += " and ";
-  }
-  if (months > 0) {
-    ageString += `${months} ${months > 1 ? "months" : "month"}`;
-  }
-
-  return ageString;
+  return yearPart || monthPart || "0 months";
 }
 
 function formatDaysString(days: number) {
-  let daysString = "";
-
-  daysString += days;
-
-  if (days > 1) {
-    daysString += " days";
-  } else {
-    daysString += " day";
+  if (days === 0) {
+    return "today";
   }
-
-  return daysString;
+  if (days < 0) {
+    const abs = Math.abs(days);
+    return `${abs} ${abs > 1 ? "days" : "day"} ago`;
+  }
+  return `${days} ${days > 1 ? "days" : "day"}`;
 }
 
 export {

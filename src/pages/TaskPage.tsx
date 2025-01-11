@@ -6,19 +6,25 @@ import LoadingIndicator from "../components/LoadingIndicator";
 import Task from "../types/Task";
 import { FaRegEdit } from "react-icons/fa";
 import { calculateDaysTo, formatDaysString } from "../utils/timeCalculations";
+import TaskDoneRecord from "../types/TaskDoneRecord";
 
 export default function TaskPage() {
   const { taskId } = useParams();
 
   const [task, setTask] = useState<Task>();
+  const [doneRecords, setDoneRecords] = useState<TaskDoneRecord[]>([]);
 
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get(`/tasks/${taskId}`);
-        setTask(data);
+        const [{ data: task }, { data: doneRecords }] = await Promise.all([
+          api.get(`/tasks/${taskId}`),
+          api.get(`/tasks/${taskId}/done-records`),
+        ]);
+        setTask(task);
+        setDoneRecords(doneRecords);
         setIsLoading(false);
       } catch (error) {
         console.error(error);
@@ -63,19 +69,19 @@ export default function TaskPage() {
       </div>
 
       <div className="flex flex-col gap-4 mt-6">
-        {task!.history.length === 0 ? (
+        {doneRecords.length === 0 ? (
           <p>No records of this task yet</p>
         ) : (
           <>
             <p>Done before on</p>
             <div className="flex flex-col gap-4">
-              {task!.history.map((doneDate, index) => (
+              {doneRecords.map((record) => (
                 <div
-                  key={index}
+                  key={record._id}
                   className="flex gap-4 p-4 border rounded-md justify-between"
                 >
                   <p>
-                    {Intl.DateTimeFormat("pt-BR").format(new Date(doneDate))}
+                    {Intl.DateTimeFormat("pt-BR").format(new Date(record.date))}
                   </p>
                 </div>
               ))}

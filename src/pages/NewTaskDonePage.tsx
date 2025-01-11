@@ -34,11 +34,12 @@ export default function TaskDonePage() {
 
     const data = {
       date: DateTime.fromISO(date, { zone: "local" }).toString(),
+      task: taskId,
     };
 
     try {
       setIsSaving(true);
-      await api.post(`/tasks/${taskId}/add-done-date`, data);
+      await api.post(`/tasks/${taskId}/done-records`, data);
       navigate("/tasks", { replace: true });
     } catch (error) {
       console.error(error);

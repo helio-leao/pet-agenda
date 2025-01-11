@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import LoadingIndicator from "../components/LoadingIndicator";
 import Task from "../types/Task";
-import { FaRegEdit } from "react-icons/fa";
+import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
 import { calculateDaysTo, formatDaysString } from "../utils/timeCalculations";
 import TaskDoneRecord from "../types/TaskDoneRecord";
 
@@ -31,6 +31,31 @@ export default function TaskPage() {
       }
     })();
   }, []);
+
+  async function loadTaskDoneRecords() {
+    try {
+      setIsLoading(true);
+      const { data: doneRecords } = await api.get(
+        `/tasks/${taskId}/done-records`
+      );
+      setDoneRecords(doneRecords);
+    } catch (error) {
+      console.error(error);
+      alert("Error while fetching task done records");
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function handleDelete(taskDoneId: string) {
+    try {
+      await api.delete(`/tasks/${taskId}/done-records/${taskDoneId}`);
+      await loadTaskDoneRecords();
+    } catch (error) {
+      console.error(error);
+      alert("Error while deleting weight record");
+    }
+  }
 
   if (isLoading) {
     return <LoadingIndicator />;
@@ -83,6 +108,17 @@ export default function TaskPage() {
                   <p>
                     {Intl.DateTimeFormat("pt-BR").format(new Date(record.date))}
                   </p>
+                  <div className="flex justify-end gap-4 mb-4">
+                    <Link
+                      to={`/`}
+                      // to={`/pets/${petWeightRecord.pet}/weight-records/${petWeightRecord._id}/edit`}
+                    >
+                      <FaRegEdit />
+                    </Link>
+                    <button onClick={() => handleDelete(record._id)}>
+                      <FaRegTrashAlt />
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>

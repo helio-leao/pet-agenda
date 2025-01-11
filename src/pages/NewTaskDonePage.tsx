@@ -7,7 +7,7 @@ import LoadingIndicator from "../components/LoadingIndicator";
 import Task from "../types/Task";
 
 export default function TaskDonePage() {
-  const { id } = useParams();
+  const { taskId } = useParams();
   const navigate = useNavigate();
 
   const [task, setTask] = useState<Task>();
@@ -19,7 +19,7 @@ export default function TaskDonePage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get(`/tasks/${id}`);
+        const { data } = await api.get(`/tasks/${taskId}`);
         setTask(data);
         setDate(new Date(data.date).toISOString().split("T")[0]);
         setIsLoading(false);
@@ -38,7 +38,7 @@ export default function TaskDonePage() {
 
     try {
       setIsSaving(true);
-      await api.post(`/tasks/${id}/add-done-date`, data);
+      await api.post(`/tasks/${taskId}/add-done-date`, data);
       navigate("/tasks", { replace: true });
     } catch (error) {
       console.error(error);

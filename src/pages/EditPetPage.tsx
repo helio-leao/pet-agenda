@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function EditPetPage() {
-  const { id } = useParams();
+  const { petId } = useParams();
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [type, setType] = useState("");
@@ -19,7 +19,7 @@ export default function EditPetPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data: pet } = await api.get(`/pets/${id}`);
+        const { data: pet } = await api.get(`/pets/${petId}`);
         setName(pet.name);
         setType(pet.type);
         setBreed(pet.breed);
@@ -43,14 +43,14 @@ export default function EditPetPage() {
 
     try {
       setIsSaving(true);
-      await api.patch(`/pets/${id}`, editedPet);
+      await api.patch(`/pets/${petId}`, editedPet);
 
       if (picture) {
         const formData = new FormData();
         formData.append("picture", picture);
 
         try {
-          await api.post(`/pets/${id}/picture`, formData, {
+          await api.post(`/pets/${petId}/picture`, formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },

@@ -8,7 +8,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { calculateDaysTo, formatDaysString } from "../utils/timeCalculations";
 
 export default function TaskPage() {
-  const { id } = useParams();
+  const { taskId } = useParams();
 
   const [task, setTask] = useState<Task>();
 
@@ -17,7 +17,7 @@ export default function TaskPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get(`/tasks/${id}`);
+        const { data } = await api.get(`/tasks/${taskId}`);
         setTask(data);
         setIsLoading(false);
       } catch (error) {

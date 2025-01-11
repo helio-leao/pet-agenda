@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function EditUserPage() {
-  const { id } = useParams();
+  const { userId } = useParams();
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
@@ -18,7 +18,7 @@ export default function EditUserPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data: user } = await api.get(`/users/${id}`);
+        const { data: user } = await api.get(`/users/${userId}`);
         setName(user.name);
         setUsername(user.username);
         setEmail(user.email);
@@ -42,13 +42,13 @@ export default function EditUserPage() {
     try {
       setIsSaving(true);
 
-      await api.patch(`/users/${id}`, editedUser);
+      await api.patch(`/users/${userId}`, editedUser);
 
       if (picture) {
         const formData = new FormData();
         formData.append("picture", picture);
 
-        await api.post(`/users/${id}/picture`, formData, {
+        await api.post(`/users/${userId}/picture`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

@@ -36,13 +36,13 @@ function App() {
 
           <Route element={<AuthLayout />}>
             <Route path="/" element={<HomePage />} />
-            <Route path="/users/:id/edit" element={<EditUserPage />} />
+            <Route path="/users/:userId/edit" element={<EditUserPage />} />
             <Route path="/pets" element={<PetsPage />} />
             <Route path="/pets/new" element={<NewPetPage />} />
-            <Route path="/pets/:id" element={<PetPage />} />
-            <Route path="/pets/:id/edit" element={<EditPetPage />} />
+            <Route path="/pets/:petId" element={<PetPage />} />
+            <Route path="/pets/:petId/edit" element={<EditPetPage />} />
             <Route
-              path="/pets/:id/weight-records/new"
+              path="/pets/:petId/weight-records/new"
               element={<NewPetWeightRecordPage />}
             />
             <Route
@@ -50,14 +50,17 @@ function App() {
               element={<EditPetWeightRecordPage />}
             />
             <Route
-              path="/pets/:id/weight-records"
+              path="/pets/:petId/weight-records"
               element={<PetWeightRecordsPage />}
             />
             <Route path="/tasks" element={<TasksPage />} />
             <Route path="/tasks/new" element={<NewTaskPage />} />
-            <Route path="/tasks/:id" element={<TaskPage />} />
-            <Route path="/tasks/:id/edit" element={<EditTaskPage />} />.
-            <Route path="/tasks/:id/complete" element={<NewTaskDonePage />} />
+            <Route path="/tasks/:taskId" element={<TaskPage />} />
+            <Route path="/tasks/:taskId/edit" element={<EditTaskPage />} />.
+            <Route
+              path="/tasks/:taskId/complete"
+              element={<NewTaskDonePage />}
+            />
           </Route>
         </Routes>
       </Router>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function EditTaskPage() {
-  const { id } = useParams();
+  const { taskId } = useParams();
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -22,7 +22,7 @@ export default function EditTaskPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data: task } = await api.get(`/tasks/${id}`);
+        const { data: task } = await api.get(`/tasks/${taskId}`);
         setTitle(task.title);
         setDescription(task.description);
         setDate(new Date(task.date).toISOString().split("T")[0]);
@@ -52,7 +52,7 @@ export default function EditTaskPage() {
 
     try {
       setIsSaving(true);
-      await api.patch(`/tasks/${id}`, editedTask);
+      await api.patch(`/tasks/${taskId}`, editedTask);
       navigate("/tasks", { replace: true });
     } catch (error) {
       console.error(error);

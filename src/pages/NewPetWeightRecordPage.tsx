@@ -6,7 +6,7 @@ import Pet from "../types/Pet";
 import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function NewPetWeightRecordPage() {
-  const { id } = useParams();
+  const { petId } = useParams();
   const navigate = useNavigate();
 
   const [pet, setPet] = useState<Pet>();
@@ -20,7 +20,7 @@ export default function NewPetWeightRecordPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get(`/pets/${id}`);
+        const { data } = await api.get(`/pets/${petId}`);
         setPet(data);
         setIsLoading(false);
       } catch (error) {
@@ -44,12 +44,12 @@ export default function NewPetWeightRecordPage() {
       return;
     }
 
-    const newWeightRecord = { date: formattedDate, value, pet: id };
+    const newWeightRecord = { date: formattedDate, value, pet: petId };
 
     try {
       setIsSaving(true);
-      await api.post(`/pets/${id}/weight-records`, newWeightRecord);
-      navigate(`/pets/${id}/weight-records`, { replace: true });
+      await api.post(`/pets/${petId}/weight-records`, newWeightRecord);
+      navigate(`/pets/${petId}/weight-records`, { replace: true });
     } catch (error) {
       console.error(error);
       alert("It was not possible to save");

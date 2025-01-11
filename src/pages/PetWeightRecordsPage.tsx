@@ -8,7 +8,7 @@ import { FaPlus } from "react-icons/fa";
 import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function PetWeightRecordsPage() {
-  const { id } = useParams();
+  const { petId } = useParams();
   const [pet, setPet] = useState<Pet>();
   const [petWeightRecords, setPetWeightRecords] = useState<PetWeightRecord[]>(
     []
@@ -20,8 +20,8 @@ export default function PetWeightRecordsPage() {
     (async () => {
       try {
         const [{ data: pet }, { data: petWeightRecords }] = await Promise.all([
-          api.get(`/pets/${id}`),
-          api.get(`/pets/${id}/weight-records`),
+          api.get(`/pets/${petId}`),
+          api.get(`/pets/${petId}/weight-records`),
         ]);
         setPet(pet);
         setPetWeightRecords(petWeightRecords);
@@ -36,7 +36,7 @@ export default function PetWeightRecordsPage() {
     try {
       setIsLoading(true);
       const { data: petWeightRecords } = await api.get(
-        `/pets/${id}/weight-records`
+        `/pets/${petId}/weight-records`
       );
       setPetWeightRecords(petWeightRecords);
     } catch (error) {
@@ -49,7 +49,7 @@ export default function PetWeightRecordsPage() {
 
   async function handleDelete(recordId: string) {
     try {
-      await api.delete(`pets/${id}/weight-records/${recordId}`);
+      await api.delete(`pets/${petId}/weight-records/${recordId}`);
       await loadWeightRecords();
     } catch (error) {
       console.error(error);
@@ -65,7 +65,7 @@ export default function PetWeightRecordsPage() {
     <main className="p-4">
       <div className="flex justify-between items-center mb-4">
         <h1>{`${pet!.name}'s Weight Records`}</h1>
-        <Link to={`/pets/${id}/weight-records/new`}>
+        <Link to={`/pets/${petId}/weight-records/new`}>
           <FaPlus />
         </Link>
       </div>

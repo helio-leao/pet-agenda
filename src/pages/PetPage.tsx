@@ -11,7 +11,7 @@ import LoadingIndicator from "../components/LoadingIndicator";
 import { ageString } from "../utils/timeCalculations";
 
 export default function PetPage() {
-  const { id } = useParams();
+  const { petId } = useParams();
   const [pet, setPet] = useState<Pet>();
   const [tasks, setTasks] = useState<Task[]>([]);
   const [latestWeightRecord, setLatestWeightRecord] =
@@ -23,9 +23,9 @@ export default function PetPage() {
       try {
         const [{ data: pet }, { data: tasks }, { data: petWeightRecord }] =
           await Promise.all([
-            api.get(`/pets/${id}`),
-            api.get(`/pets/${id}/tasks`),
-            api.get(`/pets/${id}/weight-records/latest`),
+            api.get(`/pets/${petId}`),
+            api.get(`/pets/${petId}/tasks`),
+            api.get(`/pets/${petId}/weight-records/latest`),
           ]);
         setPet(pet);
         setTasks(tasks);

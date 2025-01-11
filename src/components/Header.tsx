@@ -26,7 +26,7 @@ export default function Header() {
         <ul className="flex items-center gap-4">
           <li>
             <Link to="/" className="flex py-2 text-white">
-              <FaPaw />
+              <FaPaw className="size-6" />
             </Link>
           </li>
           <li>

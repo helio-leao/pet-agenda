@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import TaskCard from "../components/TaskCard";
-import { FaRegEdit } from "react-icons/fa";
+import { FaPlus, FaRegEdit } from "react-icons/fa";
 import picturePlaceholder from "../assets/picture-placeholder.svg";
 import Pet from "../types/Pet";
 import Task from "../types/Task";
@@ -72,15 +72,24 @@ export default function PetPage() {
         </div>
       </div>
 
-      {tasks.length === 0 ? (
-        <p>No tasks for this pet yet</p>
-      ) : (
-        <div className="flex flex-col gap-4">
-          {tasks.map((task) => (
-            <TaskCard key={task._id} task={task} />
-          ))}
+      <div>
+        <div className="flex justify-between items-center mb-4">
+          <h2>Tasks</h2>
+          <Link to="/tasks/new" state={{ petId }}>
+            <FaPlus />
+          </Link>
         </div>
-      )}
+
+        {tasks.length === 0 ? (
+          <p>No tasks for this pet yet</p>
+        ) : (
+          <div className="flex flex-col gap-4">
+            {tasks.map((task) => (
+              <TaskCard key={task._id} task={task} />
+            ))}
+          </div>
+        )}
+      </div>
     </main>
   );
 }

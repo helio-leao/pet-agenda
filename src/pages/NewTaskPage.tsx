@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSession } from "../contexts/SessionContext";
 import { DateTime } from "luxon";
 import { Link } from "react-router-dom";
@@ -9,6 +9,7 @@ import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function NewTaskPage() {
   const { session } = useSession();
+  const location = useLocation();
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -23,6 +24,8 @@ export default function NewTaskPage() {
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
+    setPet(location.state?.petId || "");
+
     (async () => {
       try {
         const { data: pets } = await api.get(

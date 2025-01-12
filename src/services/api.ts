@@ -54,7 +54,7 @@ api.interceptors.response.use(
     } catch (refreshError) {
       // todo: clean session instead of reload
       removeLocalStorageSession();
-      alert("Invalid token. Refresh the page to login again");
+      alert("Session expired. Please, login again.");
       window.location.reload();
 
       return Promise.reject(refreshError);

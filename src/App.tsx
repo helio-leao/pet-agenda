@@ -57,13 +57,14 @@ function App() {
             <Route path="/tasks" element={<TasksPage />} />
             <Route path="/tasks/new" element={<NewTaskPage />} />
             <Route path="/tasks/:taskId" element={<TaskPage />} />
-            <Route path="/tasks/:taskId/edit" element={<EditTaskPage />} />.
+            <Route path="/tasks/:taskId/edit" element={<EditTaskPage />} />
+
             <Route
-              path="/tasks/:taskId/complete"
+              path="/tasks/:taskId/done-records/new"
               element={<NewTaskDonePage />}
             />
             <Route
-              path="/tasks/:taskId/complete/:doneRecordId"
+              path="/tasks/:taskId/done-records/:recordId/edit"
               element={<EditTaskDoneRecordPage />}
             />
           </Route>

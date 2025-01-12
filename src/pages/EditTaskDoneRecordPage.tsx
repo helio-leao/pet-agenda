@@ -5,7 +5,7 @@ import { DateTime } from "luxon";
 import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function EditTaskDoneRecordPage() {
-  const { taskId, doneRecordId } = useParams();
+  const { taskId, recordId } = useParams();
   const navigate = useNavigate();
 
   // issue: no human readable identifier
@@ -18,7 +18,7 @@ export default function EditTaskDoneRecordPage() {
     (async () => {
       try {
         const { data } = await api.get(
-          `/tasks/${taskId}/done-records/${doneRecordId}`
+          `/tasks/${taskId}/done-records/${recordId}`
         );
         setDate(new Date(data.date).toISOString().split("T")[0]);
         setIsLoading(false);
@@ -37,7 +37,7 @@ export default function EditTaskDoneRecordPage() {
 
     try {
       setIsSaving(true);
-      await api.patch(`/tasks/${taskId}/done-records/${doneRecordId}`, data);
+      await api.patch(`/tasks/${taskId}/done-records/${recordId}`, data);
       navigate("/tasks", { replace: true });
     } catch (error) {
       console.error(error);
@@ -53,7 +53,7 @@ export default function EditTaskDoneRecordPage() {
 
   return (
     <main className="p-4">
-      <h1 className="mb-4">{`${doneRecordId}'s Edit Task Done Record`}</h1>
+      <h1 className="mb-4">{`${recordId}'s Edit Task Done Record`}</h1>
 
       <form className="flex flex-col gap-4" onSubmit={handleSave}>
         <div className="flex flex-col gap-2">

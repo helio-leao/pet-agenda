@@ -85,7 +85,7 @@ export default function TaskPage() {
 
         <div className="mt-4">
           <Link
-            to={`/tasks/${task!._id}/complete`}
+            to={`/tasks/${task!._id}/done-records/new`}
             className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
           >
             add done date
@@ -109,7 +109,9 @@ export default function TaskPage() {
                     {Intl.DateTimeFormat("pt-BR").format(new Date(record.date))}
                   </p>
                   <div className="flex justify-end gap-4 mb-4">
-                    <Link to={`/tasks/${taskId}/complete/${record._id}`}>
+                    <Link
+                      to={`/tasks/${taskId}/done-records/${record._id}/edit`}
+                    >
                       <FaRegEdit />
                     </Link>
                     <button onClick={() => handleDelete(record._id)}>

@@ -58,7 +58,6 @@ function App() {
             <Route path="/tasks/new" element={<NewTaskPage />} />
             <Route path="/tasks/:taskId" element={<TaskPage />} />
             <Route path="/tasks/:taskId/edit" element={<EditTaskPage />} />
-
             <Route
               path="/tasks/:taskId/done-records/new"
               element={<NewTaskDonePage />}

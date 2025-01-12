@@ -52,9 +52,11 @@ api.interceptors.response.use(
       config._retry = true;
       return api(config);
     } catch (refreshError) {
-      // todo: session clear logout
+      // todo: clean session instead of reload
       removeLocalStorageSession();
       alert("Invalid token. Refresh the page to login again");
+      window.location.reload();
+
       return Promise.reject(refreshError);
     }
   }

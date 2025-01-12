@@ -21,7 +21,7 @@ export default function EditPetWeightRecordPage() {
     (async () => {
       try {
         const { data } = await api.get(
-          `pets/${petId}/weight-records/${recordId}`
+          `/pets/${petId}/weight-records/${recordId}`
         );
         setPetWeightRecord(data);
         setWeight(data.value.toString());

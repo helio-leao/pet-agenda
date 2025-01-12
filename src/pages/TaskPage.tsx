@@ -109,10 +109,7 @@ export default function TaskPage() {
                     {Intl.DateTimeFormat("pt-BR").format(new Date(record.date))}
                   </p>
                   <div className="flex justify-end gap-4 mb-4">
-                    <Link
-                      to={`/`}
-                      // to={`/pets/${petWeightRecord.pet}/weight-records/${petWeightRecord._id}/edit`}
-                    >
+                    <Link to={`/tasks/${taskId}/complete/${record._id}`}>
                       <FaRegEdit />
                     </Link>
                     <button onClick={() => handleDelete(record._id)}>

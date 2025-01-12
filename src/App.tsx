@@ -19,6 +19,7 @@ import NewPetWeightRecordPage from "./pages/NewPetWeightRecordPage";
 import EditPetWeightRecordPage from "./pages/EditPetWeightRecordPage";
 import NewTaskDonePage from "./pages/NewTaskDonePage";
 import TaskPage from "./pages/TaskPage";
+import EditTaskDoneRecordPage from "./pages/EditTaskDoneRecordPage";
 
 function App() {
   return (
@@ -60,6 +61,10 @@ function App() {
             <Route
               path="/tasks/:taskId/complete"
               element={<NewTaskDonePage />}
+            />
+            <Route
+              path="/tasks/:taskId/complete/:doneRecordId"
+              element={<EditTaskDoneRecordPage />}
             />
           </Route>
         </Routes>

@@ -8,7 +8,6 @@ export default function EditTaskDoneRecordPage() {
   const { taskId, recordId } = useParams();
   const navigate = useNavigate();
 
-  // issue: no human readable identifier
   const [taskTitle, setTaskTitle] = useState("");
   const [date, setDate] = useState("");
 

@@ -139,7 +139,7 @@ export default function EditPetPage() {
             Save
           </button>
           <Link
-            to="/"
+            to={`/pets/${petId}`}
             className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
           >
             Cancel

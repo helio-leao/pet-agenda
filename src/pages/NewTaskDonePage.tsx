@@ -77,7 +77,7 @@ export default function TaskDonePage() {
             Save
           </button>
           <Link
-            to="/"
+            to={`/tasks/${taskId}`}
             className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
           >
             Cancel

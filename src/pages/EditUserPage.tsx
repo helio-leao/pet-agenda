@@ -142,7 +142,7 @@ export default function EditUserPage() {
             Save
           </button>
           <Link
-            to="/signup"
+            to="/"
             className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
           >
             Cancel

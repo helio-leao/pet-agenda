@@ -8,6 +8,7 @@ export default function EditTaskDoneRecordPage() {
   const { taskId, doneRecordId } = useParams();
   const navigate = useNavigate();
 
+  // issue: no human readable identifier
   const [date, setDate] = useState("");
 
   const [isLoading, setIsLoading] = useState(true);
@@ -52,7 +53,7 @@ export default function EditTaskDoneRecordPage() {
 
   return (
     <main className="p-4">
-      <h1 className="mb-4">{doneRecordId}</h1>
+      <h1 className="mb-4">{`${doneRecordId}'s Edit Task Done Record`}</h1>
 
       <form className="flex flex-col gap-4" onSubmit={handleSave}>
         <div className="flex flex-col gap-2">

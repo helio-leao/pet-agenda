@@ -9,6 +9,7 @@ export default function EditPetWeightRecordPage() {
   const { petId, recordId } = useParams();
   const navigate = useNavigate();
 
+  // issue: getting this just for the pet's name
   const [petWeightRecord, setPetWeightRecord] = useState<PetWeightRecord>();
 
   const [weight, setWeight] = useState("");

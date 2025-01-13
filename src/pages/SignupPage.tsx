@@ -1,6 +1,6 @@
 import { useState } from "react";
 import api from "../services/api";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function SignupPage() {
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ export default function SignupPage() {
         "User created successfully. Check your email to verify your account"
       );
 
-      navigate("/login", { replace: true });
+      navigate(-1);
     } catch (error) {
       console.error(error);
       alert("Error while saving");
@@ -144,12 +144,15 @@ export default function SignupPage() {
           >
             Save
           </button>
-          <Link
-            to="/"
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(-1);
+            }}
             className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
           >
             Cancel
-          </Link>
+          </button>
         </div>
       </form>
 

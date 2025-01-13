@@ -2,10 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../services/api";
 import { useSession } from "../contexts/SessionContext";
-import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
-  const navigate = useNavigate();
   const { signIn } = useSession();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +25,6 @@ export default function LoginPage() {
       const sessionUser = { _id: data.user._id };
 
       signIn({ ...data, user: sessionUser });
-      navigate("/", { replace: true });
     } catch (error) {
       console.error(error);
       alert("Error while logging in");

@@ -54,9 +54,7 @@ export default function EditPetWeightRecordPage() {
     try {
       setIsSaving(true);
       await api.patch(`/pets/${petId}/weight-records/${recordId}`, updates);
-      navigate(`/pets/${petId}/weight-records`, {
-        replace: true,
-      });
+      navigate(-1);
     } catch (error) {
       console.error(error);
       alert("It was not possible to save");
@@ -105,6 +103,15 @@ export default function EditPetWeightRecordPage() {
             className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
           >
             Save
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(-1);
+            }}
+            className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
+          >
+            Cancel
           </button>
         </div>
       </form>

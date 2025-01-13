@@ -3,7 +3,6 @@ import api from "../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSession } from "../contexts/SessionContext";
 import { DateTime } from "luxon";
-import { Link } from "react-router-dom";
 import Pet from "../types/Pet";
 import LoadingIndicator from "../components/LoadingIndicator";
 
@@ -57,7 +56,7 @@ export default function NewTaskPage() {
     try {
       setIsSaving(true);
       await api.post("/tasks", newTask);
-      navigate("/tasks", { replace: true });
+      navigate(-1);
     } catch (error) {
       console.error(error);
       alert("Error while saving");
@@ -169,12 +168,15 @@ export default function NewTaskPage() {
           >
             Save
           </button>
-          <Link
-            to="/"
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(-1);
+            }}
             className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
           >
             Cancel
-          </Link>
+          </button>
         </div>
       </form>
     </main>

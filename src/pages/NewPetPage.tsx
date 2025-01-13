@@ -3,7 +3,6 @@ import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "../contexts/SessionContext";
 import { DateTime } from "luxon";
-import { Link } from "react-router-dom";
 
 export default function NewPetPage() {
   const { session } = useSession();
@@ -45,7 +44,7 @@ export default function NewPetPage() {
           console.error(error);
         }
       }
-      navigate("/pets", { replace: true });
+      navigate(-1);
     } catch (error) {
       console.error(error);
       alert("Error while saving");
@@ -121,12 +120,15 @@ export default function NewPetPage() {
           >
             Save
           </button>
-          <Link
-            to="/"
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(-1);
+            }}
             className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
           >
             Cancel
-          </Link>
+          </button>
         </div>
       </form>
     </main>

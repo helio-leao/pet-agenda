@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function EditUserPage() {
@@ -54,7 +53,7 @@ export default function EditUserPage() {
           },
         });
       }
-      navigate("/", { replace: true });
+      navigate(-1);
     } catch (error) {
       console.error(error);
       alert("Error while saving");
@@ -141,12 +140,15 @@ export default function EditUserPage() {
           >
             Save
           </button>
-          <Link
-            to="/"
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(-1);
+            }}
             className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
           >
             Cancel
-          </Link>
+          </button>
         </div>
       </form>
 

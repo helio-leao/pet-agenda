@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import api from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 import { DateTime } from "luxon";
-import { Link } from "react-router-dom";
 import LoadingIndicator from "../components/LoadingIndicator";
 
 export default function EditTaskPage() {
@@ -53,7 +52,7 @@ export default function EditTaskPage() {
     try {
       setIsSaving(true);
       await api.patch(`/tasks/${taskId}`, editedTask);
-      navigate("/tasks", { replace: true });
+      navigate(-1);
     } catch (error) {
       console.error(error);
       alert("Error while saving");
@@ -145,12 +144,15 @@ export default function EditTaskPage() {
           >
             Save
           </button>
-          <Link
-            to={`/tasks/${taskId}`}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(-1);
+            }}
             className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
           >
             Cancel
-          </Link>
+          </button>
         </div>
       </form>
     </main>

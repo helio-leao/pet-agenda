@@ -49,7 +49,7 @@ export default function NewPetWeightRecordPage() {
     try {
       setIsSaving(true);
       await api.post(`/pets/${petId}/weight-records`, newWeightRecord);
-      navigate(`/pets/${petId}/weight-records`, { replace: true });
+      navigate(-1);
     } catch (error) {
       console.error(error);
       alert("It was not possible to save");
@@ -96,6 +96,15 @@ export default function NewPetWeightRecordPage() {
             className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
           >
             Save
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(-1);
+            }}
+            className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
+          >
+            Cancel
           </button>
         </div>
       </form>

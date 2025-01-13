@@ -13,5 +13,9 @@ export default function AuthLayout() {
     return <Navigate to="/" />;
   }
 
-  return <Outlet />;
+  return (
+    <div className="flex justify-center items-center min-h-dvh">
+      <Outlet />
+    </div>
+  );
 }

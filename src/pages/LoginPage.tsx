@@ -34,7 +34,7 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="p-4">
+    <main className="flex flex-col flex-grow max-w-sm">
       <h1 className="mb-4">Login</h1>
 
       <form className="flex flex-col gap-4" onSubmit={handleLogin}>

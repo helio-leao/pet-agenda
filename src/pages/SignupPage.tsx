@@ -50,8 +50,7 @@ export default function SignupPage() {
       alert(
         "User created successfully. Check your email to verify your account"
       );
-
-      navigate(-1);
+      navigate("/login", { replace: true });
     } catch (error) {
       console.error(error);
       alert("Error while saving");

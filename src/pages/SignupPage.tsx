@@ -60,7 +60,7 @@ export default function SignupPage() {
   }
 
   return (
-    <main className="flex flex-col flex-grow max-w-sm">
+    <main className="flex flex-col flex-grow max-w-sm p-4">
       <h1 className="mb-4">Signup</h1>
 
       <form className="flex flex-col gap-4" onSubmit={handleSave}>

@@ -45,7 +45,7 @@ export default function PetPage() {
     <main className="p-4">
       <div className="flex gap-4 mb-4">
         <img
-          src={pet!.picture || picturePlaceholder}
+          src={pet!.pictureUrl || picturePlaceholder}
           className="object-cover rounded-lg min-h-32 min-w-32 h-32 w-32"
         />
         <div>

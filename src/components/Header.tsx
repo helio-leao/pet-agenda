@@ -21,7 +21,7 @@ export default function Header() {
   }
 
   return (
-    <header className="flex justify-between p-4 bg-sky-600">
+    <header className="flex justify-between items-center gap-4 p-4 bg-sky-600">
       <div className="flex items-center gap-6">
         <FaPaw className="size-6 text-white" />
         <nav>

@@ -22,25 +22,28 @@ export default function Header() {
 
   return (
     <header className="flex justify-between p-4 bg-sky-600">
-      <nav>
-        <ul className="flex items-center gap-4">
-          <li>
-            <Link to="/" className="flex py-2 text-white">
-              <FaPaw className="size-6" />
-            </Link>
-          </li>
-          <li>
-            <Link to="/pets" className="flex py-2 text-white">
-              Pets
-            </Link>
-          </li>
-          <li>
-            <Link to="/tasks" className="flex py-2 text-white">
-              Tasks
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <div className="flex items-center gap-6">
+        <FaPaw className="size-6 text-white" />
+        <nav>
+          <ul className="flex gap-4">
+            <li>
+              <Link to="/" className="flex py-2 text-white">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/pets" className="flex py-2 text-white">
+                Pets
+              </Link>
+            </li>
+            <li>
+              <Link to="/tasks" className="flex py-2 text-white">
+                Tasks
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
 
       <button onClick={handleLogout} className="text-white">
         <FaSignOutAlt />

@@ -12,7 +12,7 @@ export default function PetCard({ pet }: PetCardProps) {
   return (
     <div className="flex gap-4 p-4 border rounded-md">
       <img
-        src={pet.picture || picturePlaceholder}
+        src={pet.pictureUrl || picturePlaceholder}
         className="rounded-md object-cover min-h-20 min-w-20 h-20 w-20"
       />
       <div className="flex-1">

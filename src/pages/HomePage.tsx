@@ -39,7 +39,7 @@ export default function HomePage() {
     <main className="p-4">
       <div className="flex gap-4 mb-4">
         <img
-          src={user!.picture || picturePlaceholder}
+          src={user!.pictureUrl || picturePlaceholder}
           className="object-cover rounded-lg min-h-32 min-w-32 h-32 w-32"
         />
         <div className="flex flex-col">

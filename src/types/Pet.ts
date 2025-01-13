@@ -4,7 +4,7 @@ export default interface Pet {
   type: string;
   breed: string;
   birthdate: Date;
-  picture: string;
+  pictureUrl: string;
   user: string;
   createdAt: string;
 }

@@ -4,7 +4,7 @@ export default interface User {
   username: string;
   password: string;
   email: string;
-  picture: string;
+  pictureUrl: string;
   verified: boolean;
   createdAt: string;
 }

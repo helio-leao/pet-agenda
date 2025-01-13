@@ -10,7 +10,7 @@ type PetCardProps = {
 
 export default function PetCard({ pet }: PetCardProps) {
   return (
-    <div className="flex gap-4 p-4 border rounded-md">
+    <div className="flex gap-2 p-4 border rounded-md">
       <img
         src={pet.pictureUrl || picturePlaceholder}
         className="rounded-md object-cover min-h-20 min-w-20 h-20 w-20"
@@ -19,7 +19,7 @@ export default function PetCard({ pet }: PetCardProps) {
         <div className="flex justify-between">
           <p>{pet.name}</p>
 
-          <div className="flex gap-4">
+          <div className="flex gap-2">
             <Link to={`/pets/${pet._id}/edit`}>
               <FaRegEdit />
             </Link>

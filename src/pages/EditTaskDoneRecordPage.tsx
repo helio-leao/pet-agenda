@@ -56,7 +56,7 @@ export default function EditTaskDoneRecordPage() {
     <main className="p-4">
       <h1 className="mb-4">{`${taskTitle}'s Edit Task Done Record`}</h1>
 
-      <form className="flex flex-col gap-4" onSubmit={handleSave}>
+      <form className="flex flex-col gap-2" onSubmit={handleSave}>
         <div className="flex flex-col gap-2">
           <label htmlFor="date">Done Date*</label>
           <input

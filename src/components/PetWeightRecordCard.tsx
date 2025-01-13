@@ -12,13 +12,13 @@ export default function PetWeightRecordCard({
   onDeleteClick,
 }: PetWeightRecordCardProps) {
   return (
-    <div className="flex gap-4 p-4 border rounded-md justify-between">
+    <div className="flex gap-2 p-4 border rounded-md justify-between">
       <p>
         {`${Intl.DateTimeFormat("pt-BR").format(
           new Date(petWeightRecord.date)
         )} - ${petWeightRecord.value} kg`}
       </p>
-      <div className="flex justify-end gap-4 mb-4">
+      <div className="flex justify-end gap-2 mb-4">
         <Link
           to={`/pets/${petWeightRecord.pet}/weight-records/${petWeightRecord._id}/edit`}
         >

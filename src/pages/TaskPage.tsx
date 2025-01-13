@@ -66,9 +66,9 @@ export default function TaskPage() {
       <h1 className="mb-4">Task</h1>
 
       <div>
-        <div className="flex gap-4">
+        <div className="flex gap-2">
           <h3>{task!.title}</h3>
-          <div className="flex gap-4">
+          <div className="flex gap-2">
             <Link to={`/tasks/${task!._id}/edit`}>
               <FaRegEdit />
             </Link>
@@ -93,22 +93,22 @@ export default function TaskPage() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 mt-6">
+      <div className="flex flex-col gap-2 mt-6">
         {doneRecords.length === 0 ? (
           <p>No records of this task yet</p>
         ) : (
           <>
             <p>Done before on</p>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
               {doneRecords.map((record) => (
                 <div
                   key={record._id}
-                  className="flex gap-4 p-4 border rounded-md justify-between"
+                  className="flex gap-2 p-4 border rounded-md justify-between"
                 >
                   <p>
                     {Intl.DateTimeFormat("pt-BR").format(new Date(record.date))}
                   </p>
-                  <div className="flex justify-end gap-4 mb-4">
+                  <div className="flex justify-end gap-2 mb-4">
                     <Link
                       to={`/tasks/${taskId}/done-records/${record._id}/edit`}
                     >

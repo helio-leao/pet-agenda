@@ -40,7 +40,7 @@ export default function TasksPage() {
       {tasks.length === 0 ? (
         <p>You have no tasks yet</p>
       ) : (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
           {tasks.map((task) => (
             <TaskCard key={task._id} task={task} />
           ))}

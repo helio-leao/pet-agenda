@@ -57,7 +57,7 @@ export default function NewPetPage() {
     <main className="p-4">
       <h1 className="mb-4">New Pet</h1>
 
-      <form className="flex flex-col gap-4" onSubmit={handleSave}>
+      <form className="flex flex-col gap-2" onSubmit={handleSave}>
         <div className="flex flex-col gap-2">
           <label htmlFor="name">Name*</label>
           <input

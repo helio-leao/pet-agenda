@@ -37,13 +37,13 @@ export default function HomePage() {
 
   return (
     <main className="p-4">
-      <div className="flex gap-4 mb-4">
+      <div className="flex gap-2 mb-4">
         <img
           src={user!.pictureUrl || picturePlaceholder}
           className="object-cover rounded-lg min-h-32 min-w-32 h-32 w-32"
         />
         <div className="flex flex-col">
-          <div className="flex gap-4">
+          <div className="flex gap-2">
             <h2>{user!.name}</h2>
             <Link to={`/users/${user!._id}/edit`}>
               <FaRegEdit />
@@ -71,7 +71,7 @@ export default function HomePage() {
       {pets.length === 0 ? (
         <p>No pets to call your own</p>
       ) : (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
           {pets.map((pet) => (
             <PetCard key={pet._id} pet={pet} />
           ))}

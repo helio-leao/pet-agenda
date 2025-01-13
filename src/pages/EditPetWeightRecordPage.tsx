@@ -73,7 +73,7 @@ export default function EditPetWeightRecordPage() {
         petWeightRecord!.pet.name
       }'s Edit Weight Record`}</h1>
 
-      <form className="flex flex-col gap-4" onSubmit={handleSave}>
+      <form className="flex flex-col gap-2" onSubmit={handleSave}>
         <div className="flex flex-col gap-2">
           <label htmlFor="weight">Weight*</label>
           <input

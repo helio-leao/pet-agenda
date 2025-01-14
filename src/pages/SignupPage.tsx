@@ -103,9 +103,9 @@ export default function SignupPage() {
         <div className="flex flex-col gap-2">
           <label htmlFor="confirm-password">Confirm Password*</label>
           <input
-            type="confirm-password"
+            type="password"
             className="border p-4 rounded-lg"
-            id="password"
+            id="confirm-password"
             placeholder="confirm your password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}

@@ -34,7 +34,10 @@ export default function TaskCard({ task }: TaskCardProps) {
       } ${task.interval.unit.toLowerCase()}`}</p>
 
       {task.pet.name && (
-        <Link to={`/pets/${task.pet._id}`} className="flex items-center gap-2">
+        <Link
+          to={`/pets/${task.pet._id}`}
+          className="flex items-center gap-2 self-start"
+        >
           <FaPaw />
           {task.pet.name}
         </Link>

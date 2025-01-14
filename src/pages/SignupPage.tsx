@@ -101,9 +101,9 @@ export default function SignupPage() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="password">Confirm Password*</label>
+          <label htmlFor="confirm-password">Confirm Password*</label>
           <input
-            type="password"
+            type="confirm-password"
             className="border p-4 rounded-lg"
             id="password"
             placeholder="confirm your password"

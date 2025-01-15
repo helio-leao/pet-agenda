@@ -15,7 +15,7 @@ export default function TaskCard({ task }: TaskCardProps) {
     <div className={`flex flex-col p-4 border rounded-md ${getColor(daysTo)}`}>
       <div className="flex justify-between gap-4">
         <h3>{task.title}</h3>
-        <div className="flex gap-4">
+        <div className="flex items-center gap-4">
           <Link to={`/tasks/${task._id}/edit`}>
             <FaRegEdit />
           </Link>

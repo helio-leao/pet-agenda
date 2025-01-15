@@ -109,7 +109,7 @@ export default function TaskPage() {
                       DateTime.DATE_SHORT
                     )}
                   </p>
-                  <div className="flex justify-end gap-2 mb-4">
+                  <div className="flex items-center gap-4">
                     <Link
                       to={`/tasks/${taskId}/done-records/${record._id}/edit`}
                     >

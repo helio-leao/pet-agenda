@@ -19,7 +19,7 @@ export default function PetWeightRecordCard({
           DateTime.DATE_SHORT
         )} - ${petWeightRecord.value} kg`}
       </p>
-      <div className="flex justify-end gap-2 mb-4">
+      <div className="flex items-center gap-4">
         <Link
           to={`/pets/${petWeightRecord.pet}/weight-records/${petWeightRecord._id}/edit`}
         >

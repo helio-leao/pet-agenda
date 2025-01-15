@@ -20,7 +20,7 @@ export default function PetCard({ pet }: PetCardProps) {
         <div className="flex justify-between">
           <p>{pet.name}</p>
 
-          <div className="flex gap-4">
+          <div className="flex items-center gap-4">
             <Link to={`/pets/${pet._id}/edit`}>
               <FaRegEdit />
             </Link>

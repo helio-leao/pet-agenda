@@ -84,12 +84,12 @@ export default function TaskPage() {
         } ${task!.interval.unit.toLowerCase()}`}</p>
       </div>
 
-      <div className="flex flex-col gap-2 mt-6">
+      <div className="flex flex-col mt-6">
         {doneRecords.length === 0 ? (
           <p>No records of this task yet</p>
         ) : (
           <>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center mb-4">
               <p>Done before on</p>
               <Link to={`/tasks/${task!._id}/done-records/new`}>
                 <FaPlus />

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import LoadingIndicator from "../components/LoadingIndicator";
 import Task from "../types/Task";
-import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
+import { FaRegEdit, FaRegTrashAlt, FaPlus } from "react-icons/fa";
 import { calculateDaysTo, formatDaysString } from "../utils/timeCalculations";
 import TaskDoneRecord from "../types/TaskDoneRecord";
 
@@ -82,15 +82,6 @@ export default function TaskPage() {
         <p>{`Once every ${
           task!.interval.value
         } ${task!.interval.unit.toLowerCase()}`}</p>
-
-        <div className="mt-4">
-          <Link
-            to={`/tasks/${task!._id}/done-records/new`}
-            className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
-          >
-            add done date
-          </Link>
-        </div>
       </div>
 
       <div className="flex flex-col gap-2 mt-6">
@@ -98,7 +89,12 @@ export default function TaskPage() {
           <p>No records of this task yet</p>
         ) : (
           <>
-            <p>Done before on</p>
+            <div className="flex justify-between items-center">
+              <p>Done before on</p>
+              <Link to={`/tasks/${task!._id}/done-records/new`}>
+                <FaPlus />
+              </Link>
+            </div>
             <div className="flex flex-col gap-2">
               {doneRecords.map((record) => (
                 <div

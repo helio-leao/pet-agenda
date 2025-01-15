@@ -76,8 +76,8 @@ export default function TaskPage() {
         </div>
         <p>{task!.description}</p>
         <p>
-          {Intl.DateTimeFormat("pt-BR").format(new Date(task!.date))} (
-          {formatDaysString(calculateDaysTo(task!.date))})
+          {Intl.DateTimeFormat("pt-BR").format(new Date(task!.dueDate))} (
+          {formatDaysString(calculateDaysTo(task!.dueDate))})
         </p>
         <p>{`Once every ${
           task!.interval.value

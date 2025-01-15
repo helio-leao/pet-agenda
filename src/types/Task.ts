@@ -6,7 +6,7 @@ export default interface Task {
   pet: Pet;
   title: string;
   description: string;
-  date: Date;
+  dueDate: Date;
   interval: {
     unit: "HOURS" | "DAYS" | "WEEKS" | "MONTHS" | "YEARS";
     value: number;

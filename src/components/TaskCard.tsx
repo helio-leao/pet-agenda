@@ -8,7 +8,7 @@ type TaskCardProps = {
 };
 
 export default function TaskCard({ task }: TaskCardProps) {
-  const daysTo = calculateDaysTo(task.date);
+  const daysTo = calculateDaysTo(task.dueDate);
 
   return (
     <div className={`flex flex-col p-4 border rounded-md ${getColor(daysTo)}`}>
@@ -26,7 +26,7 @@ export default function TaskCard({ task }: TaskCardProps) {
 
       <p>{task.description}</p>
       <p>
-        {Intl.DateTimeFormat("pt-BR").format(new Date(task.date))} (
+        {Intl.DateTimeFormat("pt-BR").format(new Date(task.dueDate))} (
         {formatDaysString(daysTo)})
       </p>
       <p>{`Once every ${

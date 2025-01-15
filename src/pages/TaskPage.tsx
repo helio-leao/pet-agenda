@@ -85,16 +85,17 @@ export default function TaskPage() {
       </div>
 
       <div className="flex flex-col mt-6">
+        <div className="flex justify-between items-center mb-4">
+          <p>Done before on</p>
+          <Link to={`/tasks/${task!._id}/done-records/new`}>
+            <FaPlus />
+          </Link>
+        </div>
+
         {doneRecords.length === 0 ? (
           <p>No records of this task yet</p>
         ) : (
           <>
-            <div className="flex justify-between items-center mb-4">
-              <p>Done before on</p>
-              <Link to={`/tasks/${task!._id}/done-records/new`}>
-                <FaPlus />
-              </Link>
-            </div>
             <div className="flex flex-col gap-4">
               {doneRecords.map((record) => (
                 <div

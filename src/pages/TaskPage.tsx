@@ -7,6 +7,7 @@ import Task from "../types/Task";
 import { FaRegEdit, FaRegTrashAlt, FaPlus } from "react-icons/fa";
 import { calculateDaysTo, formatDaysString } from "../utils/timeCalculations";
 import TaskDoneRecord from "../types/TaskDoneRecord";
+import { DateTime } from "luxon";
 
 export default function TaskPage() {
   const { taskId } = useParams();
@@ -76,8 +77,9 @@ export default function TaskPage() {
         </div>
         <p>{task!.description}</p>
         <p>
-          {Intl.DateTimeFormat("pt-BR").format(new Date(task!.dueDate))} (
-          {formatDaysString(calculateDaysTo(task!.dueDate))})
+          {`${DateTime.fromISO(task!.dueDate).toLocaleString(
+            DateTime.DATE_SHORT
+          )} (${formatDaysString(calculateDaysTo(task!.dueDate))})`}
         </p>
         <p>{`Once every ${
           task!.interval.value
@@ -103,7 +105,9 @@ export default function TaskPage() {
                   className="flex gap-4 p-4 border rounded-md justify-between"
                 >
                   <p>
-                    {Intl.DateTimeFormat("pt-BR").format(new Date(record.date))}
+                    {DateTime.fromISO(record.date).toLocaleString(
+                      DateTime.DATE_SHORT
+                    )}
                   </p>
                   <div className="flex justify-end gap-2 mb-4">
                     <Link

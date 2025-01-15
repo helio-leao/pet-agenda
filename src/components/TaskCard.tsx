@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { FaRegEdit, FaArrowRight, FaPaw } from "react-icons/fa";
 import Task from "../types/Task";
 import { calculateDaysTo, formatDaysString } from "../utils/timeCalculations";
+import { DateTime } from "luxon";
 
 type TaskCardProps = {
   task: Task;
@@ -26,7 +27,7 @@ export default function TaskCard({ task }: TaskCardProps) {
 
       <p>{task.description}</p>
       <p>
-        {Intl.DateTimeFormat("pt-BR").format(new Date(task.dueDate))} (
+        {DateTime.fromISO(task.dueDate).toLocaleString(DateTime.DATE_SHORT)} (
         {formatDaysString(daysTo)})
       </p>
       <p>{`Once every ${

@@ -6,10 +6,9 @@ export default interface Task {
   pet: Pet;
   title: string;
   description: string;
-  dueDate: Date;
+  dueDate: string;
   interval: {
     unit: "HOURS" | "DAYS" | "WEEKS" | "MONTHS" | "YEARS";
     value: number;
   };
-  history: Date[];
 }

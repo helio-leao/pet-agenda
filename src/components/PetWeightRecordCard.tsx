@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import PetWeightRecord from "../types/PetWeightRecord";
 import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
+import { DateTime } from "luxon";
 
 type PetWeightRecordCardProps = {
   petWeightRecord: PetWeightRecord;
@@ -14,8 +15,8 @@ export default function PetWeightRecordCard({
   return (
     <div className="flex gap-4 p-4 border rounded-md justify-between">
       <p>
-        {`${Intl.DateTimeFormat("pt-BR").format(
-          new Date(petWeightRecord.date)
+        {`${DateTime.fromISO(petWeightRecord.date).toLocaleString(
+          DateTime.DATE_SHORT
         )} - ${petWeightRecord.value} kg`}
       </p>
       <div className="flex justify-end gap-2 mb-4">

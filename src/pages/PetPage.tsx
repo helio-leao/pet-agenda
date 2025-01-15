@@ -9,6 +9,7 @@ import Task from "../types/Task";
 import PetWeightRecord from "../types/PetWeightRecord";
 import LoadingIndicator from "../components/LoadingIndicator";
 import { ageString } from "../utils/timeCalculations";
+import { DateTime } from "luxon";
 
 export default function PetPage() {
   const { petId } = useParams();
@@ -57,9 +58,11 @@ export default function PetPage() {
           </div>
           {latestWeightRecord && (
             <div className="flex gap-4">
-              <p>{`${latestWeightRecord.value} kg (${Intl.DateTimeFormat(
-                "pt-BR"
-              ).format(new Date(latestWeightRecord.date))})`}</p>
+              <p>
+                {DateTime.fromISO(latestWeightRecord.date).toLocaleString(
+                  DateTime.DATE_SHORT
+                )}
+              </p>
               <Link to={`/pets/${pet!._id}/weight-records`}>
                 <FaWeightHanging />
               </Link>

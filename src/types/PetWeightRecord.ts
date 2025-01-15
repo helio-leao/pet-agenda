@@ -3,6 +3,6 @@ import Pet from "./Pet";
 export default interface PetWeightRecord {
   _id: string;
   value: number;
-  date: Date;
+  date: string;
   pet: Pet;
 }

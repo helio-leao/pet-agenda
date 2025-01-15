@@ -3,6 +3,7 @@ import { FaRegEdit, FaArrowRight } from "react-icons/fa";
 import picturePlaceholder from "../assets/picture-placeholder.svg";
 import Pet from "../types/Pet";
 import { ageString } from "../utils/timeCalculations";
+import { DateTime } from "luxon";
 
 type PetCardProps = {
   pet: Pet;
@@ -29,7 +30,9 @@ export default function PetCard({ pet }: PetCardProps) {
           </div>
         </div>
 
-        <p>{Intl.DateTimeFormat("pt-BR").format(new Date(pet.birthdate))}</p>
+        <p>
+          {DateTime.fromISO(pet.birthdate).toLocaleString(DateTime.DATE_SHORT)}
+        </p>
         <p>{ageString(pet.birthdate)}</p>
       </div>
     </div>

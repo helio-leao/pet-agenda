@@ -66,9 +66,9 @@ export default function TaskPage() {
       <h1 className="mb-4">Task</h1>
 
       <div>
-        <div className="flex gap-2">
+        <div className="flex gap-4">
           <h3>{task!.title}</h3>
-          <div className="flex gap-2">
+          <div className="flex gap-4">
             <Link to={`/tasks/${task!._id}/edit`}>
               <FaRegEdit />
             </Link>
@@ -95,11 +95,11 @@ export default function TaskPage() {
                 <FaPlus />
               </Link>
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-4">
               {doneRecords.map((record) => (
                 <div
                   key={record._id}
-                  className="flex gap-2 p-4 border rounded-md justify-between"
+                  className="flex gap-4 p-4 border rounded-md justify-between"
                 >
                   <p>
                     {Intl.DateTimeFormat("pt-BR").format(new Date(record.date))}

@@ -73,7 +73,7 @@ export default function PetWeightRecordsPage() {
       {petWeightRecords.length === 0 ? (
         <p>No weight records yet</p>
       ) : (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           {petWeightRecords.map((petWeightRecord) => (
             <PetWeightRecordCard
               key={petWeightRecord._id}

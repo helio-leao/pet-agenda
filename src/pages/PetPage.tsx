@@ -43,20 +43,20 @@ export default function PetPage() {
 
   return (
     <main className="p-4">
-      <div className="flex gap-2 mb-4">
+      <div className="flex gap-4 mb-4">
         <img
           src={pet!.pictureUrl || picturePlaceholder}
           className="object-cover rounded-lg min-h-32 min-w-32 h-32 w-32"
         />
         <div>
-          <div className="flex gap-2">
+          <div className="flex gap-4">
             <h2>{pet!.name}</h2>
             <Link to={`/pets/${pet!._id}/edit`}>
               <FaRegEdit />
             </Link>
           </div>
           {latestWeightRecord && (
-            <div className="flex gap-2">
+            <div className="flex gap-4">
               <p>{`${latestWeightRecord.value} kg (${Intl.DateTimeFormat(
                 "pt-BR"
               ).format(new Date(latestWeightRecord.date))})`}</p>
@@ -80,7 +80,7 @@ export default function PetPage() {
         {tasks.length === 0 ? (
           <p>No tasks for this pet yet</p>
         ) : (
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-4">
             {tasks.map((task) => (
               <TaskCard key={task._id} task={task} />
             ))}

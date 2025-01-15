@@ -74,8 +74,8 @@ export default function EditPetPage() {
     <main className="p-4">
       <h1 className="mb-4">Edit Pet</h1>
 
-      <form className="flex flex-col gap-2" onSubmit={handleSave}>
-        <div className="flex flex-col gap-2">
+      <form className="flex flex-col gap-4" onSubmit={handleSave}>
+        <div className="flex flex-col gap-4">
           <label htmlFor="name">Name*</label>
           <input
             type="text"
@@ -86,7 +86,7 @@ export default function EditPetPage() {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           <label htmlFor="type">Type*</label>
           <input
             type="text"
@@ -97,7 +97,7 @@ export default function EditPetPage() {
             onChange={(e) => setType(e.target.value)}
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           <label htmlFor="breed">Breed*</label>
           <input
             type="text"
@@ -108,7 +108,7 @@ export default function EditPetPage() {
             onChange={(e) => setBreed(e.target.value)}
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           <label htmlFor="birthdate">Birthdate*</label>
           <input
             type="date"
@@ -118,7 +118,7 @@ export default function EditPetPage() {
             onChange={(e) => setBirthdate(e.target.value)}
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           <label htmlFor="picture">Picture</label>
           <input
             type="file"

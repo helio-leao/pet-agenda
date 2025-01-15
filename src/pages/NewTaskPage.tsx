@@ -73,8 +73,8 @@ export default function NewTaskPage() {
     <main className="p-4">
       <h1 className="mb-4">New Task</h1>
 
-      <form className="flex flex-col gap-2" onSubmit={handleSave}>
-        <div className="flex flex-col gap-2">
+      <form className="flex flex-col gap-4" onSubmit={handleSave}>
+        <div className="flex flex-col gap-4">
           <label htmlFor="title">Title*</label>
           <input
             type="text"
@@ -86,7 +86,7 @@ export default function NewTaskPage() {
           />
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           <label htmlFor="description">Description</label>
           <textarea
             className="border p-4 rounded-lg resize-none"
@@ -98,7 +98,7 @@ export default function NewTaskPage() {
           />
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           <label htmlFor="date">Date*</label>
           <input
             type="date"
@@ -109,8 +109,8 @@ export default function NewTaskPage() {
           />
         </div>
 
-        <div className="flex flex-col gap-2">
-          <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4">
             <label htmlFor="interval">Interval*</label>
             <select
               name="interval"
@@ -141,7 +141,7 @@ export default function NewTaskPage() {
           />
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           <label htmlFor="pet">Pet*</label>
           <select
             name="pet"

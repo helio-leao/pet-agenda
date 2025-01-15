@@ -3,7 +3,6 @@ import api from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 import { DateTime } from "luxon";
 import LoadingIndicator from "../components/LoadingIndicator";
-import Task from "../types/Task";
 
 export default function EditTaskPage() {
   const { taskId } = useParams();

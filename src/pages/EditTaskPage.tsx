@@ -3,6 +3,7 @@ import api from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 import { DateTime } from "luxon";
 import LoadingIndicator from "../components/LoadingIndicator";
+import Task from "../types/Task";
 
 export default function EditTaskPage() {
   const { taskId } = useParams();
@@ -24,7 +25,7 @@ export default function EditTaskPage() {
         const { data: task } = await api.get(`/tasks/${taskId}`);
         setTitle(task.title);
         setDescription(task.description);
-        setDueDate(new Date(task.date).toISOString().split("T")[0]);
+        setDueDate(new Date(task.dueDate).toISOString().split("T")[0]);
         setIntervalValue(task.interval.value.toString());
         setIntervalUnit(task.interval.unit);
         setPet(task.pet);

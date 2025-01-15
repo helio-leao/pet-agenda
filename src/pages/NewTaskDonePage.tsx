@@ -20,7 +20,7 @@ export default function TaskDonePage() {
       try {
         const { data } = await api.get(`/tasks/${taskId}`);
         setTask(data);
-        setDate(new Date(data.dueDate).toISOString().split("T")[0]);
+        setDate(DateTime.fromISO(data.dueDate).toISODate() || "");
         setIsLoading(false);
       } catch (error) {
         console.error(error);

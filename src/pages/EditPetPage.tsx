@@ -22,7 +22,7 @@ export default function EditPetPage() {
         setName(pet.name);
         setType(pet.type);
         setBreed(pet.breed);
-        setBirthdate(new Date(pet.birthdate).toISOString().split("T")[0]);
+        setBirthdate(DateTime.fromISO(pet.birthdate).toISODate() || "");
         setIsLoading(false);
       } catch (error) {
         console.error(error);

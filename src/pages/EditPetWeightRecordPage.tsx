@@ -26,7 +26,7 @@ export default function EditPetWeightRecordPage() {
         );
         setPetWeightRecord(data);
         setWeight(data.value.toString());
-        setDate(new Date(data.date).toISOString().split("T")[0]);
+        setDate(DateTime.fromISO(data.date).toISODate() || "");
         setIsLoading(false);
       } catch (error) {
         console.error(error);

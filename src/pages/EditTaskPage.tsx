@@ -24,7 +24,7 @@ export default function EditTaskPage() {
         const { data: task } = await api.get(`/tasks/${taskId}`);
         setTitle(task.title);
         setDescription(task.description);
-        setDueDate(new Date(task.dueDate).toISOString().split("T")[0]);
+        setDueDate(DateTime.fromISO(task.dueDate).toISODate() || "");
         setIntervalValue(task.interval.value.toString());
         setIntervalUnit(task.interval.unit);
         setPet(task.pet);

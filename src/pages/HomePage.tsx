@@ -8,6 +8,7 @@ import picturePlaceholder from "../assets/picture-placeholder.svg";
 import User from "../types/User";
 import Pet from "../types/Pet";
 import LoadingIndicator from "../components/LoadingIndicator";
+import { DateTime } from "luxon";
 
 export default function HomePage() {
   const { session } = useSession();
@@ -49,7 +50,7 @@ export default function HomePage() {
               <FaRegEdit />
             </Link>
           </div>
-          <p>{`Since ${new Date(user!.createdAt).getFullYear()}`}</p>
+          <p>{`Since ${DateTime.fromISO(user!.createdAt).year}`}</p>
         </div>
       </div>
 

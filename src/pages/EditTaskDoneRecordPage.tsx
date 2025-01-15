@@ -20,7 +20,7 @@ export default function EditTaskDoneRecordPage() {
         const { data } = await api.get(
           `/tasks/${taskId}/done-records/${recordId}`
         );
-        setDate(new Date(data.date).toISOString().split("T")[0]);
+        setDate(DateTime.fromISO(data.date).toISODate() || "");
         setTaskTitle(data.task.title);
         setIsLoading(false);
       } catch (error) {

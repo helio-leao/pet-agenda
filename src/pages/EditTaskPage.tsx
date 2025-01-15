@@ -9,7 +9,7 @@ export default function EditTaskPage() {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [date, setDate] = useState("");
+  const [dueDate, setDueDate] = useState("");
   const [pet, setPet] = useState("");
 
   const [intervalUnit, setIntervalUnit] = useState("");
@@ -24,7 +24,7 @@ export default function EditTaskPage() {
         const { data: task } = await api.get(`/tasks/${taskId}`);
         setTitle(task.title);
         setDescription(task.description);
-        setDate(new Date(task.date).toISOString().split("T")[0]);
+        setDueDate(new Date(task.date).toISOString().split("T")[0]);
         setIntervalValue(task.interval.value.toString());
         setIntervalUnit(task.interval.unit);
         setPet(task.pet);
@@ -41,7 +41,7 @@ export default function EditTaskPage() {
     const editedTask = {
       title,
       description,
-      date: DateTime.fromISO(date, { zone: "local" }).toString(),
+      dueDate: DateTime.fromISO(dueDate, { zone: "local" }).toString(),
       interval: {
         value: parseInt(intervalValue, 10),
         unit: intervalUnit,
@@ -95,13 +95,13 @@ export default function EditTaskPage() {
         </div>
 
         <div className="flex flex-col gap-4">
-          <label htmlFor="date">Date*</label>
+          <label htmlFor="date">Due Date*</label>
           <input
             type="date"
             className="border p-4 rounded-lg"
             id="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
           />
         </div>
 

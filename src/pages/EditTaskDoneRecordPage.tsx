@@ -4,13 +4,16 @@ import api from "../services/api";
 import { DateTime } from "luxon";
 import LoadingIndicator from "../components/LoadingIndicator";
 import getErrorMessage from "../utils/getErrorMessage";
+import Task from "../types/Task";
+import TaskDoneRecord from "../types/TaskDoneRecord";
 
 export default function EditTaskDoneRecordPage() {
   const { taskId, recordId } = useParams();
   const navigate = useNavigate();
 
-  const [taskTitle, setTaskTitle] = useState("");
+  const [task, setTask] = useState<Task>();
   const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
 
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
@@ -18,11 +21,15 @@ export default function EditTaskDoneRecordPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get(
+        const { data } = await api.get<TaskDoneRecord>(
           `/tasks/${taskId}/done-records/${recordId}`
         );
-        setDate(DateTime.fromISO(data.date).toISODate() || "");
-        setTaskTitle(data.task.title);
+
+        const datetime = DateTime.fromISO(data.date);
+
+        setDate(datetime.toISODate() || "");
+        setTime(datetime.toFormat("HH:mm") || "");
+        setTask(data.task);
         setIsLoading(false);
       } catch (error) {
         const errorMessage = getErrorMessage(error);
@@ -35,7 +42,7 @@ export default function EditTaskDoneRecordPage() {
     e.preventDefault();
 
     const data = {
-      date: DateTime.fromISO(date, { zone: "local" }).toString(),
+      date: DateTime.fromISO(`${date}T${time}`, { zone: "local" }).toISO(),
     };
 
     try {
@@ -56,7 +63,7 @@ export default function EditTaskDoneRecordPage() {
 
   return (
     <main className="p-4 w-full max-w-screen-sm">
-      <h1 className="mb-4">{`${taskTitle}'s Edit Task Done Record`}</h1>
+      <h1 className="mb-4">{`${task!.title}'s Edit Task Done Record`}</h1>
 
       <form className="flex flex-col gap-4" onSubmit={handleSave}>
         <div className="flex flex-col gap-4">
@@ -68,6 +75,15 @@ export default function EditTaskDoneRecordPage() {
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
+          {task!.interval.unit === "HOURS" && (
+            <input
+              type="time"
+              className="border p-4 rounded-lg"
+              id="time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+            />
+          )}
         </div>
 
         <div className="flex gap-2 mt-4">

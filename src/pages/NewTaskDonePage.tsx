@@ -13,6 +13,7 @@ export default function TaskDonePage() {
   const [task, setTask] = useState<Task>();
 
   const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -20,8 +21,12 @@ export default function TaskDonePage() {
     (async () => {
       try {
         const { data } = await api.get<Task>(`/tasks/${taskId}`);
+
+        const datetime = DateTime.fromISO(data.dueDate);
+
+        setDate(datetime.toISODate() || "");
+        setTime(datetime.toFormat("HH:mm") || "");
         setTask(data);
-        setDate(DateTime.fromISO(data.dueDate).toISODate() || "");
         setIsLoading(false);
       } catch (error) {
         const errorMessage = getErrorMessage(error);
@@ -34,7 +39,7 @@ export default function TaskDonePage() {
     e.preventDefault();
 
     const data = {
-      date: DateTime.fromISO(date, { zone: "local" }).toString(),
+      date: DateTime.fromISO(`${date}T${time}`, { zone: "local" }).toISO(),
       task: taskId,
     };
 
@@ -68,6 +73,15 @@ export default function TaskDonePage() {
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
+          {task!.interval.unit === "HOURS" && (
+            <input
+              type="time"
+              className="border p-4 rounded-lg"
+              id="time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+            />
+          )}
         </div>
 
         <div className="flex gap-2 mt-4">

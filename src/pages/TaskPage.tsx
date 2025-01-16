@@ -83,7 +83,7 @@ export default function TaskPage() {
         <p>{task!.description}</p>
         <p>
           {`${DateTime.fromISO(task!.dueDate).toLocaleString(
-            DateTime.DATE_SHORT
+            DateTime.DATETIME_SHORT
           )} (${formatTimeToString(calculateHoursTo(task!.dueDate), "hour")})`}
         </p>
         <p>{`Once every ${
@@ -111,7 +111,7 @@ export default function TaskPage() {
                 >
                   <p>
                     {DateTime.fromISO(record.date).toLocaleString(
-                      DateTime.DATE_SHORT
+                      DateTime.DATETIME_SHORT
                     )}
                   </p>
                   <div className="flex items-center gap-4">

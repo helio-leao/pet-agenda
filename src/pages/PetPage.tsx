@@ -10,6 +10,7 @@ import PetWeightRecord from "../types/PetWeightRecord";
 import LoadingIndicator from "../components/LoadingIndicator";
 import { ageString } from "../utils/timeCalculations";
 import { DateTime } from "luxon";
+import getErrorMessage from "../utils/showErrorMessage";
 
 export default function PetPage() {
   const { petId } = useParams();
@@ -33,7 +34,8 @@ export default function PetPage() {
         setLatestWeightRecord(petWeightRecord);
         setIsLoading(false);
       } catch (error) {
-        console.error(error);
+        const errorMessage = getErrorMessage(error);
+        alert(errorMessage);
       }
     })();
   }, []);

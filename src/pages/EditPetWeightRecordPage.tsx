@@ -4,6 +4,7 @@ import api from "../services/api";
 import { DateTime } from "luxon";
 import PetWeightRecord from "../types/PetWeightRecord";
 import LoadingIndicator from "../components/LoadingIndicator";
+import getErrorMessage from "../utils/showErrorMessage";
 
 export default function EditPetWeightRecordPage() {
   const { petId, recordId } = useParams();
@@ -29,7 +30,8 @@ export default function EditPetWeightRecordPage() {
         setDate(DateTime.fromISO(record.date).toISODate() || "");
         setIsLoading(false);
       } catch (error) {
-        console.error(error);
+        const errorMessage = getErrorMessage(error);
+        alert(errorMessage);
       }
     })();
   }, []);
@@ -56,8 +58,8 @@ export default function EditPetWeightRecordPage() {
       await api.patch(`/pets/${petId}/weight-records/${recordId}`, updates);
       navigate(-1);
     } catch (error) {
-      console.error(error);
-      alert("It was not possible to save");
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
     } finally {
       setIsSaving(false);
     }

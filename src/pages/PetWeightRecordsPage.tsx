@@ -6,6 +6,7 @@ import PetWeightRecord from "../types/PetWeightRecord";
 import Pet from "../types/Pet";
 import { FaPlus } from "react-icons/fa";
 import LoadingIndicator from "../components/LoadingIndicator";
+import getErrorMessage from "../utils/showErrorMessage";
 
 export default function PetWeightRecordsPage() {
   const { petId } = useParams();
@@ -27,7 +28,8 @@ export default function PetWeightRecordsPage() {
         setPetWeightRecords(petWeightRecords);
         setIsLoading(false);
       } catch (error) {
-        console.error(error);
+        const errorMessage = getErrorMessage(error);
+        alert(errorMessage);
       }
     })();
   }, []);
@@ -40,8 +42,8 @@ export default function PetWeightRecordsPage() {
       );
       setPetWeightRecords(petWeightRecords);
     } catch (error) {
-      console.error(error);
-      alert("Error while fetching pet weight records");
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
     } finally {
       setIsLoading(false);
     }
@@ -52,8 +54,8 @@ export default function PetWeightRecordsPage() {
       await api.delete(`/pets/${petId}/weight-records/${recordId}`);
       await loadWeightRecords();
     } catch (error) {
-      console.error(error);
-      alert("Error while deleting weight record");
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
     }
   }
 

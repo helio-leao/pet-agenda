@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import api from "../services/api";
 import { DateTime } from "luxon";
 import LoadingIndicator from "../components/LoadingIndicator";
+import getErrorMessage from "../utils/showErrorMessage";
 
 export default function EditTaskDoneRecordPage() {
   const { taskId, recordId } = useParams();
@@ -24,7 +25,8 @@ export default function EditTaskDoneRecordPage() {
         setTaskTitle(data.task.title);
         setIsLoading(false);
       } catch (error) {
-        console.error(error);
+        const errorMessage = getErrorMessage(error);
+        alert(errorMessage);
       }
     })();
   }, []);
@@ -41,8 +43,8 @@ export default function EditTaskDoneRecordPage() {
       await api.patch(`/tasks/${taskId}/done-records/${recordId}`, data);
       navigate(-1);
     } catch (error) {
-      console.error(error);
-      alert("Error while saving");
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
     } finally {
       setIsSaving(false);
     }

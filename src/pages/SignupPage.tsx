@@ -2,6 +2,7 @@ import { useState } from "react";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 import User from "../types/User";
+import getErrorMessage from "../utils/showErrorMessage";
 
 export default function SignupPage() {
   const navigate = useNavigate();
@@ -53,8 +54,8 @@ export default function SignupPage() {
       );
       navigate("/login", { replace: true });
     } catch (error) {
-      console.error(error);
-      alert("Error while saving");
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
     } finally {
       setIsSaving(false);
     }

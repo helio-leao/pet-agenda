@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import api from "../services/api";
 import User from "../types/User";
 import LoadingIndicator from "../components/LoadingIndicator";
+import getErrorMessage from "../utils/showErrorMessage";
 
 export default function VerifyAccountPage() {
   const { token } = useParams();
@@ -17,8 +18,8 @@ export default function VerifyAccountPage() {
         });
         setUser(data);
       } catch (error) {
-        console.error(error);
-        alert("Error while verifying account");
+        const errorMessage = getErrorMessage(error);
+        alert(errorMessage);
       } finally {
         setIsLoading(false);
       }
@@ -29,8 +30,8 @@ export default function VerifyAccountPage() {
     try {
       await api.post("/auth/send-verification-email", { id: user?._id });
     } catch (error) {
-      console.error(error);
-      alert("Error while sending verification email");
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
     }
   }
 

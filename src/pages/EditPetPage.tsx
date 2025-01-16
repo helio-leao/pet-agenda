@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { DateTime } from "luxon";
 import LoadingIndicator from "../components/LoadingIndicator";
 import Pet from "../types/Pet";
+import getErrorMessage from "../utils/showErrorMessage";
 
 export default function EditPetPage() {
   const { petId } = useParams();
@@ -26,7 +27,8 @@ export default function EditPetPage() {
         setBirthdate(DateTime.fromISO(pet.birthdate).toISODate() || "");
         setIsLoading(false);
       } catch (error) {
-        console.error(error);
+        const errorMessage = getErrorMessage(error);
+        alert(errorMessage);
       }
     })();
   }, []);
@@ -56,12 +58,14 @@ export default function EditPetPage() {
             },
           });
         } catch (error) {
-          console.error(error);
+          const errorMessage = getErrorMessage(error);
+          alert(errorMessage);
         }
       }
       navigate(-1);
     } catch (error) {
-      console.error(error);
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
     } finally {
       setIsSaving(false);
     }

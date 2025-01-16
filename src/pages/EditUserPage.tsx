@@ -3,6 +3,7 @@ import api from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 import LoadingIndicator from "../components/LoadingIndicator";
 import User from "../types/User";
+import getErrorMessage from "../utils/showErrorMessage";
 
 export default function EditUserPage() {
   const { userId } = useParams();
@@ -24,7 +25,8 @@ export default function EditUserPage() {
         setEmail(user.email);
         setIsLoading(false);
       } catch (error) {
-        console.error(error);
+        const errorMessage = getErrorMessage(error);
+        alert(errorMessage);
       }
     })();
   }, []);
@@ -56,8 +58,8 @@ export default function EditUserPage() {
       }
       navigate(-1);
     } catch (error) {
-      console.error(error);
-      alert("Error while saving");
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
     } finally {
       setIsSaving(false);
     }

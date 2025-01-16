@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useSession } from "../contexts/SessionContext";
 import api from "../services/api";
 import { FaSignOutAlt, FaPaw } from "react-icons/fa";
+import getErrorMessage from "../utils/showErrorMessage";
 
 export default function Header() {
   const { session, signOut } = useSession();
@@ -16,7 +17,8 @@ export default function Header() {
       });
       signOut();
     } catch (error) {
-      console.error(error);
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
     }
   }
 

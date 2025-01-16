@@ -3,6 +3,7 @@ import api from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 import { DateTime } from "luxon";
 import LoadingIndicator from "../components/LoadingIndicator";
+import getErrorMessage from "../utils/showErrorMessage";
 
 export default function EditTaskPage() {
   const { taskId } = useParams();
@@ -30,7 +31,8 @@ export default function EditTaskPage() {
         setPet(task.pet);
         setIsLoading(false);
       } catch (error) {
-        console.error(error);
+        const errorMessage = getErrorMessage(error);
+        alert(errorMessage);
       }
     })();
   }, []);
@@ -54,8 +56,8 @@ export default function EditTaskPage() {
       await api.patch(`/tasks/${taskId}`, editedTask);
       navigate(-1);
     } catch (error) {
-      console.error(error);
-      alert("Error while saving");
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
     } finally {
       setIsSaving(false);
     }

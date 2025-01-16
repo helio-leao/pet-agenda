@@ -4,6 +4,7 @@ import api from "../services/api";
 import { DateTime } from "luxon";
 import Pet from "../types/Pet";
 import LoadingIndicator from "../components/LoadingIndicator";
+import getErrorMessage from "../utils/showErrorMessage";
 
 export default function NewPetWeightRecordPage() {
   const { petId } = useParams();
@@ -24,7 +25,8 @@ export default function NewPetWeightRecordPage() {
         setPet(data);
         setIsLoading(false);
       } catch (error) {
-        console.error(error);
+        const errorMessage = getErrorMessage(error);
+        alert(errorMessage);
       }
     })();
   }, []);
@@ -51,8 +53,8 @@ export default function NewPetWeightRecordPage() {
       await api.post(`/pets/${petId}/weight-records`, newWeightRecord);
       navigate(-1);
     } catch (error) {
-      console.error(error);
-      alert("It was not possible to save");
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
     } finally {
       setIsSaving(false);
     }

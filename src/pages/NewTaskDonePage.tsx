@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { DateTime } from "luxon";
 import LoadingIndicator from "../components/LoadingIndicator";
 import Task from "../types/Task";
+import getErrorMessage from "../utils/showErrorMessage";
 
 export default function TaskDonePage() {
   const { taskId } = useParams();
@@ -23,7 +24,8 @@ export default function TaskDonePage() {
         setDate(DateTime.fromISO(data.dueDate).toISODate() || "");
         setIsLoading(false);
       } catch (error) {
-        console.error(error);
+        const errorMessage = getErrorMessage(error);
+        alert(errorMessage);
       }
     })();
   }, []);
@@ -41,8 +43,8 @@ export default function TaskDonePage() {
       await api.post(`/tasks/${taskId}/done-records`, data);
       navigate(-1);
     } catch (error) {
-      console.error(error);
-      alert("Error while saving");
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
     } finally {
       setIsSaving(false);
     }

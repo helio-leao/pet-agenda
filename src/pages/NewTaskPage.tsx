@@ -5,6 +5,7 @@ import { useSession } from "../contexts/SessionContext";
 import { DateTime } from "luxon";
 import Pet from "../types/Pet";
 import LoadingIndicator from "../components/LoadingIndicator";
+import getErrorMessage from "../utils/showErrorMessage";
 
 export default function NewTaskPage() {
   const { session } = useSession();
@@ -33,7 +34,8 @@ export default function NewTaskPage() {
         setPets(pets);
         setIsLoading(false);
       } catch (error) {
-        console.error(error);
+        const errorMessage = getErrorMessage(error);
+        alert(errorMessage);
       }
     })();
   }, []);
@@ -58,8 +60,8 @@ export default function NewTaskPage() {
       await api.post("/tasks", newTask);
       navigate(-1);
     } catch (error) {
-      console.error(error);
-      alert("Error while saving");
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
     } finally {
       setIsSaving(false);
     }

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useSession } from "../contexts/SessionContext";
 import { DateTime } from "luxon";
 import Pet from "../types/Pet";
+import getErrorMessage from "../utils/showErrorMessage";
 
 export default function NewPetPage() {
   const { session } = useSession();
@@ -42,13 +43,14 @@ export default function NewPetPage() {
             },
           });
         } catch (error) {
-          console.error(error);
+          const errorMessage = getErrorMessage(error);
+          alert(errorMessage);
         }
       }
       navigate(-1);
     } catch (error) {
-      console.error(error);
-      alert("Error while saving");
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
     } finally {
       setIsSaving(false);
     }

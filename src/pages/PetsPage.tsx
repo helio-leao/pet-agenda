@@ -6,6 +6,7 @@ import PetCard from "../components/PetCard";
 import { FaPlus } from "react-icons/fa";
 import Pet from "../types/Pet";
 import LoadingIndicator from "../components/LoadingIndicator";
+import getErrorMessage from "../utils/showErrorMessage";
 
 export default function PetsPage() {
   const { session } = useSession();
@@ -21,7 +22,8 @@ export default function PetsPage() {
         setPets(pets);
         setIsLoading(false);
       } catch (error) {
-        console.error(error);
+        const errorMessage = getErrorMessage(error);
+        alert(errorMessage);
       }
     })();
   }, []);

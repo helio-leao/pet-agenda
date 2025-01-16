@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import api from "../services/api";
 import { useSession } from "../contexts/SessionContext";
 import Session from "../types/Session";
+import getErrorMessage from "../utils/showErrorMessage";
 
 export default function LoginPage() {
   const { signIn } = useSession();
@@ -26,8 +27,8 @@ export default function LoginPage() {
       const sessionUser = { _id: data.user._id };
       signIn({ ...data, user: sessionUser });
     } catch (error) {
-      console.error(error);
-      alert("Error while logging in");
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
     } finally {
       setIsLoading(false);
     }

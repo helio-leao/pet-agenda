@@ -8,6 +8,7 @@ import { FaRegEdit, FaRegTrashAlt, FaPlus } from "react-icons/fa";
 import { calculateDaysTo, formatDaysString } from "../utils/timeCalculations";
 import TaskDoneRecord from "../types/TaskDoneRecord";
 import { DateTime } from "luxon";
+import getErrorMessage from "../utils/showErrorMessage";
 
 export default function TaskPage() {
   const { taskId } = useParams();
@@ -28,7 +29,8 @@ export default function TaskPage() {
         setDoneRecords(doneRecords);
         setIsLoading(false);
       } catch (error) {
-        console.error(error);
+        const errorMessage = getErrorMessage(error);
+        alert(errorMessage);
       }
     })();
   }, []);
@@ -41,8 +43,8 @@ export default function TaskPage() {
       );
       setDoneRecords(doneRecords);
     } catch (error) {
-      console.error(error);
-      alert("Error while fetching task done records");
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
     } finally {
       setIsLoading(false);
     }
@@ -53,8 +55,8 @@ export default function TaskPage() {
       await api.delete(`/tasks/${taskId}/done-records/${taskDoneId}`);
       await loadTaskDoneRecords();
     } catch (error) {
-      console.error(error);
-      alert("Error while deleting weight record");
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
     }
   }
 

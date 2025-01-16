@@ -19,7 +19,7 @@ export function calculateHoursTo(date: Date | string | number): number {
     throw new Error("Invalid date input");
   }
   const now = DateTime.now();
-  return Math.floor(dueDate.diff(now, "hours").hours);
+  return Math.ceil(dueDate.diff(now, "hours").hours);
 }
 
 export function calculateAge(dateOfBirth: string | Date | number): number {

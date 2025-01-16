@@ -14,6 +14,7 @@ export default function NewTaskPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dueDate, setDueDate] = useState("");
+  const [dueTime, setDueTime] = useState("");
   const [pet, setPet] = useState("");
 
   const [intervalUnit, setIntervalUnit] = useState("");
@@ -40,13 +41,21 @@ export default function NewTaskPage() {
     })();
   }, []);
 
+  useEffect(() => {
+    if (intervalUnit !== "HORAS") {
+      setDueTime("");
+    }
+  }, [intervalUnit]);
+
   async function handleSave(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const newTask = {
       title,
       description,
-      dueDate: DateTime.fromISO(dueDate, { zone: "local" }).toString(),
+      dueDate: DateTime.fromISO(`${dueDate}T${dueTime || "00:00"}`, {
+        zone: "local",
+      }).toISO(),
       interval: {
         value: parseInt(intervalValue, 10),
         unit: intervalUnit,
@@ -101,17 +110,6 @@ export default function NewTaskPage() {
         </div>
 
         <div className="flex flex-col gap-4">
-          <label htmlFor="date">Due Date*</label>
-          <input
-            type="date"
-            className="border p-4 rounded-lg"
-            id="date"
-            value={dueDate}
-            onChange={(e) => setDueDate(e.target.value)}
-          />
-        </div>
-
-        <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-4">
             <label htmlFor="interval">Interval*</label>
             <select
@@ -124,7 +122,7 @@ export default function NewTaskPage() {
               <option value="" disabled>
                 select an interval
               </option>
-              {/* <option value="HOURS">Hours</option> */}
+              <option value="HOURS">Hours</option>
               <option value="DAYS">Days</option>
               <option value="WEEKS">Weeks</option>
               <option value="MONTHS">Months</option>
@@ -140,6 +138,25 @@ export default function NewTaskPage() {
             placeholder="enter interval time (e.g., 10)"
             value={intervalValue}
             onChange={(e) => setIntervalValue(e.target.value)}
+          />
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <label htmlFor="date">Due Date*</label>
+          <input
+            type="date"
+            className="border p-4 rounded-lg"
+            id="date"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+          />
+          <input
+            disabled={intervalUnit !== "HOURS"}
+            type="time"
+            className="border p-4 rounded-lg"
+            id="time"
+            value={dueTime}
+            onChange={(e) => setDueTime(e.target.value)}
           />
         </div>
 

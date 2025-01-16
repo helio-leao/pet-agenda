@@ -11,6 +11,7 @@ export default function EditTaskPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dueDate, setDueDate] = useState("");
+  const [dueTime, setDueTime] = useState("");
   const [pet, setPet] = useState("");
 
   const [intervalUnit, setIntervalUnit] = useState("");
@@ -23,9 +24,13 @@ export default function EditTaskPage() {
     (async () => {
       try {
         const { data: task } = await api.get(`/tasks/${taskId}`);
+
+        const dateTime = DateTime.fromISO(task.dueDate);
+
         setTitle(task.title);
         setDescription(task.description);
-        setDueDate(DateTime.fromISO(task.dueDate).toISODate() || "");
+        setDueDate(dateTime.toISODate() || "");
+        setDueTime(dateTime.toFormat("HH:mm") || "");
         setIntervalValue(task.interval.value.toString());
         setIntervalUnit(task.interval.unit);
         setPet(task.pet);
@@ -37,13 +42,21 @@ export default function EditTaskPage() {
     })();
   }, []);
 
+  useEffect(() => {
+    if (intervalUnit !== "HORAS") {
+      setDueTime("");
+    }
+  }, [intervalUnit]);
+
   async function handleSave(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const editedTask = {
       title,
       description,
-      dueDate: DateTime.fromISO(dueDate, { zone: "local" }).toString(),
+      dueDate: DateTime.fromISO(`${dueDate}T${dueTime || "00:00"}`, {
+        zone: "local",
+      }).toISO(),
       interval: {
         value: parseInt(intervalValue, 10),
         unit: intervalUnit,
@@ -97,17 +110,6 @@ export default function EditTaskPage() {
         </div>
 
         <div className="flex flex-col gap-4">
-          <label htmlFor="date">Due Date*</label>
-          <input
-            type="date"
-            className="border p-4 rounded-lg"
-            id="date"
-            value={dueDate}
-            onChange={(e) => setDueDate(e.target.value)}
-          />
-        </div>
-
-        <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-4">
             <label htmlFor="interval">Interval*</label>
             <select
@@ -120,7 +122,7 @@ export default function EditTaskPage() {
               <option value="" disabled>
                 select an interval
               </option>
-              {/* <option value="HOURS">Hours</option> */}
+              <option value="HOURS">Hours</option>
               <option value="DAYS">Days</option>
               <option value="WEEKS">Weeks</option>
               <option value="MONTHS">Months</option>
@@ -136,6 +138,25 @@ export default function EditTaskPage() {
             placeholder="enter interval time (e.g., 10)"
             value={intervalValue}
             onChange={(e) => setIntervalValue(e.target.value)}
+          />
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <label htmlFor="date">Due Date*</label>
+          <input
+            type="date"
+            className="border p-4 rounded-lg"
+            id="date"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+          />
+          <input
+            disabled={intervalUnit !== "HOURS"}
+            type="time"
+            className="border p-4 rounded-lg"
+            id="time"
+            value={dueTime}
+            onChange={(e) => setDueTime(e.target.value)}
           />
         </div>
 

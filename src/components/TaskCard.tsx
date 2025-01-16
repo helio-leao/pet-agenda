@@ -27,8 +27,8 @@ export default function TaskCard({ task }: TaskCardProps) {
 
       <p>{task.description}</p>
       <p>
-        {DateTime.fromISO(task.dueDate).toLocaleString(DateTime.DATE_SHORT)} (
-        {formatDaysString(daysTo)})
+        {DateTime.fromISO(task.dueDate).toLocaleString(DateTime.DATETIME_SHORT)}{" "}
+        ({formatDaysString(daysTo)})
       </p>
       <p>{`Once every ${
         task.interval.value

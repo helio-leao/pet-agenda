@@ -9,7 +9,7 @@ import User from "../types/User";
 import Pet from "../types/Pet";
 import LoadingIndicator from "../components/LoadingIndicator";
 import { DateTime } from "luxon";
-import getErrorMessage from "../utils/showErrorMessage";
+import getErrorMessage from "../utils/getErrorMessage";
 
 export default function HomePage() {
   const { session } = useSession();

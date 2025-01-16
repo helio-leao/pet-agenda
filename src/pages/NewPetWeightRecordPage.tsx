@@ -4,7 +4,7 @@ import api from "../services/api";
 import { DateTime } from "luxon";
 import Pet from "../types/Pet";
 import LoadingIndicator from "../components/LoadingIndicator";
-import getErrorMessage from "../utils/showErrorMessage";
+import getErrorMessage from "../utils/getErrorMessage";
 
 export default function NewPetWeightRecordPage() {
   const { petId } = useParams();

@@ -5,7 +5,7 @@ import { useSession } from "../contexts/SessionContext";
 import { DateTime } from "luxon";
 import Pet from "../types/Pet";
 import LoadingIndicator from "../components/LoadingIndicator";
-import getErrorMessage from "../utils/showErrorMessage";
+import getErrorMessage from "../utils/getErrorMessage";
 
 export default function NewTaskPage() {
   const { session } = useSession();

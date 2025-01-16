@@ -3,7 +3,7 @@ import api from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 import LoadingIndicator from "../components/LoadingIndicator";
 import User from "../types/User";
-import getErrorMessage from "../utils/showErrorMessage";
+import getErrorMessage from "../utils/getErrorMessage";
 
 export default function EditUserPage() {
   const { userId } = useParams();

@@ -8,7 +8,7 @@ import { FaRegEdit, FaRegTrashAlt, FaPlus } from "react-icons/fa";
 import { calculateDaysTo, formatDaysString } from "../utils/timeCalculations";
 import TaskDoneRecord from "../types/TaskDoneRecord";
 import { DateTime } from "luxon";
-import getErrorMessage from "../utils/showErrorMessage";
+import getErrorMessage from "../utils/getErrorMessage";
 
 export default function TaskPage() {
   const { taskId } = useParams();

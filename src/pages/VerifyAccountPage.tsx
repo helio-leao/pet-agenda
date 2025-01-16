@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import api from "../services/api";
 import User from "../types/User";
 import LoadingIndicator from "../components/LoadingIndicator";
-import getErrorMessage from "../utils/showErrorMessage";
+import getErrorMessage from "../utils/getErrorMessage";
 
 export default function VerifyAccountPage() {
   const { token } = useParams();

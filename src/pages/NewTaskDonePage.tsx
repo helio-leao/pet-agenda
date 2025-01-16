@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { DateTime } from "luxon";
 import LoadingIndicator from "../components/LoadingIndicator";
 import Task from "../types/Task";
-import getErrorMessage from "../utils/showErrorMessage";
+import getErrorMessage from "../utils/getErrorMessage";
 
 export default function TaskDonePage() {
   const { taskId } = useParams();

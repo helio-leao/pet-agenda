@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import api from "../services/api";
 import { useSession } from "../contexts/SessionContext";
 import Session from "../types/Session";
-import getErrorMessage from "../utils/showErrorMessage";
+import getErrorMessage from "../utils/getErrorMessage";
 
 export default function LoginPage() {
   const { signIn } = useSession();

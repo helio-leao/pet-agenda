@@ -6,7 +6,7 @@ import TaskCard from "../components/TaskCard";
 import { FaPlus } from "react-icons/fa";
 import Task from "../types/Task";
 import LoadingIndicator from "../components/LoadingIndicator";
-import getErrorMessage from "../utils/showErrorMessage";
+import getErrorMessage from "../utils/getErrorMessage";
 
 export default function TasksPage() {
   const { session } = useSession();

@@ -6,7 +6,7 @@ import PetWeightRecord from "../types/PetWeightRecord";
 import Pet from "../types/Pet";
 import { FaPlus } from "react-icons/fa";
 import LoadingIndicator from "../components/LoadingIndicator";
-import getErrorMessage from "../utils/showErrorMessage";
+import getErrorMessage from "../utils/getErrorMessage";
 
 export default function PetWeightRecordsPage() {
   const { petId } = useParams();

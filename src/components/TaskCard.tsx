@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { FaRegEdit, FaArrowRight, FaPaw } from "react-icons/fa";
 import Task from "../types/Task";
-import { calculateDaysTo, formatDaysString } from "../utils/timeCalculations";
+import {
+  calculateDaysTo,
+  calculateHoursTo,
+  formatTimeToString,
+} from "../utils/timeCalculations";
 import { DateTime } from "luxon";
 
 type TaskCardProps = {
@@ -9,10 +13,21 @@ type TaskCardProps = {
 };
 
 export default function TaskCard({ task }: TaskCardProps) {
-  const daysTo = calculateDaysTo(task.dueDate);
+  let remaining = 0;
+  let remainingString = "";
+
+  if (task.interval.unit === "HOURS") {
+    remaining = calculateHoursTo(task.dueDate);
+    remainingString = formatTimeToString(remaining, "hour");
+  } else {
+    remaining = calculateDaysTo(task.dueDate);
+    remainingString = formatTimeToString(remaining, "day");
+  }
 
   return (
-    <div className={`flex flex-col p-4 border rounded-md ${getColor(daysTo)}`}>
+    <div
+      className={`flex flex-col p-4 border rounded-md ${getColor(remaining)}`}
+    >
       <div className="flex justify-between gap-4">
         <h3>{task.title}</h3>
         <div className="flex items-center gap-4">
@@ -27,8 +42,9 @@ export default function TaskCard({ task }: TaskCardProps) {
 
       <p>{task.description}</p>
       <p>
-        {DateTime.fromISO(task.dueDate).toLocaleString(DateTime.DATETIME_SHORT)}{" "}
-        ({formatDaysString(daysTo)})
+        {`${DateTime.fromISO(task.dueDate).toLocaleString(
+          DateTime.DATETIME_SHORT
+        )} (${remainingString})`}
       </p>
       <p>{`Once every ${
         task.interval.value

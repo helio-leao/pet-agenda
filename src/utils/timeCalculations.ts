@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
 
-function calculateDaysTo(date: Date | string | number): number {
+export function calculateDaysTo(date: Date | string | number): number {
   const dueDate = DateTime.fromJSDate(
     typeof date === "string" || typeof date === "number" ? new Date(date) : date
   );
@@ -11,7 +11,18 @@ function calculateDaysTo(date: Date | string | number): number {
   return Math.ceil(dueDate.diff(now, "days").days);
 }
 
-function calculateAge(dateOfBirth: string | Date | number): number {
+export function calculateHoursTo(date: Date | string | number): number {
+  const dueDate = DateTime.fromJSDate(
+    typeof date === "string" || typeof date === "number" ? new Date(date) : date
+  );
+  if (!dueDate.isValid) {
+    throw new Error("Invalid date input");
+  }
+  const now = DateTime.now();
+  return Math.floor(dueDate.diff(now, "hours").hours);
+}
+
+export function calculateAge(dateOfBirth: string | Date | number): number {
   const dob = DateTime.fromJSDate(
     typeof dateOfBirth === "string" || typeof dateOfBirth === "number"
       ? new Date(dateOfBirth)
@@ -24,7 +35,7 @@ function calculateAge(dateOfBirth: string | Date | number): number {
   return now.diff(dob, "years").years | 0;
 }
 
-function calculateAgeDetailed(dateOfBirth: Date | string | number): {
+export function calculateAgeDetailed(dateOfBirth: Date | string | number): {
   years: number;
   months: number;
 } {
@@ -47,7 +58,7 @@ function calculateAgeDetailed(dateOfBirth: Date | string | number): {
   };
 }
 
-function ageString(birthdate: Date | string | number): string {
+export function ageString(birthdate: Date | string | number): string {
   const { months, years } = calculateAgeDetailed(birthdate);
 
   const yearPart = years > 0 ? `${years} ${years > 1 ? "years" : "year"}` : "";
@@ -60,21 +71,13 @@ function ageString(birthdate: Date | string | number): string {
   return yearPart || monthPart || "0 months";
 }
 
-function formatDaysString(days: number) {
-  if (days === 0) {
-    return "today";
+export function formatTimeToString(value: number, unit: "hour" | "day") {
+  if (value === 0) {
+    return unit === "day" ? "today" : "this hour";
   }
-  if (days < 0) {
-    const abs = Math.abs(days);
-    return `${abs} ${abs > 1 ? "days" : "day"} ago`;
+  if (value < 0) {
+    const abs = Math.abs(value);
+    return `${abs} ${abs > 1 ? `${unit}s` : unit} ago`;
   }
-  return `${days} ${days > 1 ? "days" : "day"}`;
+  return `${value} ${value > 1 ? `${unit}s` : unit}`;
 }
-
-export {
-  calculateDaysTo,
-  calculateAge,
-  calculateAgeDetailed,
-  ageString,
-  formatDaysString,
-};

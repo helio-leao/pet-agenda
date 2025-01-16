@@ -5,7 +5,10 @@ import { Link } from "react-router-dom";
 import LoadingIndicator from "../components/LoadingIndicator";
 import Task from "../types/Task";
 import { FaRegEdit, FaRegTrashAlt, FaPlus } from "react-icons/fa";
-import { calculateDaysTo, formatDaysString } from "../utils/timeCalculations";
+import {
+  calculateHoursTo,
+  formatTimeToString,
+} from "../utils/timeCalculations";
 import TaskDoneRecord from "../types/TaskDoneRecord";
 import { DateTime } from "luxon";
 import getErrorMessage from "../utils/getErrorMessage";
@@ -81,7 +84,7 @@ export default function TaskPage() {
         <p>
           {`${DateTime.fromISO(task!.dueDate).toLocaleString(
             DateTime.DATE_SHORT
-          )} (${formatDaysString(calculateDaysTo(task!.dueDate))})`}
+          )} (${formatTimeToString(calculateHoursTo(task!.dueDate), "hour")})`}
         </p>
         <p>{`Once every ${
           task!.interval.value

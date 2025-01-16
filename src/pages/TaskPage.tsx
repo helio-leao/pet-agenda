@@ -6,6 +6,7 @@ import LoadingIndicator from "../components/LoadingIndicator";
 import Task from "../types/Task";
 import { FaRegEdit, FaRegTrashAlt, FaPlus } from "react-icons/fa";
 import {
+  calculateDaysTo,
   calculateHoursTo,
   formatTimeToString,
 } from "../utils/timeCalculations";
@@ -67,6 +68,16 @@ export default function TaskPage() {
     return <LoadingIndicator />;
   }
 
+  let remainingTimeString = "";
+
+  if (task!.interval.unit === "HOURS") {
+    const remainingTime = calculateHoursTo(task!.dueDate);
+    remainingTimeString = formatTimeToString(remainingTime, "hour");
+  } else {
+    const remainingTime = calculateDaysTo(task!.dueDate);
+    remainingTimeString = formatTimeToString(remainingTime, "day");
+  }
+
   return (
     <main className="p-4 w-full max-w-screen-sm">
       <h1 className="mb-4">Task</h1>
@@ -84,7 +95,7 @@ export default function TaskPage() {
         <p>
           {`${DateTime.fromISO(task!.dueDate).toLocaleString(
             DateTime.DATETIME_SHORT
-          )} (${formatTimeToString(calculateHoursTo(task!.dueDate), "hour")})`}
+          )} (${remainingTimeString})`}
         </p>
         <p>{`Once every ${
           task!.interval.value

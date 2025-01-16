@@ -21,8 +21,8 @@ export default function TaskPage() {
     (async () => {
       try {
         const [{ data: task }, { data: doneRecords }] = await Promise.all([
-          api.get(`/tasks/${taskId}`),
-          api.get(`/tasks/${taskId}/done-records`),
+          api.get<Task>(`/tasks/${taskId}`),
+          api.get<TaskDoneRecord[]>(`/tasks/${taskId}/done-records`),
         ]);
         setTask(task);
         setDoneRecords(doneRecords);
@@ -36,7 +36,7 @@ export default function TaskPage() {
   async function loadTaskDoneRecords() {
     try {
       setIsLoading(true);
-      const { data: doneRecords } = await api.get(
+      const { data: doneRecords } = await api.get<TaskDoneRecord[]>(
         `/tasks/${taskId}/done-records`
       );
       setDoneRecords(doneRecords);

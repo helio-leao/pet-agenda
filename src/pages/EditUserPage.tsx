@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 import LoadingIndicator from "../components/LoadingIndicator";
+import User from "../types/User";
 
 export default function EditUserPage() {
   const { userId } = useParams();
@@ -17,7 +18,7 @@ export default function EditUserPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data: user } = await api.get(`/users/${userId}`);
+        const { data: user } = await api.get<User>(`/users/${userId}`);
         setName(user.name);
         setUsername(user.username);
         setEmail(user.email);

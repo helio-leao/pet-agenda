@@ -15,7 +15,7 @@ export default function PetsPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data: pets } = await api.get(
+        const { data: pets } = await api.get<Pet[]>(
           `/users/${session!.user._id}/pets`
         );
         setPets(pets);

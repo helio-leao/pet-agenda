@@ -12,7 +12,9 @@ export default function VerifyAccountPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.post("/auth/verify-account", { token });
+        const { data } = await api.post<User>("/auth/verify-account", {
+          token,
+        });
         setUser(data);
       } catch (error) {
         console.error(error);
@@ -59,5 +61,5 @@ export default function VerifyAccountPage() {
     );
   }
 
-  return <p>Fail to verify account</p>;
+  return <p>Failed to verify account</p>;
 }

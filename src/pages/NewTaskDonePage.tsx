@@ -18,7 +18,7 @@ export default function TaskDonePage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get(`/tasks/${taskId}`);
+        const { data } = await api.get<Task>(`/tasks/${taskId}`);
         setTask(data);
         setDate(DateTime.fromISO(data.dueDate).toISODate() || "");
         setIsLoading(false);

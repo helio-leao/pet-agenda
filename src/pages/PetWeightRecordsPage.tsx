@@ -20,8 +20,8 @@ export default function PetWeightRecordsPage() {
     (async () => {
       try {
         const [{ data: pet }, { data: petWeightRecords }] = await Promise.all([
-          api.get(`/pets/${petId}`),
-          api.get(`/pets/${petId}/weight-records`),
+          api.get<Pet>(`/pets/${petId}`),
+          api.get<PetWeightRecord[]>(`/pets/${petId}/weight-records`),
         ]);
         setPet(pet);
         setPetWeightRecords(petWeightRecords);
@@ -35,7 +35,7 @@ export default function PetWeightRecordsPage() {
   async function loadWeightRecords() {
     try {
       setIsLoading(true);
-      const { data: petWeightRecords } = await api.get(
+      const { data: petWeightRecords } = await api.get<PetWeightRecord[]>(
         `/pets/${petId}/weight-records`
       );
       setPetWeightRecords(petWeightRecords);

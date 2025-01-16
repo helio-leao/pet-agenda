@@ -1,6 +1,7 @@
 import { useState } from "react";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
+import User from "../types/User";
 
 export default function SignupPage() {
   const navigate = useNavigate();
@@ -28,13 +29,13 @@ export default function SignupPage() {
 
     try {
       setIsSaving(true);
-      let { data: user } = await api.post("/auth/signup", newUser);
+      let { data: user } = await api.post<User>("/auth/signup", newUser);
 
       if (picture) {
         const formData = new FormData();
         formData.append("picture", picture);
 
-        const response = await api.post(
+        const response = await api.post<User>(
           `/users/${user._id}/picture`,
           formData,
           {

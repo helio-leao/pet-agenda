@@ -3,6 +3,7 @@ import api from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 import { DateTime } from "luxon";
 import LoadingIndicator from "../components/LoadingIndicator";
+import Pet from "../types/Pet";
 
 export default function EditPetPage() {
   const { petId } = useParams();
@@ -18,7 +19,7 @@ export default function EditPetPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data: pet } = await api.get(`/pets/${petId}`);
+        const { data: pet } = await api.get<Pet>(`/pets/${petId}`);
         setName(pet.name);
         setType(pet.type);
         setBreed(pet.breed);

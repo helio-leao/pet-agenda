@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../services/api";
 import { useSession } from "../contexts/SessionContext";
+import Session from "../types/Session";
 
 export default function LoginPage() {
   const { signIn } = useSession();
@@ -21,9 +22,8 @@ export default function LoginPage() {
     try {
       setIsLoading(true);
 
-      const { data } = await api.post("/auth/login", loginData);
+      const { data } = await api.post<Session>("/auth/login", loginData);
       const sessionUser = { _id: data.user._id };
-
       signIn({ ...data, user: sessionUser });
     } catch (error) {
       console.error(error);

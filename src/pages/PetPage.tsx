@@ -24,9 +24,9 @@ export default function PetPage() {
       try {
         const [{ data: pet }, { data: tasks }, { data: petWeightRecord }] =
           await Promise.all([
-            api.get(`/pets/${petId}`),
-            api.get(`/pets/${petId}/tasks`),
-            api.get(`/pets/${petId}/weight-records/latest`),
+            api.get<Pet>(`/pets/${petId}`),
+            api.get<Task[]>(`/pets/${petId}/tasks`),
+            api.get<PetWeightRecord>(`/pets/${petId}/weight-records/latest`),
           ]);
         setPet(pet);
         setTasks(tasks);

@@ -20,7 +20,7 @@ export default function NewPetWeightRecordPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get(`/pets/${petId}`);
+        const { data } = await api.get<Pet>(`/pets/${petId}`);
         setPet(data);
         setIsLoading(false);
       } catch (error) {

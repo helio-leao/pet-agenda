@@ -15,7 +15,9 @@ export default function TasksPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get(`/users/${session!.user._id}/tasks`);
+        const { data } = await api.get<Task[]>(
+          `/users/${session!.user._id}/tasks`
+        );
         setTasks(data);
         setIsLoading(false);
       } catch (error) {

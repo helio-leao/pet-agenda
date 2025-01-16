@@ -21,12 +21,12 @@ export default function EditPetWeightRecordPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get(
+        const { data: record } = await api.get<PetWeightRecord>(
           `/pets/${petId}/weight-records/${recordId}`
         );
-        setPetWeightRecord(data);
-        setWeight(data.value.toString());
-        setDate(DateTime.fromISO(data.date).toISODate() || "");
+        setPetWeightRecord(record);
+        setWeight(record.value.toString());
+        setDate(DateTime.fromISO(record.date).toISODate() || "");
         setIsLoading(false);
       } catch (error) {
         console.error(error);

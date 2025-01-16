@@ -41,7 +41,7 @@ api.interceptors.response.use(
     try {
       const {
         data: { accessToken },
-      } = await api.post(`/auth/token`, {
+      } = await api.post<{ accessToken: string }>(`/auth/token`, {
         refreshToken: session.refreshToken,
       });
       session.accessToken = accessToken;

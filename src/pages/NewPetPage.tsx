@@ -3,6 +3,7 @@ import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "../contexts/SessionContext";
 import { DateTime } from "luxon";
+import Pet from "../types/Pet";
 
 export default function NewPetPage() {
   const { session } = useSession();
@@ -28,7 +29,7 @@ export default function NewPetPage() {
     try {
       setIsSaving(true);
 
-      const { data: pet } = await api.post("/pets", newPet);
+      const { data: pet } = await api.post<Pet>("/pets", newPet);
 
       if (picture) {
         const formData = new FormData();

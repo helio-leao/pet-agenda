@@ -1,8 +1,13 @@
 import { isAxiosError } from "axios";
 
+type Detail = {
+  path: string;
+  message: string;
+};
+
 type Data = {
   error: string;
-  details?: string[];
+  details?: Detail[];
 };
 
 export default function getErrorMessage(error: unknown): string {
@@ -15,9 +20,8 @@ export default function getErrorMessage(error: unknown): string {
       let message = data.error;
 
       if (data.details) {
-        message += `\n${data.details.join("\n")}`;
+        data.details.forEach((detail) => (message += `\n${detail.message}`));
       }
-
       return message;
     }
   }

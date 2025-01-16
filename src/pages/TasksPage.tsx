@@ -31,7 +31,7 @@ export default function TasksPage() {
   }
 
   return (
-    <main className="p-4">
+    <main className="p-4 w-full max-w-screen-sm">
       <div className="flex justify-between items-center mb-4">
         <h1>Tasks</h1>
         <Link to="/tasks/new">

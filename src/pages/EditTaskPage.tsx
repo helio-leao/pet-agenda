@@ -66,7 +66,7 @@ export default function EditTaskPage() {
   }
 
   return (
-    <main className="p-4">
+    <main className="p-4 w-full max-w-screen-sm">
       <h1 className="mb-4">Edit Task</h1>
 
       <form className="flex flex-col gap-4" onSubmit={handleSave}>

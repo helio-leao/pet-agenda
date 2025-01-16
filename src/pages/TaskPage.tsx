@@ -63,7 +63,7 @@ export default function TaskPage() {
   }
 
   return (
-    <main className="p-4">
+    <main className="p-4 w-full max-w-screen-sm">
       <h1 className="mb-4">Task</h1>
 
       <div>

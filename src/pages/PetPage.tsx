@@ -43,7 +43,7 @@ export default function PetPage() {
   }
 
   return (
-    <main className="p-4">
+    <main className="p-4 w-full max-w-screen-sm">
       <div className="flex gap-4 mb-4">
         <img
           src={pet!.pictureUrl || picturePlaceholder}

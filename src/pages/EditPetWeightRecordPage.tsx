@@ -68,7 +68,7 @@ export default function EditPetWeightRecordPage() {
   }
 
   return (
-    <main className="p-4">
+    <main className="p-4 w-full max-w-screen-sm">
       <h1 className="mb-4">{`${
         petWeightRecord!.pet.name
       }'s Edit Weight Record`}</h1>

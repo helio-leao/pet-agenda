@@ -15,7 +15,7 @@ export default function AuthLayout() {
   }
 
   return (
-    <div className="flex flex-col min-h-dvh">
+    <div className="flex flex-col items-center min-h-dvh">
       <Header />
       <Outlet />
     </div>

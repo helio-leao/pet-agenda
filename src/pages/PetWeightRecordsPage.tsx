@@ -62,7 +62,7 @@ export default function PetWeightRecordsPage() {
   }
 
   return (
-    <main className="p-4">
+    <main className="p-4 w-full max-w-screen-sm">
       <div className="flex justify-between items-center mb-4">
         <h1>{`${pet!.name}'s Weight Records`}</h1>
         <Link to={`/pets/${petId}/weight-records/new`}>

@@ -68,10 +68,12 @@ export default function TaskPage() {
     return <LoadingIndicator />;
   }
 
+  // note: format datetimes for visualization
+  let hourlyTask = task!.interval.unit === "HOURS";
   let remainingTimeString = "";
   let formattedDueDate = "";
 
-  if (task!.interval.unit === "HOURS") {
+  if (hourlyTask) {
     const remainingTime = calculateHoursTo(task!.dueDate);
     remainingTimeString = formatTimeToString(remainingTime, "hour");
     formattedDueDate = DateTime.fromISO(task!.dueDate).toLocaleString(
@@ -99,11 +101,7 @@ export default function TaskPage() {
           </div>
         </div>
         <p>{task!.description}</p>
-        <p>
-          {`${DateTime.fromISO(task!.dueDate).toLocaleString(
-            DateTime.DATETIME_SHORT
-          )} (${remainingTimeString})`}
-        </p>
+        <p>{`${formattedDueDate} (${remainingTimeString})`}</p>
         <p>{`Once every ${
           task!.interval.value
         } ${task!.interval.unit.toLowerCase()}`}</p>
@@ -129,7 +127,7 @@ export default function TaskPage() {
                 >
                   <p>
                     {DateTime.fromISO(record.date).toLocaleString(
-                      DateTime.DATETIME_SHORT
+                      hourlyTask ? DateTime.DATETIME_SHORT : DateTime.DATE_SHORT
                     )}
                   </p>
                   <div className="flex items-center gap-4">

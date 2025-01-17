@@ -13,6 +13,7 @@ type TaskCardProps = {
 };
 
 export default function TaskCard({ task }: TaskCardProps) {
+  // note: format datetimes for visualization
   let remaining = 0;
   let remainingTimeString = "";
   let formattedDueDate = "";

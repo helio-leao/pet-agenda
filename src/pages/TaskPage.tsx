@@ -72,6 +72,7 @@ export default function TaskPage() {
   let hourlyTask = task!.interval.unit === "HOURS";
   let remainingTimeString = "";
   let formattedDueDate = "";
+  let dateTimeFormat = DateTime.DATETIME_SHORT;
 
   if (hourlyTask) {
     const remainingTime = calculateHoursTo(task!.dueDate);
@@ -85,6 +86,7 @@ export default function TaskPage() {
     formattedDueDate = DateTime.fromISO(task!.dueDate).toLocaleString(
       DateTime.DATE_SHORT
     );
+    dateTimeFormat = DateTime.DATE_SHORT;
   }
 
   return (
@@ -127,7 +129,7 @@ export default function TaskPage() {
                 >
                   <p>
                     {DateTime.fromISO(record.date).toLocaleString(
-                      hourlyTask ? DateTime.DATETIME_SHORT : DateTime.DATE_SHORT
+                      dateTimeFormat
                     )}
                   </p>
                   <div className="flex items-center gap-4">

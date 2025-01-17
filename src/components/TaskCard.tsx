@@ -14,14 +14,21 @@ type TaskCardProps = {
 
 export default function TaskCard({ task }: TaskCardProps) {
   let remaining = 0;
-  let remainingString = "";
+  let remainingTimeString = "";
+  let formattedDueDate = "";
 
   if (task.interval.unit === "HOURS") {
     remaining = calculateHoursTo(task.dueDate);
-    remainingString = formatTimeToString(remaining, "hour");
+    remainingTimeString = formatTimeToString(remaining, "hour");
+    formattedDueDate = DateTime.fromISO(task.dueDate).toLocaleString(
+      DateTime.DATETIME_SHORT
+    );
   } else {
     remaining = calculateDaysTo(task.dueDate);
-    remainingString = formatTimeToString(remaining, "day");
+    remainingTimeString = formatTimeToString(remaining, "day");
+    formattedDueDate = DateTime.fromISO(task.dueDate).toLocaleString(
+      DateTime.DATE_SHORT
+    );
   }
 
   return (
@@ -41,11 +48,7 @@ export default function TaskCard({ task }: TaskCardProps) {
       </div>
 
       <p>{task.description}</p>
-      <p>
-        {`${DateTime.fromISO(task.dueDate).toLocaleString(
-          DateTime.DATETIME_SHORT
-        )} (${remainingString})`}
-      </p>
+      <p>{`${formattedDueDate} (${remainingTimeString})`}</p>
       <p>{`Once every ${
         task.interval.value
       } ${task.interval.unit.toLowerCase()}`}</p>

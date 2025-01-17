@@ -69,13 +69,20 @@ export default function TaskPage() {
   }
 
   let remainingTimeString = "";
+  let formattedDueDate = "";
 
   if (task!.interval.unit === "HOURS") {
     const remainingTime = calculateHoursTo(task!.dueDate);
     remainingTimeString = formatTimeToString(remainingTime, "hour");
+    formattedDueDate = DateTime.fromISO(task!.dueDate).toLocaleString(
+      DateTime.DATETIME_SHORT
+    );
   } else {
     const remainingTime = calculateDaysTo(task!.dueDate);
     remainingTimeString = formatTimeToString(remainingTime, "day");
+    formattedDueDate = DateTime.fromISO(task!.dueDate).toLocaleString(
+      DateTime.DATE_SHORT
+    );
   }
 
   return (

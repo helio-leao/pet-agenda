@@ -5,7 +5,7 @@ import { DateTime } from "luxon";
 
 type PetWeightRecordCardProps = {
   petWeightRecord: PetWeightRecord;
-  onDeleteClick: () => Promise<void>;
+  onDeleteClick?: () => Promise<void>;
 };
 
 export default function PetWeightRecordCard({
@@ -25,9 +25,11 @@ export default function PetWeightRecordCard({
         >
           <FaRegEdit />
         </Link>
-        <button onClick={onDeleteClick}>
-          <FaRegTrashAlt />
-        </button>
+        {onDeleteClick && (
+          <button onClick={onDeleteClick}>
+            <FaRegTrashAlt />
+          </button>
+        )}
       </div>
     </div>
   );

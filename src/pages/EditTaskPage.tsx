@@ -51,10 +51,15 @@ export default function EditTaskPage() {
   async function handleSave(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    if (!dueTime) {
+      alert("Please select a time");
+      return;
+    }
+
     const editedTask = {
       title,
       description,
-      dueDate: DateTime.fromISO(`${dueDate}T${dueTime || "00:00"}`, {
+      dueDate: DateTime.fromISO(`${dueDate}T${dueTime}`, {
         zone: "local",
       }).toISO(),
       interval: {

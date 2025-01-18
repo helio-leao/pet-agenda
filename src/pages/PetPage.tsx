@@ -41,7 +41,7 @@ export default function PetPage() {
   }, []);
 
   async function handleDelete(taskId: string) {
-    if (!confirm("Are you sure?")) {
+    if (!confirm("Are you sure you want to delete?")) {
       return;
     }
 

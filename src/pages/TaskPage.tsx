@@ -55,7 +55,7 @@ export default function TaskPage() {
   }
 
   async function handleDelete(taskDoneId: string) {
-    if (!confirm("Are you sure?")) {
+    if (!confirm("Are you sure you want to delete?")) {
       return;
     }
 

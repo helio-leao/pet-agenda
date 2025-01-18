@@ -49,7 +49,7 @@ export default function PetWeightRecordsPage() {
   }
 
   async function handleDelete(recordId: string) {
-    if (!confirm("Are you sure?")) {
+    if (!confirm("Are you sure you want to delete?")) {
       return;
     }
 

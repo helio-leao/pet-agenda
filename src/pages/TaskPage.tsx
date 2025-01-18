@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import LoadingIndicator from "../components/LoadingIndicator";
 import Task from "../types/Task";
-import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
+import { FaPaw, FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
 import {
   calculateDaysTo,
   calculateHoursTo,
@@ -95,7 +95,7 @@ export default function TaskPage() {
 
       <div className="mb-4">
         <div className="flex gap-4">
-          <h3>{`${task!.title} (${task!.pet.name})`}</h3>
+          <h3>{task!.title}</h3>
           <div className="flex gap-4">
             <Link to={`/tasks/${task!._id}/edit`}>
               <FaRegEdit />
@@ -107,6 +107,13 @@ export default function TaskPage() {
         <p>{`Once every ${
           task!.interval.value
         } ${task!.interval.unit.toLowerCase()}`}</p>
+        <Link
+          to={`/pets/${task!.pet._id}`}
+          className="flex items-center gap-4 self-start"
+        >
+          <FaPaw />
+          {task!.pet.name}
+        </Link>
       </div>
 
       <div className="flex flex-col">

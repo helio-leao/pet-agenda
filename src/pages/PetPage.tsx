@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import TaskCard from "../components/TaskCard";
-import { FaPlus, FaRegEdit, FaWeightHanging } from "react-icons/fa";
+import { FaRegEdit, FaWeightHanging } from "react-icons/fa";
 import picturePlaceholder from "../assets/picture-placeholder.svg";
 import Pet from "../types/Pet";
 import Task from "../types/Task";
@@ -96,10 +96,13 @@ export default function PetPage() {
       </div>
 
       <div>
-        <div className="flex justify-between items-center mb-4">
-          <h2>Tasks</h2>
-          <Link to="/tasks/new" state={{ petId }}>
-            <FaPlus />
+        <div className="flex justify-end gap-2 mb-4">
+          <Link
+            to="/tasks/new"
+            state={{ petId }}
+            className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
+          >
+            Add Task
           </Link>
         </div>
 

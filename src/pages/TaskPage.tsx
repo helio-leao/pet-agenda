@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import LoadingIndicator from "../components/LoadingIndicator";
 import Task from "../types/Task";
-import { FaRegEdit, FaRegTrashAlt, FaPlus } from "react-icons/fa";
+import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
 import {
   calculateDaysTo,
   calculateHoursTo,
@@ -110,10 +110,12 @@ export default function TaskPage() {
       </div>
 
       <div className="flex flex-col mt-6">
-        <div className="flex justify-between items-center mb-4">
-          <p>Done before on</p>
-          <Link to={`/tasks/${task!._id}/done-records/new`}>
-            <FaPlus />
+        <div className="flex justify-end gap-2 mb-4">
+          <Link
+            to={`/tasks/${task!._id}/done-records/new`}
+            className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
+          >
+            Add Done Record
           </Link>
         </div>
 

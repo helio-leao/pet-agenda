@@ -3,7 +3,6 @@ import { useSession } from "../contexts/SessionContext";
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import TaskCard from "../components/TaskCard";
-import { FaPlus } from "react-icons/fa";
 import Task from "../types/Task";
 import LoadingIndicator from "../components/LoadingIndicator";
 import getErrorMessage from "../utils/getErrorMessage";
@@ -46,10 +45,12 @@ export default function TasksPage() {
 
   return (
     <main className="p-4 w-full max-w-screen-sm">
-      <div className="flex justify-between items-center mb-4">
-        <h1>Tasks</h1>
-        <Link to="/tasks/new">
-          <FaPlus />
+      <div className="flex justify-end gap-2 mb-4">
+        <Link
+          to="/tasks/new"
+          className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
+        >
+          Add Task
         </Link>
       </div>
 

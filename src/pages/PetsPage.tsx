@@ -3,7 +3,6 @@ import { useSession } from "../contexts/SessionContext";
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import PetCard from "../components/PetCard";
-import { FaPlus } from "react-icons/fa";
 import Pet from "../types/Pet";
 import LoadingIndicator from "../components/LoadingIndicator";
 import getErrorMessage from "../utils/getErrorMessage";
@@ -34,10 +33,12 @@ export default function PetsPage() {
 
   return (
     <main className="p-4 w-full max-w-screen-sm">
-      <div className="flex justify-between items-center mb-4">
-        <h1>Pets</h1>
-        <Link to="/pets/new">
-          <FaPlus />
+      <div className="flex justify-end gap-2 mb-4">
+        <Link
+          to="/pets/new"
+          className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
+        >
+          Add Pet
         </Link>
       </div>
 

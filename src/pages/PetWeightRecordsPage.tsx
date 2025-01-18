@@ -4,7 +4,6 @@ import api from "../services/api";
 import PetWeightRecordCard from "../components/PetWeightRecordCard";
 import PetWeightRecord from "../types/PetWeightRecord";
 import Pet from "../types/Pet";
-import { FaPlus } from "react-icons/fa";
 import LoadingIndicator from "../components/LoadingIndicator";
 import getErrorMessage from "../utils/getErrorMessage";
 
@@ -65,10 +64,12 @@ export default function PetWeightRecordsPage() {
 
   return (
     <main className="p-4 w-full max-w-screen-sm">
-      <div className="flex justify-between items-center mb-4">
-        <h1>{`${pet!.name}'s Weight Records`}</h1>
-        <Link to={`/pets/${petId}/weight-records/new`}>
-          <FaPlus />
+      <div className="flex justify-end gap-2 mb-4">
+        <Link
+          to={`/pets/${petId}/weight-records/new`}
+          className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
+        >
+          Add Weight Record
         </Link>
       </div>
 

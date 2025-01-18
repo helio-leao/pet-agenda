@@ -11,7 +11,7 @@ export default function SignupPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [picture, setPicture] = useState<File | null>(null);
+  // const [picture, setPicture] = useState<File | null>(null);
   const [isSaving, setIsSaving] = useState(false);
 
   async function handleSave(e: React.FormEvent<HTMLFormElement>) {
@@ -32,21 +32,21 @@ export default function SignupPage() {
       setIsSaving(true);
       let { data: user } = await api.post<User>("/auth/signup", newUser);
 
-      if (picture) {
-        const formData = new FormData();
-        formData.append("picture", picture);
+      // if (picture) {
+      //   const formData = new FormData();
+      //   formData.append("picture", picture);
 
-        const response = await api.post<User>(
-          `/users/${user._id}/picture`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-        user = response.data;
-      }
+      //   const response = await api.post<User>(
+      //     `/users/${user._id}/picture`,
+      //     formData,
+      //     {
+      //       headers: {
+      //         "Content-Type": "multipart/form-data",
+      //       },
+      //     }
+      //   );
+      //   user = response.data;
+      // }
 
       await api.post("/auth/send-verification-email", { id: user._id });
       alert(
@@ -126,7 +126,7 @@ export default function SignupPage() {
           />
         </div>
 
-        <div className="flex flex-col gap-4">
+        {/* <div className="flex flex-col gap-4">
           <label htmlFor="picture">Picture</label>
           <input
             type="file"
@@ -136,7 +136,7 @@ export default function SignupPage() {
               setPicture(file);
             }}
           />
-        </div>
+        </div> */}
 
         <div className="flex gap-2 mt-4">
           <button
@@ -158,12 +158,12 @@ export default function SignupPage() {
       </form>
 
       {/* NOTE: temporary visualization */}
-      {picture && (
+      {/* {picture && (
         <img
           src={URL.createObjectURL(picture)}
           className="mt-4 object-cover min-h-10 min-w-10 h-10 w-10"
         />
-      )}
+      )} */}
     </main>
   );
 }

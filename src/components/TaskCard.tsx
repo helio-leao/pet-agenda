@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaRegEdit, FaArrowRight, FaPaw } from "react-icons/fa";
+import { FaRegEdit, FaArrowRight, FaPaw, FaRegTrashAlt } from "react-icons/fa";
 import Task from "../types/Task";
 import {
   calculateDaysTo,
@@ -10,9 +10,10 @@ import { DateTime } from "luxon";
 
 type TaskCardProps = {
   task: Task;
+  onDeleteClick?: () => void;
 };
 
-export default function TaskCard({ task }: TaskCardProps) {
+export default function TaskCard({ task, onDeleteClick }: TaskCardProps) {
   // note: format datetimes for visualization
   let remaining = 0;
   let remainingTimeString = "";
@@ -42,6 +43,11 @@ export default function TaskCard({ task }: TaskCardProps) {
           <Link to={`/tasks/${task._id}/edit`}>
             <FaRegEdit />
           </Link>
+          {onDeleteClick && (
+            <button onClick={onDeleteClick}>
+              <FaRegTrashAlt />
+            </button>
+          )}
           <Link to={`/tasks/${task._id}`}>
             <FaArrowRight />
           </Link>

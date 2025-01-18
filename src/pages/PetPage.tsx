@@ -40,6 +40,25 @@ export default function PetPage() {
     })();
   }, []);
 
+  async function handleDelete(taskId: string) {
+    try {
+      await api.delete(`/tasks/${taskId}`);
+      await fetchTasks();
+    } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
+    }
+  }
+
+  async function fetchTasks() {
+    try {
+      const { data } = await api.get<Task[]>(`/pets/${petId}/tasks`);
+      setTasks(data);
+    } catch (error) {
+      throw error;
+    }
+  }
+
   if (isLoading) {
     return <LoadingIndicator />;
   }
@@ -87,7 +106,11 @@ export default function PetPage() {
         ) : (
           <div className="flex flex-col gap-4">
             {tasks.map((task) => (
-              <TaskCard key={task._id} task={task} />
+              <TaskCard
+                key={task._id}
+                task={task}
+                onDeleteClick={() => handleDelete(task._id)}
+              />
             ))}
           </div>
         )}

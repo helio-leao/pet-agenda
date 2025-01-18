@@ -14,19 +14,31 @@ export default function TasksPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await api.get<Task[]>(
-          `/users/${session!.user._id}/tasks`
-        );
-        setTasks(data);
-        setIsLoading(false);
-      } catch (error) {
-        const errorMessage = getErrorMessage(error);
-        alert(errorMessage);
-      }
-    })();
+    fetchTasks();
   }, []);
+
+  async function handleDelete(taskId: string) {
+    try {
+      await api.delete(`/tasks/${taskId}`);
+      await fetchTasks();
+    } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
+    }
+  }
+
+  async function fetchTasks() {
+    try {
+      const { data } = await api.get<Task[]>(
+        `/users/${session!.user._id}/tasks`
+      );
+      setTasks(data);
+      setIsLoading(false);
+    } catch (error) {
+      const errorMessage = getErrorMessage(error);
+      alert(errorMessage);
+    }
+  }
 
   if (isLoading) {
     return <LoadingIndicator />;
@@ -46,7 +58,11 @@ export default function TasksPage() {
       ) : (
         <div className="flex flex-col gap-4">
           {tasks.map((task) => (
-            <TaskCard key={task._id} task={task} />
+            <TaskCard
+              key={task._id}
+              task={task}
+              onDeleteClick={() => handleDelete(task._id)}
+            />
           ))}
         </div>
       )}

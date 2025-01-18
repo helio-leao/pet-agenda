@@ -79,12 +79,14 @@ export default function PetPage() {
           </div>
 
           <div className="flex gap-4">
-            {latestWeightRecord && (
+            {latestWeightRecord ? (
               <p>
                 {`${latestWeightRecord.value} kg (${DateTime.fromISO(
                   latestWeightRecord.date
                 ).toLocaleString(DateTime.DATE_SHORT)})`}
               </p>
+            ) : (
+              <p>Weight History</p>
             )}
             <Link to={`/pets/${pet!._id}/weight-records`}>
               <FaWeightHanging />

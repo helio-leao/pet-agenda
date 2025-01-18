@@ -93,9 +93,9 @@ export default function TaskPage() {
     <main className="p-4 w-full max-w-screen-sm">
       <h1 className="mb-4">Task</h1>
 
-      <div>
+      <div className="mb-4">
         <div className="flex gap-4">
-          <h3>{task!.title}</h3>
+          <h3>{`${task!.title} (${task!.pet.name})`}</h3>
           <div className="flex gap-4">
             <Link to={`/tasks/${task!._id}/edit`}>
               <FaRegEdit />
@@ -109,7 +109,7 @@ export default function TaskPage() {
         } ${task!.interval.unit.toLowerCase()}`}</p>
       </div>
 
-      <div className="flex flex-col mt-6">
+      <div className="flex flex-col">
         <div className="flex justify-end gap-2 mb-4">
           <Link
             to={`/tasks/${task!._id}/done-records/new`}

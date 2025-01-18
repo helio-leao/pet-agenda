@@ -55,6 +55,10 @@ export default function TaskPage() {
   }
 
   async function handleDelete(taskDoneId: string) {
+    if (!confirm("Are you sure?")) {
+      return;
+    }
+
     try {
       await api.delete(`/tasks/${taskId}/done-records/${taskDoneId}`);
       await loadTaskDoneRecords();

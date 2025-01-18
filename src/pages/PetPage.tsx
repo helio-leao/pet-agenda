@@ -41,6 +41,10 @@ export default function PetPage() {
   }, []);
 
   async function handleDelete(taskId: string) {
+    if (!confirm("Are you sure?")) {
+      return;
+    }
+
     try {
       await api.delete(`/tasks/${taskId}`);
       await fetchTasks();

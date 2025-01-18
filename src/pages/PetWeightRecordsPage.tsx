@@ -49,6 +49,10 @@ export default function PetWeightRecordsPage() {
   }
 
   async function handleDelete(recordId: string) {
+    if (!confirm("Are you sure?")) {
+      return;
+    }
+
     try {
       await api.delete(`/pets/${petId}/weight-records/${recordId}`);
       await loadWeightRecords();

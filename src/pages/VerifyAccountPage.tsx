@@ -57,7 +57,10 @@ export default function VerifyAccountPage() {
     return (
       <main className="flex flex-col items-center justify-center gap-4">
         <p>Fail to verify account</p>
-        <button onClick={handleNewVerificationEmail}>
+        <button
+          className="bg-sky-600 rounded-lg px-4 py-2 self-start text-white"
+          onClick={handleNewVerificationEmail}
+        >
           Issue new verification email
         </button>
       </main>

@@ -53,7 +53,7 @@ export default function NewTaskPage() {
     const newTask = {
       title,
       description,
-      dueDate: DateTime.fromISO(`${dueDate}T${dueTime}`, {
+      dueDate: DateTime.fromISO(`${dueDate}T${dueTime || "00:00"}`, {
         zone: "local",
       }).toISO(),
       interval: {

@@ -54,7 +54,7 @@ export default function EditTaskPage() {
     const editedTask = {
       title,
       description,
-      dueDate: DateTime.fromISO(`${dueDate}T${dueTime}`, {
+      dueDate: DateTime.fromISO(`${dueDate}T${dueTime || "00:00"}`, {
         zone: "local",
       }).toISO(),
       interval: {

@@ -11,7 +11,6 @@ export default function SignupPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
-  // const [picture, setPicture] = useState<File | null>(null);
   const [isSaving, setIsSaving] = useState(false);
 
   async function handleSave(e: React.FormEvent<HTMLFormElement>) {
@@ -31,24 +30,8 @@ export default function SignupPage() {
     try {
       setIsSaving(true);
       let { data: user } = await api.post<User>("/auth/signup", newUser);
-
-      // if (picture) {
-      //   const formData = new FormData();
-      //   formData.append("picture", picture);
-
-      //   const response = await api.post<User>(
-      //     `/users/${user._id}/picture`,
-      //     formData,
-      //     {
-      //       headers: {
-      //         "Content-Type": "multipart/form-data",
-      //       },
-      //     }
-      //   );
-      //   user = response.data;
-      // }
-
       await api.post("/auth/send-verification-email", { id: user._id });
+
       alert(
         "User created successfully. Check your email to verify your account"
       );
@@ -126,18 +109,6 @@ export default function SignupPage() {
           />
         </div>
 
-        {/* <div className="flex flex-col gap-4">
-          <label htmlFor="picture">Picture</label>
-          <input
-            type="file"
-            id="picture"
-            onChange={(e) => {
-              const file = e.target.files && e.target.files[0];
-              setPicture(file);
-            }}
-          />
-        </div> */}
-
         <div className="flex gap-2 mt-4">
           <button
             disabled={isSaving}
@@ -156,14 +127,6 @@ export default function SignupPage() {
           </button>
         </div>
       </form>
-
-      {/* NOTE: temporary visualization */}
-      {/* {picture && (
-        <img
-          src={URL.createObjectURL(picture)}
-          className="mt-4 object-cover min-h-10 min-w-10 h-10 w-10"
-        />
-      )} */}
     </main>
   );
 }

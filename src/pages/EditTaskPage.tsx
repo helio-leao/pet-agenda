@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { DateTime } from "luxon";
 import LoadingIndicator from "../components/LoadingIndicator";
 import getErrorMessage from "../utils/getErrorMessage";
+import Task from "../types/Task";
 
 export default function EditTaskPage() {
   const { taskId } = useParams();
@@ -23,17 +24,19 @@ export default function EditTaskPage() {
   useEffect(() => {
     (async () => {
       try {
-        const { data: task } = await api.get(`/tasks/${taskId}`);
+        const { data: task } = await api.get<Task>(`/tasks/${taskId}`);
 
         const dateTime = DateTime.fromISO(task.dueDate);
 
         setTitle(task.title);
         setDescription(task.description);
         setDueDate(dateTime.toISODate() || "");
-        setDueTime(dateTime.toFormat("HH:mm") || "");
+        if (task.interval.unit === "HOURS") {
+          setDueTime(dateTime.toFormat("HH:mm"));
+        }
         setIntervalValue(task.interval.value.toString());
         setIntervalUnit(task.interval.unit);
-        setPet(task.pet);
+        setPet(task.pet._id);
         setIsLoading(false);
       } catch (error) {
         const errorMessage = getErrorMessage(error);

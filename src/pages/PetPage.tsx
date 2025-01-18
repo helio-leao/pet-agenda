@@ -77,18 +77,20 @@ export default function PetPage() {
               <FaRegEdit />
             </Link>
           </div>
-          {latestWeightRecord && (
-            <div className="flex gap-4">
+
+          <div className="flex gap-4">
+            {latestWeightRecord && (
               <p>
-                {DateTime.fromISO(latestWeightRecord.date).toLocaleString(
-                  DateTime.DATE_SHORT
-                )}
+                {`${latestWeightRecord.value} kg (${DateTime.fromISO(
+                  latestWeightRecord.date
+                ).toLocaleString(DateTime.DATE_SHORT)})`}
               </p>
-              <Link to={`/pets/${pet!._id}/weight-records`}>
-                <FaWeightHanging />
-              </Link>
-            </div>
-          )}
+            )}
+            <Link to={`/pets/${pet!._id}/weight-records`}>
+              <FaWeightHanging />
+            </Link>
+          </div>
+
           <p>{ageString(pet!.birthdate)}</p>
         </div>
       </div>
